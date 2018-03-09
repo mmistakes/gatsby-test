@@ -1,6 +1,7 @@
 const fs = require("fs-extra");
 const path = require("path");
 const slugify = require("slug");
+const kebabCase = require("lodash/kebabcase");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -12,7 +13,8 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
     );
     // const value = `/${slugify(categories.concat([date]).join('-'), '/')}/${title}/`
-    const value = `/${title}/`;
+    const value = `/${kebabCase(categories)}/${title}/`
+    // const value = `/${title}/`;
     createNodeField({ node, name: `slug`, value });
     createNodeField({ node, name: `date`, value: date });
   }
