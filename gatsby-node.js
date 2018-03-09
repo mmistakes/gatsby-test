@@ -1,135 +1,109 @@
+const fs = require("fs-extra");
 const path = require("path");
-const _ = require("lodash");
-const { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLInt, GraphQLEnumType } = require(`graphql`);
-const webpackLodashPlugin = require("lodash-webpack-plugin");
+const slugify = require("slug");
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
+exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators;
-  let slug;
-
-  if (node.internal.type === "MarkdownRemark") {
-    const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    const getFileDate = `${parsedFilePath.name}`.match(/^\d\d\d\d-\d\d-\d\d/).toString();
-
-    if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "permalink")
-    ) {
-      slug = `${_.kebabCase(node.frontmatter.permalink)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
-    }
-
-    exports.setFieldsOnGraphQLNodeType = ({ type, store, pathPrefix, getNode, cache }) => {
-      if (type.name !== 'MarkdownRemark') {
-        return {};
-      }
-
-      return Promise.resolve({
-        date: {
-          type: GraphQLString,
-          value: getFileDate,
-        }
-      });
-    };
-
-    createNodeField({ node, name: "slug", value: slug });
+  if (node.internal.type === `MarkdownRemark`) {
+    const { categories } = node.frontmatter;
+    const slug = createFilePath({ node, getNode, basePath: `pages` });
+    const [, date, title] = slug.match(
+      /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
+    );
+    // const value = `/${slugify(categories.concat([date]).join('-'), '/')}/${title}/`
+    const value = `/${title}/`;
+    createNodeField({ node, name: `slug`, value });
+    createNodeField({ node, name: `date`, value: date });
   }
+};
+
+const createTagPages = (createPage, edges) => {
+  // Tell it to use our tags template.
+  const tagTemplate = path.resolve(`src/templates/tags.js`);
+  // Create an empty object to store the posts.
+  const posts = {};
+  console.log("creating posts");
+
+  // Loop through all nodes (our markdown posts) and add the tags to our post object.
+
+  edges.forEach(({ node }) => {
+    if (node.frontmatter.tags) {
+      node.frontmatter.tags.forEach(tag => {
+        if (!posts[tag]) {
+          posts[tag] = [];
+        }
+        posts[tag].push(node);
+      });
+    }
+  });
+
+  // Create the tags page with the list of tags from our posts object.
+  createPage({
+    path: "/tags",
+    component: tagTemplate,
+    context: {
+      posts
+    }
+  });
+
+  // For each of the tags in the post object, create a tag page.
+
+  Object.keys(posts).forEach(tagName => {
+    const post = posts[tagName];
+    tagSlug = slugify(tagName, { lower: true });
+    createPage({
+      path: `/tags/${tagSlug}`,
+      component: tagTemplate,
+      context: {
+        posts,
+        post,
+        tag: tagName
+      }
+    });
+  });
 };
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
-
   return new Promise((resolve, reject) => {
-    const postPage = path.resolve("src/templates/post.jsx");
-    const tagPage = path.resolve("src/templates/tag.jsx");
-    const categoryPage = path.resolve("src/templates/category.jsx");
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark {
-              edges {
-                node {
-                  frontmatter {
-                    date
-                    last_modified_at
-                    category
-                    tags
-                    image {
-                      path
-                    }
-                  }
-                  fields {
-                    slug
-                  }
-                }
+    graphql(`
+      {
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+                date
               }
+              frontmatter {
+                title
+                categories
+                tags
+              }
+              excerpt
             }
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          /* eslint no-console: "off"*/
-          console.log(result.errors);
-          reject(result.errors);
         }
+      }
+    `).then(result => {
+      const posts = result.data.allMarkdownRemark.edges;
 
-        const tagSet = new Set();
-        const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(edge => {
-          if (edge.node.frontmatter.tags) {
-            edge.node.frontmatter.tags.forEach(tag => {
-              tagSet.add(tag);
-            });
+      // call createTagPages with the result of posts
+      createTagPages(createPage, posts);
+
+      result.data.allMarkdownRemark.edges.map(({ node }) => {
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve(`./src/templates/blog-post.js`),
+          context: {
+            // Data passed to context is available in page queries as GraphQL variables.
+            slug: node.fields.slug,
+            date: node.fields.date
           }
-
-          if (edge.node.frontmatter.category) {
-            categorySet.add(edge.node.frontmatter.category);
-          }
-
-          createPage({
-            path: edge.node.fields.slug,
-            component: postPage,
-            context: {
-              slug: edge.node.fields.slug
-            }
-          });
         });
-
-        const tagList = Array.from(tagSet);
-        tagList.forEach(tag => {
-          createPage({
-            path: `/tags/${_.kebabCase(tag)}/`,
-            component: tagPage,
-            context: {
-              tag
-            }
-          });
-        });
-
-        const categoryList = Array.from(categorySet);
-        categoryList.forEach(category => {
-          createPage({
-            path: `/categories/${_.kebabCase(category)}/`,
-            component: categoryPage,
-            context: {
-              category
-            }
-          });
-        });
-      })
-    );
+      });
+      resolve();
+    });
   });
-};
-
-exports.modifyWebpackConfig = ({ config, stage }) => {
-  if (stage === "build-javascript") {
-    config.plugin("Lodash", webpackLodashPlugin, null);
-  }
 };
