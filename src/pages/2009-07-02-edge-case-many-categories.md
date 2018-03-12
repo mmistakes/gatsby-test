@@ -1,13 +1,13 @@
 ---
 title: "Edge Case: Many Categories"
 categories:
-  - aciform
+  - aciform mrofic
   - antiquarianism
   - arrangement
   - asmodeus
   - broder
   - buying
-  - championship
+  - Championship
   - chastening
   - disinclination
   - disinfection

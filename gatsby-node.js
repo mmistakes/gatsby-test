@@ -13,8 +13,13 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
     );
     // const value = `/${slugify(categories.concat([date]).join('-'), '/')}/${title}/`
-    const value = `/${kebabCase(categories)}/${title}/`
-    // const value = `/${title}/`;
+    if (categories) {
+      categoriesPath = categories.join('/').replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase();
+      value = `/${categoriesPath}/${title}/`;
+    } else {
+      value = `/${title}/`;
+    };
+
     createNodeField({ node, name: `slug`, value });
     createNodeField({ node, name: `date`, value: date });
   }

@@ -11,7 +11,6 @@ export default ({ data, pathContext }) => {
         <header>
           <h1>{post.frontmatter.title}</h1>
           <div>{date}</div>
-          <div>{post.frontmatter.categories.join(", ")}</div>
         </header>
         <section>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
