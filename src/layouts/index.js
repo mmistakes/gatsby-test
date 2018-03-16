@@ -5,29 +5,38 @@ import Helmet from "react-helmet";
 
 import "syntax-highlighting/assets/css/prism/prism-base16-ateliercave.light.css";
 
-const Header = () => (
-  <div>
+export default function IndexLayout({ children, data }) {
+  let { description, title } = data.site.siteMetadata;
+
+  return (
     <div>
-      <h1>
-        <Link to="/">Gatsby Test</Link>
-      </h1>
+      <Helmet titleTemplate={`%s - ${title}`} defaultTitle={title}>
+        <meta name="description" content={description} />
+        <html lang="en" /> {/* this is valid react-helmet usage! */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="HandheldFriendly" content="True" />
+      </Helmet>
+      <h1><Link to="/">{title}</Link></h1>
+      <section className="main-content">{children()}</section>
     </div>
-  </div>
-);
+  );
+}
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="Gatsby Test"
-      meta={[{ name: "description", content: "Sample" }]}
-    />
-    <Header />
-    <div>{children()}</div>
-  </div>
-);
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func
+IndexLayout.propTypes = {
+  children: PropTypes.func,
+  data: PropTypes.object,
 };
 
-export default TemplateWrapper;
+export const pageQuery = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
+`;

@@ -10,6 +10,7 @@ export default function Index({ data }) {
   return (
     <div>
       <header>Latest Posts</header>
+      <Posts posts={posts} />
       <div>
         <h3><Link to="/page/2">Older Posts</Link></h3>
       </div>

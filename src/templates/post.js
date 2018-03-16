@@ -27,6 +27,13 @@ Template.propTypes = {
 
 export const pageQuery = graphql`
   query BlogPostByPath($slug: String!) {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       excerpt

@@ -9,8 +9,8 @@ export default function Pages({ pathContext, data }) {
   const { posts, page, pagesSum, prevPath, nextPath } = pathContext;
   return (
     <section>
-      <Pagination page={page} pagesSum={pagesSum} prevPath={prevPath} nextPath={nextPath} />
       <Posts posts={posts} />
+      <Pagination page={page} pagesSum={pagesSum} prevPath={prevPath} nextPath={nextPath} />
     </section>
   );
 };
@@ -24,7 +24,8 @@ export const pagesQuery = graphql`
   query PagesSiteMetadata {
     site {
       siteMetadata {
-        title
+        description
+        siteUrl
       }
     }
   }

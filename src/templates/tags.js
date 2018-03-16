@@ -33,6 +33,8 @@ export const tagsQuery = graphql`
     site {
       siteMetadata {
         title
+        description
+        siteUrl
       }
     }
   }

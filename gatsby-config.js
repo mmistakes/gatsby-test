@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Test`
+    title: `Gatsby Test`,
+    author: `Michael Rose`,
+    siteUrl: `https://your-domain.com`,
+    description: `Testing Gatsby with content from Jekyll build site.`
   },
   plugins: [
     {
