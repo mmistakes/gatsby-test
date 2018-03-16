@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+const BUILD_TIME = new Date().getTime();
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {
@@ -9,17 +12,24 @@ if (process.env.NODE_ENV === `production`) {
   }
 }
 
-module.exports = class HTML extends React.Component {
+export default class HTML extends React.Component {
+  static propTypes = {
+    body: PropTypes.string
+  };
+
   render() {
     let css;
     if (process.env.NODE_ENV === `production`) {
       css = (
         <style
           id="gatsby-inlined-css"
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
+          dangerouslySetInnerHTML={{
+            __html: stylesStr
+          }}
         />
       );
     }
+
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -44,4 +54,4 @@ module.exports = class HTML extends React.Component {
       </html>
     );
   }
-};
+}

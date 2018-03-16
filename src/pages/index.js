@@ -1,74 +1,43 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import Tags from "../components/tags";
 
-// const IndexPage = ({ data }) => (
-//   <div>
-//     <h1>My Travel Blog</h1>
-//     {data.allMarkdownRemark.edges.map(({ node }) => (
-//       <div key={node.id}>
-//         <h3>
-//           <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-//           <span>— {node.frontmatter.tags.join(`, `)}</span>
-//         </h3>
-//       </div>
-//     ))}
-//   </div>
-// );
+import Posts from "../components/Posts";
 
-// export const query = graphql`
-//   query IndexQuery {
-//     allMarkdownRemark {
-//       totalCount
-//       edges {
-//         node {
-//           id
-//           frontmatter {
-//             title
-//             tags
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
-
-export default ({ data }) => {
+export default function Index({ data }) {
+  let { edges: posts } = data.allMarkdownRemark;
+  posts = posts.map(post => post.node);
   return (
     <div>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <article key={node.id}>
-          <header>
-            <Link to={node.fields.slug}>{node.frontmatter.title} </Link>
-            <div>{node.fields.date}</div>
-          </header>
-          <section>
-            <p>{node.excerpt}</p>
-            <footer>
-              <Tags list={node.frontmatter.tags || []} />
-            </footer>
-          </section>
-        </article>
-      ))}
+      <header>Latest Posts</header>
+      <div>
+        <h3><Link to="/page/2">Older Posts</Link></h3>
+      </div>
     </div>
   );
-};
+}
 
-export const query = graphql`
+Index.propTypes = {
+  data: PropTypes.object,
+}
+
+export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [fields___date] }) {
+    allMarkdownRemark(
+      limit: 5
+    ) {
       edges {
         node {
+          excerpt
           id
-          frontmatter {
-            title
-            tags
-          }
           fields {
             slug
             date
           }
-          excerpt
+          frontmatter {
+            title
+            tags
+          }
         }
       }
     }

@@ -1,45 +1,39 @@
 import React from "react";
 import Link from "gatsby-link";
+import PropTypes from "prop-types";
 
-const slugify = require("slug");
+import Posts from "../components/Posts";
+import Pagination from "../components/TagsPagination";
 
-export default function Tags({ pathContext }) {
-  const { posts, post, tag } = pathContext;
-  if (tag) {
-    return (
-      <div>
-        <h1>
-          {post.length} post{post.length === 1 ? "" : "s"} tagged with {tag}
-        </h1>
-        <ul>
-          {post.map(({ id, frontmatter, excerpt, fields }) => {
-            return (
-              <li key={id}>
-                <Link to={fields.slug}>
-                  <h2>{frontmatter.title}</h2>
-                  <p>{excerpt}</p>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-        <Link to="/tags">All tags</Link>
-      </div>
-    );
-  }
+export default function Tags({ pathContext, data }) {
+  const { posts, tag, pagesSum, page } = pathContext;
+
   return (
     <div>
-      <h1>Tags</h1>
-      <ul className="tags">
-        {Object.keys(posts).map(tagName => {
-          const tags = posts[tagName];
-          return (
-            <li key={tagName}>
-              <Link to={`/tags/${tagName}`}>{tagName}</Link>
-            </li>
-          );
-        })}
-      </ul>
+      <section>
+        <header><h1>{tag}</h1></header>
+        <h2>A {posts.length} posts collection</h2>
+      </section>
+
+      <div>
+        <Pagination page={page} pagesSum={pagesSum} tag={tag} />
+        <Posts posts={posts} />
+      </div>
     </div>
   );
+};
+
+Tags.propTypes = {
+  data: PropTypes.object,
+  pathContext: PropTypes.object,
 }
+
+export const tagsQuery = graphql`
+  query TagsSiteMetadata {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
