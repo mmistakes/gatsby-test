@@ -25,8 +25,13 @@ Index.propTypes = {
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      limit: 5
-      sort: { fields: [fields___date], order: DESC }
+      limit: 10
+      sort: { fields: [fields___date], order: DESC },
+      filter: {
+        fields: {
+          template: { eq: "post" }
+        }
+      }
     ) {
       edges {
         node {

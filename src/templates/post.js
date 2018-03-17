@@ -34,8 +34,14 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: {
+      slug: { eq: $slug },
+      template: { eq: "post" }
+    }) {
       html
+      fields {
+        slug
+      }
       excerpt
       frontmatter {
         title
