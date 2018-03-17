@@ -5,28 +5,68 @@ const kebabCase = require(`lodash/kebabcase`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { createPaginationPages } = require(`gatsby-pagination`);
 
+// Calculate post defaults.
+const calculateDefaults = (node, getNode) => {
+  const defaultSlug = createFilePath({ node, getNode, basePath: `pages` })
+  const isPostShaped = defaultSlug.match(
+    /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
+  )
+
+  if (isPostShaped) {
+    const [, defaultDate, defaultTitle] = isPostShaped
+    return [defaultSlug, defaultTitle, defaultDate]
+  } else {
+    const [, defaultTitle] = defaultSlug.match(/^\/(.*)\/$/)
+    const defaultDate = '1980-01-01'
+    return [defaultSlug, defaultTitle, defaultDate]
+  }
+}
+
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators;
-  if (node.internal.type === `MarkdownRemark`) {
-    const { categories } = node.frontmatter;
-    const slug = createFilePath({ node, getNode, basePath: `pages` });
-    const [, date, title] = slug.match(
-      /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
-    );
-    // const value = `/${slugify(categories.concat([date]).join('-'), '/')}/${title}/`
-    if (categories) {
-      categoriesPath = categories
-        .join("/")
-        .replace(/([a-z])([A-Z])/g, "$1-$2")
-        .replace(/\s+/g, "-")
-        .toLowerCase();
-      value = `/${categoriesPath}/${title}/`;
-    } else {
-      const value = `/${title}/`;
-    }
 
-    createNodeField({ node, name: `slug`, value: value });
-    createNodeField({ node, name: `date`, value: date });
+  if (node.internal.type === `MarkdownRemark`) {
+    try {
+      if (node.frontmatter.template === `comment`) {
+        createNodeField({ node, name: `template`, value: `comment` })
+        createNodeField({ node, name: `slug`, value: node.frontmatter.slug })
+      } else {
+        const [defaultSlug, defaultTitle, defaultDate] = calculateDefaults(
+          node,
+          getNode
+        )
+
+        const slug = node.frontmatter.slug || defaultSlug
+        const date = node.frontmatter.date || defaultDate
+        const title = defaultTitle
+        const template = node.frontmatter.template || 'post'
+
+        const { categories } = node.frontmatter;
+        // const slug = createFilePath({ node, getNode, basePath: `pages` });
+        // const [, date, title] = slug.match(
+        //   /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
+        // );
+        // const value = `/${slugify(categories.concat([date]).join('-'), '/')}/${title}/`
+        if (categories) {
+          categoriesPath = categories
+            .join("/")
+            .replace(/([a-z])([A-Z])/g, "$1-$2")
+            .replace(/\s+/g, "-")
+            .toLowerCase();
+          value = `/${categoriesPath}/${title}/`;
+        } else {
+          const value = `/${title}/`;
+        }
+
+        createNodeField({ node, name: `slug`, value: value });
+        createNodeField({ node, name: `date`, value: date });
+        createNodeField({ node, name: `title`, value: title })
+        createNodeField({ node, name: `template`, value: template })
+      }
+    } catch (ex) {
+      console.log('Error onCreateNode():', node.fileAbsolutePath, '\n', ex)
+      throw ex
+    }
   }
 };
 
@@ -135,7 +175,7 @@ function createTagPages(createPage, edges) {
 function createPagination(createPage, edges, pathPrefix) {
   const pageTemplate = path.resolve(`./src/templates/page.js`);
 
-  const pageSize = 5;
+  const pageSize = 10;
   const pagesSum = Math.ceil(edges.length / pageSize);
 
   for (let page = 1; page <= pagesSum; page++) {
