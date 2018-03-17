@@ -9,8 +9,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`
+        name: `pages`,
+        path: `${__dirname}/src/pages/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `comments`,
+        path: `${__dirname}/src/comments/`
       }
     },
     `gatsby-plugin-react-helmet`,
