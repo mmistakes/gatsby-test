@@ -3,31 +3,31 @@ import Link from "gatsby-link";
 import PropTypes from "prop-types";
 
 import Posts from "../components/Posts";
-import Pagination from "../components/TagsPagination";
+import Pagination from "../components/CategoriesPagination";
 
-export default function Tags({ pathContext, data }) {
-  const { posts, tag, pagesSum, page } = pathContext;
+export default function Categories({ pathContext, data }) {
+  const { posts, category, pagesSum, page } = pathContext;
   return (
     <div>
       <section>
-        <header><h1>{tag}</h1></header>
+        <header><h1>{category}</h1></header>
       </section>
 
       <div>
         <Posts posts={posts} />
-        <Pagination page={page} pagesSum={pagesSum} tag={tag} />
+        <Pagination page={page} pagesSum={pagesSum} category={category} />
       </div>
     </div>
   );
 };
 
-Tags.propTypes = {
+Categories.propTypes = {
   data: PropTypes.object,
   pathContext: PropTypes.object,
 }
 
-export const tagsQuery = graphql`
-  query TagsSiteMetadata {
+export const categoriesQuery = graphql`
+  query CategoriesSiteMetadata {
     site {
       siteMetadata {
         title

@@ -76,7 +76,10 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   // Fetch posts.
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        limit: 1000
+        sort: { fields: [fields___date], order: DESC }
+      ) {
         edges {
           node {
             excerpt
@@ -111,8 +114,9 @@ function generateContent(createPage, graphqlResults) {
   const drafts = posts.filter(post => post.node.frontmatter.draft);
 
   createTagPages(createPage, published);
-  createPagination(createPage, published, `/page`);
-  createPagination(createPage, drafts, `/drafts/page`);
+  createCategoryPages(createPage, published);
+  // createPagination(createPage, published, `/page`);
+  // createPagination(createPage, drafts, `/drafts/page`);
 
   // Create pages for each Markdown file.
   posts.forEach(({ node }, index) => {
@@ -133,6 +137,44 @@ function generateContent(createPage, graphqlResults) {
   });
 }
 
+// Create pages for categories.
+function createCategoryPages(createPage, edges) {
+  const categoryTemplate = path.resolve(`./src/templates/categories.js`);
+  const posts = {};
+
+  edges.forEach(({ node }) => {
+    if (node.frontmatter.categories) {
+      node.frontmatter.categories.forEach(category => {
+        if (!posts[category]) {
+          posts[category] = [];
+        }
+        posts[category].push(node);
+      });
+    }
+  });
+
+  Object.keys(posts).forEach(categoryName => {
+    const pageSize = 10;
+    const pagesSum = Math.ceil(posts[categoryName].length / pageSize);
+
+    for (let page = 1; page <= pagesSum; page++) {
+      createPage({
+        path:
+          page === 1
+          ? `/category/${kebabCase(categoryName)}`
+          : `/category/${kebabCase(categoryName)}/page/${page}`,
+        component: categoryTemplate,
+        context: {
+          posts: paginate(posts[categoryName], pageSize, page),
+          category: categoryName,
+          pagesSum,
+          page,
+        },
+      });
+    }
+  });
+}
+
 // Create pages for tags.
 function createTagPages(createPage, edges) {
   const tagTemplate = path.resolve(`./src/templates/tags.js`);
@@ -150,7 +192,7 @@ function createTagPages(createPage, edges) {
   });
 
   Object.keys(posts).forEach(tagName => {
-    const pageSize = 5;
+    const pageSize = 10;
     const pagesSum = Math.ceil(posts[tagName].length / pageSize);
 
     for (let page = 1; page <= pagesSum; page++) {
@@ -172,7 +214,7 @@ function createTagPages(createPage, edges) {
 }
 
 // Create pagination for posts
-function createPagination(createPage, edges, pathPrefix) {
+function createPagination(createPage, edges) {
   const pageTemplate = path.resolve(`./src/templates/page.js`);
 
   const pageSize = 10;
@@ -180,13 +222,17 @@ function createPagination(createPage, edges, pathPrefix) {
 
   for (let page = 1; page <= pagesSum; page++) {
     createPage({
-      path: `${pathPrefix}/${page}`,
+      // path: `${pathPrefix}/${page}`,
+      path:
+        page === 1
+        ? `/`
+        : `${pathPrefix}/${page}`,
       component: pageTemplate,
       context: {
         posts: paginate(edges, pageSize, page).map(({ node }) => node),
-        page,
         pagesSum,
-        prevPath: page - 1 > 0 ? `${pathPrefix}/${page - 1}` : null,
+        page,
+        prevPath: page - 1 > 1 ? `${pathPrefix}/${page - 1}` : ((page === 2) ? (`/`) : (`${pathPrefix}/${page - 1}`)),
         nextPath: page + 1 <= pagesSum ? `${pathPrefix}/${page + 1}` : null,
       },
     });

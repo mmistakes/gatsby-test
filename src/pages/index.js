@@ -11,9 +11,6 @@ export default function Index({ data }) {
     <div>
       <header>Latest Posts</header>
       <Posts posts={posts} />
-      <div>
-        <h3><Link to="/page/2">Older Posts</Link></h3>
-      </div>
     </div>
   );
 }
@@ -25,8 +22,7 @@ Index.propTypes = {
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      limit: 10
-      sort: { fields: [fields___date], order: DESC },
+      sort: { fields: [fields___date], order: DESC }
       filter: {
         fields: {
           template: { eq: "post" }

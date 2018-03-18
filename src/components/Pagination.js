@@ -2,25 +2,22 @@ import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
 
-const Pagination = ({ prevPath, nextPath, page, pagesSum }) => (
+const Pagination = ({ page, pagesSum }) => (
   <nav>
-    {prevPath ? (
-      <Link to={prevPath}>Newer Posts</Link>
-    ) : (
-      <div>No more pages</div>
+    {page === 2 && (
+      <Link to={`/`}>Newer Posts</Link>
+    )}
+    {page > 2 && (
+      <Link to={`/page/${page - 1}/`}>Newer Posts</Link>
     )}
     <span>{`Page ${page} of ${pagesSum}`}</span>
-    {nextPath ? (
-      <Link to={nextPath}>Older Posts</Link>
-    ) : (
-      <div>No more pages</div>
+    {page < pagesSum && (
+      <Link to={`/page/${page + 1}/`}>Older Posts</Link>
     )}
   </nav>
 );
 
 Pagination.propTypes = {
-  prevPath: PropTypes.string,
-  nextPath: PropTypes.string,
   page: PropTypes.number,
   pagesSum: PropTypes.number,
 };

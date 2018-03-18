@@ -2,15 +2,14 @@ import React from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
 
-import Pagination from "../components/Pagination";
+// import Pagination from "../components/Pagination";
 import Posts from "../components/Posts";
 
 export default function Pages({ pathContext, data }) {
-  const { posts, page, pagesSum, prevPath, nextPath } = pathContext;
+  const { posts } = pathContext;
   return (
     <section>
       <Posts posts={posts} />
-      <Pagination page={page} pagesSum={pagesSum} prevPath={prevPath} nextPath={nextPath} />
     </section>
   );
 };
