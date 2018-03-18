@@ -12,12 +12,11 @@ export default function Tags({ pathContext, data }) {
     <div>
       <section>
         <header><h1>{tag}</h1></header>
-        <h2>A {posts.length} posts collection</h2>
       </section>
 
       <div>
-        <Pagination page={page} pagesSum={pagesSum} tag={tag} />
         <Posts posts={posts} />
+        <Pagination page={page} pagesSum={pagesSum} tag={tag} />
       </div>
     </div>
   );
