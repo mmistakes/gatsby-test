@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
-import Tags from "../components/tags";
+import Tags from "../components/Tags";
 
 const Posts = ({ posts }) => (
   <div>

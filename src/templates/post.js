@@ -6,7 +6,7 @@ import SubmitComment from '../components/SubmitComment.js'
 import Comments from '../components/Comments.js'
 
 export default function Template({ data, pathContext }) {
-  const { markdownRemark: post, markdownRemark: comments } = data;
+  const { markdownRemark: post, comments } = data;
   const { slug, next } = pathContext;
 
   return (
@@ -31,6 +31,7 @@ export default function Template({ data, pathContext }) {
 Template.propTypes = {
   data: PropTypes.object,
   pathContext: PropTypes.object,
+  comments: PropTypes.object
 }
 
 export const pageQuery = graphql`

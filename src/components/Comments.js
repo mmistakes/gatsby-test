@@ -17,9 +17,9 @@ const Comments = data => {
         url,
         uuid,
         friendlyDate,
-        iso8601Date,
-        message
-      }
+        iso8601Date
+      },
+      html
     } = node;
 
     return (
@@ -30,9 +30,8 @@ const Comments = data => {
         friendlyDate={friendlyDate}
         iso8601Date={iso8601Date}
         email={email}
-        message={message}
       >
-        <div dangerouslySetInnerHTML={{ __html: message }} />
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </Comment>
     );
   });
@@ -45,7 +44,7 @@ export const CommentsBySlug = graphql`
   fragment commentsQueryFragment on RootQueryType {
     comments: allMarkdownRemark(
       filter: { fields: { slug: { eq: $slug }, template: { eq: "comment" } } }
-      sort: { fields: [fields___slug, fields___date], order: ASC }
+      sort: { fields: [fields___slug, frontmatter___date], order: ASC }
     ) {
       edges {
         node {

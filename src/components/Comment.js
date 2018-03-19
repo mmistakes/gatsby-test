@@ -5,20 +5,15 @@ const Comment = props => {
   const { name, url, email, friendlyDate, iso8601Date, message, children } = props;
 
   return (
-    <article>
-      <div>
-        <Gravatar size={60} md5={email} email={name} default="mm" />
-      </div>
-      <div>
-        <header>
-          <a className="h-card" href={url}>
-            {name}
-          </a>
-          <time dateTime={iso8601Date}>{friendlyDate}</time>
-        </header>
-        {children}
-      </div>
-    </article>
+    <div>
+      <Gravatar size={60} md5={email} email={name} default="mm" />
+      <header>
+        <a className="h-card" href={url}>{name}</a>
+        <time dateTime={iso8601Date}>{friendlyDate}</time>
+      </header>
+      {children}
+      <hr />
+    </div>
   );
 };
 
@@ -35,9 +30,8 @@ export const query = graphql`
       url
       email
       uuid: _id
-      friendlyDate: date(formatString: "YYYY MMM D")
+      friendlyDate: date(formatString: "MMMM DD, YYYY @ h:mm A")
       iso8601Date: date
-      message
     }
     html
   }
