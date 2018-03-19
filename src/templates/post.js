@@ -2,9 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
+import SubmitComment from '../components/SubmitComment.js'
+import Comments from '../components/Comments.js'
+
 export default function Template({ data, pathContext }) {
-  const { markdownRemark: post } = data;
-  const { next } = pathContext;
+  const { markdownRemark: post, markdownRemark: comments } = data;
+  const { slug, next } = pathContext;
 
   return (
     <div>
@@ -14,6 +17,11 @@ export default function Template({ data, pathContext }) {
         </header>
         <section>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </section>
+        <section>
+          <h2>Comments</h2>
+          <Comments comments={comments} />
+          <SubmitComment slug={slug} />
         </section>
       </article>
     </div>
@@ -49,5 +57,6 @@ export const pageQuery = graphql`
         tags
       }
     }
+    ...commentsQueryFragment
   }
 `;
