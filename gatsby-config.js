@@ -1,57 +1,82 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Test`,
+    title: `Jekyll → Gatsby MVP`,
     author: `Michael Rose`,
-    siteUrl: `https://your-domain.com`,
-    description: `Testing Gatsby with content from Jekyll build site.`
+    description: `Test conversion of a Jekyll powered site to Gatsby.`,
+    siteUrl: `https://github.com/mmistakes`,
   },
+  pathPrefix: `/gatsby-test`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`
-      }
+        path: `${__dirname}/src/pages`,
+        name: `pages`,
+      },
     },
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/test-posts`,
+        name: `test-posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/images`,
+        name: `images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/comments`,
+        name: `comments`,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-"
-            }
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
-              linkImagesToOriginal: false
-            }
+              maxWidth: 590,
+            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
           },
-          {
-            resolve: `gatsby-remark-smartypants`,
-            options: {
-              dashes: `oldschool`
-            }
-          },
-          `gatsby-remark-emoji`,
-          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-          `gatsby-remark-abbr`
-        ]
-      }
+          `gatsby-remark-emoji`,
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-smartypants`,
+          `gatsby-remark-abbr`,
+          `gatsby-remark-numbered-footnotes`,
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
-  ]
-};
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        //trackingId: `ADD YOUR TRACKING ID HERE`,
+      },
+    },
+    `gatsby-plugin-feed`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}

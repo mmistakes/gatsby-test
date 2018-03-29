@@ -1,42 +1,74 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "gatsby-link";
-import Helmet from "react-helmet";
+import React from 'react'
+import Link from 'gatsby-link'
+import { Container } from 'react-responsive-grid'
 
-import "syntax-highlighting/assets/css/prism/prism-base16-ateliercave.light.css";
+import { rhythm, scale } from '../utils/typography'
 
-export default function IndexLayout({ children, data }) {
-  let { description, title } = data.site.siteMetadata;
+class Template extends React.Component {
+  render() {
+    const { location, children } = this.props
+    let header
 
-  return (
-    <div>
-      <Helmet titleTemplate={`%s - ${title}`} defaultTitle={title}>
-        <meta name="description" content={description} />
-        <html lang="en" /> {/* this is valid react-helmet usage! */}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="HandheldFriendly" content="True" />
-      </Helmet>
-      <h1><Link to="/">{title}</Link></h1>
-      <section className="main-content">{children()}</section>
-    </div>
-  );
+    let rootPath = `/`
+    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
+      rootPath = __PATH_PREFIX__ + `/`
+    }
+
+    if (location.pathname === rootPath) {
+      header = (
+        <h1
+          style={{
+            ...scale(1.5),
+            marginBottom: rhythm(1.5),
+            marginTop: 0,
+          }}
+        >
+          <Link
+            style={{
+              boxShadow: 'none',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            to={'/'}
+          >
+            Jekyll → Gatsby MVP
+          </Link>
+        </h1>
+      )
+    } else {
+      header = (
+        <h3
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            marginTop: 0,
+            marginBottom: rhythm(-1),
+          }}
+        >
+          <Link
+            style={{
+              boxShadow: 'none',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            to={'/'}
+          >
+            Jekyll → Gatsby MVP
+          </Link>
+        </h3>
+      )
+    }
+    return (
+      <Container
+        style={{
+          maxWidth: rhythm(24),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        }}
+      >
+        {header}
+        {children()}
+      </Container>
+    )
+  }
 }
 
-IndexLayout.propTypes = {
-  children: PropTypes.func,
-  data: PropTypes.object,
-};
-
-export const pageQuery = graphql`
-  query LayoutQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`;
+export default Template

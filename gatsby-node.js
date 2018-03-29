@@ -1,158 +1,194 @@
-const fs = require(`fs-extra`);
-const path = require(`path`);
-const slugify = require(`slug`);
-const kebabCase = require(`lodash/kebabcase`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
-const { createPaginationPages } = require(`gatsby-pagination`);
+const _ = require('lodash')
+const Promise = require('bluebird')
+const path = require('path')
+const slugify = require('slug')
+const { createFilePath } = require('gatsby-source-filesystem')
+const { createPaginationPages } = require('gatsby-pagination')
+
+// Calculate post defaults.
+const calculateDefaults = (node, getNode) => {
+  const defaultSlug = createFilePath({ node, getNode, basePath: `pages` })
+  const isPostShaped = defaultSlug.match(
+    /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
+  )
+
+  if (isPostShaped) {
+    const [, defaultDate, defaultTitle] = isPostShaped
+    return [defaultSlug, defaultTitle, defaultDate]
+  } else {
+    const [, defaultTitle] = defaultSlug.match(/^\/(.*)\/$/)
+    const defaultDate = '1980-01-01'
+    return [defaultSlug, defaultTitle, defaultDate]
+  }
+}
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators;
+  const { createNodeField } = boundActionCreators
+
   if (node.internal.type === `MarkdownRemark`) {
-    const { categories } = node.frontmatter;
-    const slug = createFilePath({ node, getNode, basePath: `pages` });
-    const [, date, title] = slug.match(
-      /^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/
-    );
-    // const value = `/${slugify(categories.concat([date]).join('-'), '/')}/${title}/`
-    if (categories) {
-      categoriesPath = categories
-        .join("/")
-        .replace(/([a-z])([A-Z])/g, "$1-$2")
-        .replace(/\s+/g, "-")
-        .toLowerCase();
-      value = `/${categoriesPath}/${title}/`;
-    } else {
-      const value = `/${title}/`;
+    try {
+      if (node.frontmatter.template === `comment`) {
+        createNodeField({ node, name: `template`, value: `comment` })
+        createNodeField({ node, name: `slug`, value: node.frontmatter.slug })
+      } else {
+        const [defaultSlug, defaultTitle, defaultDate] = calculateDefaults(
+          node,
+          getNode
+        )
+
+        const slug = node.frontmatter.slug || defaultSlug
+        const date = node.frontmatter.date || defaultDate
+        const title = defaultTitle
+        const template = node.frontmatter.template || 'post'
+        const { categories } = node.frontmatter
+
+        if (categories) {
+          categoriesPath = categories
+            .join('/')
+            .replace(/([a-z])([A-Z])/g, '$1-$2')
+            .replace(/\s+/g, '-')
+            .toLowerCase()
+          value = `/${categoriesPath}/${title}/`
+        } else {
+          const value = `/${title}/`
+        }
+
+        createNodeField({ node, name: `slug`, value: value })
+        createNodeField({ node, name: `date`, value: date })
+        createNodeField({ node, name: `title`, value: title })
+        createNodeField({ node, name: `template`, value: template })
+      }
+    } catch (ex) {
+      console.log('Error onCreateNode():', node.fileAbsolutePath, '\n', ex)
+      throw ex
     }
-
-    createNodeField({ node, name: `slug`, value: value });
-    createNodeField({ node, name: `date`, value: date });
   }
-};
+}
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ graphql, boundActionCreators }) => {
+  const { createPage } = boundActionCreators
 
-  // Fetch posts.
-  return graphql(`
-    {
-      allMarkdownRemark {
-        edges {
-          node {
-            excerpt
-            id
-            fields {
-              slug
-              date
-            }
-            frontmatter {
-              title
-              categories
-              tags
+  return new Promise((resolve, reject) => {
+    const indexPage = path.resolve('./src/templates/index.js')
+    const blogPostTemplate = path.resolve('./src/templates/blog-post.js')
+    const categoryPageTemplate = path.resolve('./src/templates/categories.js')
+    const tagPageTemplate = path.resolve('./src/templates/tags.js')
+
+    resolve(
+      graphql(
+        `
+          {
+            allMarkdownRemark(
+              sort: { fields: [fields___date], order: DESC }
+              filter: { fields: { template: { eq: "post" } } }
+            ) {
+              edges {
+                node {
+                  excerpt
+                  fields {
+                    slug
+                    date(formatString: "MMMM DD, YYYY")
+                  }
+                  frontmatter {
+                    title
+                    categories
+                    tags
+                  }
+                }
+              }
             }
           }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
         }
-      }
-    }
-  `).then(result => generateContent(createPage, result));
-};
 
-// Create posts pages.
-function generateContent(createPage, graphqlResults) {
-  if (graphqlResults.errors) {
-    return Promise.reject(graphqlResults.errors);
-  }
+        const posts = result.data.allMarkdownRemark.edges
 
-  const postTemplate = path.resolve(`./src/templates/post.js`);
+        // Create paginated index page
+        createPaginationPages({
+          createPage: createPage,
+          edges: posts,
+          component: indexPage,
+          limit: 10
+        });
 
-  // Separate published posts and drafts.
-  const posts = graphqlResults.data.allMarkdownRemark.edges;
-  const published = posts.filter(post => !post.node.frontmatter.draft);
-  const drafts = posts.filter(post => post.node.frontmatter.draft);
+        // Create post pages
+        _.each(posts, (post, index) => {
+          const previous = index === posts.length - 1 ? false : posts[index + 1].node
+          const next = index === 0 ? false : posts[index - 1].node
 
-  createTagPages(createPage, published);
-  createPagination(createPage, published, `/page`);
-  createPagination(createPage, drafts, `/drafts/page`);
+          createPage({
+            path: post.node.fields.slug,
+            component: blogPostTemplate,
+            context: {
+              slug: post.node.fields.slug,
+              previous,
+              next,
+            },
+          })
+        })
 
-  // Create pages for each Markdown file.
-  posts.forEach(({ node }, index) => {
-    const prev = index === 0 ? false : posts[index - 1].node;
-    const next = index === posts.length - 1 ? false : posts[index + 1].node;
+        const tagSet = new Set()
+        const tagMap = new Map()
+        const categorySet = new Set()
+        const categoryMap = new Map()
+        result.data.allMarkdownRemark.edges.forEach(edge => {
+          if (edge.node.frontmatter.tags) {
+            edge.node.frontmatter.tags.forEach(tag => {
+              tagSet.add(tag)
 
-    createPage({
-      path: node.fields.slug,
-      component: postTemplate,
-      context: {
-        // Data passed to context is available in page queries as GraphQL variables.
-        slug: node.fields.slug,
-        date: node.fields.date,
-        prev,
-        next
-      }
-    });
-  });
-}
+              const array = tagMap.has(tag) ? tagMap.get(tag) : [];
+              array.push(edge);
+              tagMap.set(tag, array);
+            })
+          }
 
-// Create pages for tags.
-function createTagPages(createPage, edges) {
-  const tagTemplate = path.resolve(`./src/templates/tags.js`);
-  const posts = {};
+          if (edge.node.frontmatter.categories) {
+            edge.node.frontmatter.categories.forEach(category => {
+              categorySet.add(category)
 
-  edges.forEach(({ node }) => {
-    if (node.frontmatter.tags) {
-      node.frontmatter.tags.forEach(tag => {
-        if (!posts[tag]) {
-          posts[tag] = [];
-        }
-        posts[tag].push(node);
-      });
-    }
-  });
+              const array = categoryMap.has(category) ? categoryMap.get(category) : [];
+              array.push(edge);
+              categoryMap.set(category, array);
+            })
+          }
 
-  Object.keys(posts).forEach(tagName => {
-    const pageSize = 5;
-    const pagesSum = Math.ceil(posts[tagName].length / pageSize);
+          const tagFormatter = tag => route => `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ""}`
+          const tagList = Array.from(tagSet)
+          tagList.forEach(tag => {
+            // Create paginated tag pages
+            createPaginationPages({
+              createPage,
+              edges: tagMap.get(tag),
+              component: tagPageTemplate,
+              pathFormatter: tagFormatter(tag),
+              limit: 10,
+              context: {
+                tag
+              }
+            })
+          })
 
-    for (let page = 1; page <= pagesSum; page++) {
-      createPage({
-        path:
-          page === 1
-          ? `/tag/${kebabCase(tagName)}`
-          : `/tag/${kebabCase(tagName)}/page/${page}`,
-        component: tagTemplate,
-        context: {
-          posts: paginate(posts[tagName], pageSize, page),
-          tag: tagName,
-          pagesSum,
-          page,
-        },
-      });
-    }
-  });
-}
-
-// Create pagination for posts
-function createPagination(createPage, edges, pathPrefix) {
-  const pageTemplate = path.resolve(`./src/templates/page.js`);
-
-  const pageSize = 5;
-  const pagesSum = Math.ceil(edges.length / pageSize);
-
-  for (let page = 1; page <= pagesSum; page++) {
-    createPage({
-      path: `${pathPrefix}/${page}`,
-      component: pageTemplate,
-      context: {
-        posts: paginate(edges, pageSize, page).map(({ node }) => node),
-        page,
-        pagesSum,
-        prevPath: page - 1 > 0 ? `${pathPrefix}/${page - 1}` : null,
-        nextPath: page + 1 <= pagesSum ? `${pathPrefix}/${page + 1}` : null,
-      },
-    });
-  }
-}
-
-function paginate(array, page_size, page_number) {
-  return array.slice(0).slice((page_number - 1) * page_size, page_number * page_size);
+          const categoryFormatter = category => route => `/${_.kebabCase(category)}/${route !== 1 ? route : ""}`
+          const categoryList = Array.from(categorySet)
+          categoryList.forEach(category => {
+            // Create paginated category pages
+            createPaginationPages({
+              createPage,
+              edges: categoryMap.get(category),
+              component: categoryPageTemplate,
+              pathFormatter: categoryFormatter(category),
+              limit: 10,
+              context: {
+                category
+              }
+            })
+          })
+        })
+      })
+    )
+  })
 }

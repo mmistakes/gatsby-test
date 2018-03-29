@@ -7,19 +7,19 @@ import get from 'lodash/get'
 import { rhythm, scale } from '../utils/typography'
 import Pagination from '../components/Pagination'
 
-const Tags = ({ pathContext, data }) => {
+const Categories = ({ pathContext, data }) => {
   // const siteTitle = get(this, 'data.site.siteMetadata.title')
   const siteTitle = `Jekyll → Gatsby MVP`
-  const { tag, nodes, page, prev, next, pages, total, limit } = pathContext
+  const { category, nodes, page, prev, next, pages, total, limit } = pathContext
   const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `${totalCount} post${
+  const categoryHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } tagged with "${tag}"`
+  } filed in "${category}"`
 
   return (
     <div>
-      <Helmet title={`${tag} | ${siteTitle}`} />
-      <h1>{tagHeader}</h1>
+      <Helmet title={`${category} | ${siteTitle}`} />
+      <h1>{categoryHeader}</h1>
       {nodes.map(({ node }) => {
         const title = get(node, 'frontmatter.title') || node.fields.slug
         return (
@@ -39,14 +39,13 @@ const Tags = ({ pathContext, data }) => {
         )
       })}
       <Pagination page={page} pages={pages} prev={prev} next={next} />
-      <Link to="/tag/">All tags</Link>
     </div>
   )
 }
 
-Tags.propTypes = {
+Categories.propTypes = {
   pathContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
@@ -64,10 +63,10 @@ Tags.propTypes = {
   }),
 }
 
-export default Tags
+export default Categories
 
 export const pageQuery = graphql`
-  query TagPage($tag: String!) {
+  query CategoryPage($category: String!) {
     site {
       siteMetadata {
         title
@@ -76,7 +75,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { categories: { in: [$category] } } }
     ) {
       totalCount
       edges {

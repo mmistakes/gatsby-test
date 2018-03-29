@@ -1,34 +1,7 @@
-### Node ###
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
-node_modules
-jspm_packages
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Yarn Integrity file
-.yarn-integrity
-
-# Build Files
-public/
-.cache/
-
-# Gatsby context
+node_modules/
+public
 .gatsby-context.js
-
-# Bundle stats
-bundle-stats.json
+.DS_Store
+.intermediate-representation/
+.cache/
+yarn.lock
