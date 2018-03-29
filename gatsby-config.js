@@ -3,9 +3,9 @@ module.exports = {
     title: `Jekyll → Gatsby MVP`,
     author: `Michael Rose`,
     description: `Test conversion of a Jekyll powered site to Gatsby.`,
-    siteUrl: `https://github.com/mmistakes`,
+    siteUrl: `https://mmistakes.github.io`,
   },
-  pathPrefix: `/gatsby-test`,
+  // pathPrefix: `/gatsby-test`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
