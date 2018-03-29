@@ -4,7 +4,8 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 
 import Bio from '../components/Bio'
-import Comments from '../components/Comments.js'
+import Comments from '../components/Comments'
+import PostTags from '../components/PostTags'
 import { rhythm, scale } from '../utils/typography'
 
 class BlogPostTemplate extends React.Component {
@@ -12,7 +13,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const comments = this.props.data.comments
-    const { previous, next } = this.props.pathContext
+    const { previous, next, tags } = this.props.pathContext
 
     return (
       <div>
@@ -29,6 +30,7 @@ class BlogPostTemplate extends React.Component {
           {post.fields.date}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <PostTags tags={post.frontmatter.tags} />
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -90,6 +92,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        tags
       }
     }
     ...commentsQueryFragment
