@@ -1,9 +1,13 @@
+const config = require('./config/SiteConfig');
+
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+
 module.exports = {
   siteMetadata: {
-    title: `Jekyll → Gatsby MVP`,
-    author: `Michael Rose`,
-    description: `Test conversion of a Jekyll powered site to Gatsby.`,
-    siteUrl: `https://mmistakes.github.io`,
+    title: config.title,
+    author: config.author,
+    description: config.description,
+    siteUrl: config.siteUrl + pathPrefix,
   },
   // pathPrefix: `/gatsby-test`,
   plugins: [

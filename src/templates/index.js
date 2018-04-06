@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
+import config from '../../config/SiteConfig'
 import { rhythm } from '../utils/typography'
 import Pagination from '../components/Pagination'
 
 const IndexPage = ({ data, pathContext }) => {
   const { nodes, page, prev, next, pages, total, limit } = pathContext
-  const siteTitle = `Jekyll → Gatsby MVP`
 
   return (
     <div>
-      <Helmet title={siteTitle} />
+      <Helmet title={config.title} />
       {nodes.map(({ node }) => (
         <div key={node.id}>
           <h3

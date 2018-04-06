@@ -5,15 +5,14 @@ import kebabCase from 'lodash/kebabCase'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
+import config from '../../config/SiteConfig'
 import { rhythm } from '../utils/typography'
-
-const siteTitle = `Jekyll → Gatsby MVP`
 
 const TagsPage = ({
   data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } },
 }) => (
   <div>
-    <Helmet title={`Tags | ${siteTitle}`} />
+    <Helmet title={`Tags | ${config.title}`} />
     <div>
       <h1>Tags</h1>
       <ul>

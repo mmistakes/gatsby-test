@@ -4,12 +4,12 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 
+import config from '../../config/SiteConfig'
 import { rhythm, scale } from '../utils/typography'
 import Pagination from '../components/Pagination'
 
 const Tags = ({ pathContext, data }) => {
   // const siteTitle = get(this, 'data.site.siteMetadata.title')
-  const siteTitle = `Jekyll → Gatsby MVP`
   const { tag, nodes, page, prev, next, pages, total, limit } = pathContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
@@ -18,7 +18,7 @@ const Tags = ({ pathContext, data }) => {
 
   return (
     <div>
-      <Helmet title={`${tag} | ${siteTitle}`} />
+      <Helmet title={`${tag} | ${config.title}`} />
       <h1>{tagHeader}</h1>
       {nodes.map(({ node }) => {
         const title = get(node, 'frontmatter.title') || node.fields.slug
