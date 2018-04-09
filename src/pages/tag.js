@@ -1,12 +1,9 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import get from 'lodash/get'
-import kebabCase from 'lodash/kebabCase'
-import Helmet from 'react-helmet'
-import PropTypes from 'prop-types'
-
-import config from '../../config/SiteConfig'
-import { rhythm } from '../utils/typography'
+import Link from 'gatsby-link';
+import kebabCase from 'lodash/kebabCase';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Helmet from 'react-helmet';
+import config from '../../config/SiteConfig';
 
 const TagsPage = ({
   data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } },

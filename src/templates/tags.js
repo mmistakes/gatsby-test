@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
-import get from 'lodash/get'
-
-import config from '../../config/SiteConfig'
-import { rhythm, scale } from '../utils/typography'
-import Pagination from '../components/Pagination'
+import Link from 'gatsby-link';
+import get from 'lodash/get';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Helmet from 'react-helmet';
+import config from '../../config/SiteConfig';
+import Pagination from '../components/Pagination';
+import { rhythm } from '../utils/typography';
 
 const Tags = ({ pathContext, data }) => {
   // const siteTitle = get(this, 'data.site.siteMetadata.title')

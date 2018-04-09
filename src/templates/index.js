@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import Link from 'gatsby-link'
-import Helmet from 'react-helmet'
-
-import config from '../../config/SiteConfig'
-import { rhythm } from '../utils/typography'
-import Pagination from '../components/Pagination'
+import Link from 'gatsby-link';
+import React from 'react';
+import Helmet from 'react-helmet';
+import config from '../../config/SiteConfig';
+import Pagination from '../components/Pagination';
+import { rhythm } from '../utils/typography';
 
 const IndexPage = ({ data, pathContext }) => {
   const { nodes, page, prev, next, pages, total, limit } = pathContext
