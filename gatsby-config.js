@@ -77,6 +77,7 @@ module.exports = {
     },
     `gatsby-plugin-feed`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
