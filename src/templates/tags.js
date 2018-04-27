@@ -7,7 +7,6 @@ import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
 
 const Tags = ({ pathContext, data }) => {
-  // const siteTitle = get(this, 'data.site.siteMetadata.title')
   const { tag, nodes, page, prev, next, pages, total, limit } = pathContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
