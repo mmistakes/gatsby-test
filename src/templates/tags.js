@@ -1,11 +1,10 @@
-import Link from 'gatsby-link';
-import get from 'lodash/get';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Helmet from 'react-helmet';
-import config from '../../config/SiteConfig';
-import Pagination from '../components/Pagination';
-import { rhythm } from '../utils/typography';
+import Link from 'gatsby-link'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Helmet from 'react-helmet'
+import config from '../../config/SiteConfig'
+import Pagination from '../components/Pagination'
+import PostListing from '../components/PostListing'
 
 const Tags = ({ pathContext, data }) => {
   // const siteTitle = get(this, 'data.site.siteMetadata.title')
@@ -19,24 +18,7 @@ const Tags = ({ pathContext, data }) => {
     <div>
       <Helmet title={`${tag} | ${config.title}`} />
       <h1>{tagHeader}</h1>
-      {nodes.map(({ node }) => {
-        const title = get(node, 'frontmatter.title') || node.fields.slug
-        return (
-          <div key={node.id}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                {node.frontmatter.title}
-              </Link>
-            </h3>
-            <small>{node.fields.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
-        )
-      })}
+      <PostListing postEdges={nodes} />
       <Pagination page={page} pages={pages} prev={prev} next={next} />
       <Link to="/tag/">All tags</Link>
     </div>

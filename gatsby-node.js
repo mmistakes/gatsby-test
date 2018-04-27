@@ -84,6 +84,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             ) {
               edges {
                 node {
+                  id
                   excerpt
                   fields {
                     slug
@@ -112,7 +113,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           createPage: createPage,
           edges: posts,
           component: indexPage,
-          limit: 10
+          limit: 5
         });
 
         // Create post pages
@@ -156,32 +157,32 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             })
           }
 
-          const tagFormatter = tag => route => `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ""}`
           const tagList = Array.from(tagSet)
           tagList.forEach(tag => {
             // Create paginated tag pages
+            const tagFormatter = tag => route => `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ""}`
             createPaginationPages({
               createPage,
               edges: tagMap.get(tag),
               component: tagPageTemplate,
               pathFormatter: tagFormatter(tag),
-              limit: 10,
+              limit: 5,
               context: {
                 tag
               }
             })
           })
 
-          const categoryFormatter = category => route => `/${_.kebabCase(category)}/${route !== 1 ? route : ""}`
           const categoryList = Array.from(categorySet)
           categoryList.forEach(category => {
             // Create paginated category pages
+            const categoryFormatter = category => route => `/${_.kebabCase(category)}/${route !== 1 ? route : ""}`
             createPaginationPages({
               createPage,
               edges: categoryMap.get(category),
               component: categoryPageTemplate,
               pathFormatter: categoryFormatter(category),
-              limit: 10,
+              limit: 5,
               context: {
                 category
               }

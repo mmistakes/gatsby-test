@@ -1,14 +1,11 @@
-import Link from 'gatsby-link';
-import get from 'lodash/get';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Helmet from 'react-helmet';
-import config from '../../config/SiteConfig';
-import Pagination from '../components/Pagination';
-import { rhythm } from '../utils/typography';
+import PropTypes from 'prop-types'
+import React from 'react'
+import Helmet from 'react-helmet'
+import config from '../../config/SiteConfig'
+import Pagination from '../components/Pagination'
+import PostListing from '../components/PostListing'
 
 const Categories = ({ pathContext, data }) => {
-  // const siteTitle = get(this, 'data.site.siteMetadata.title')
   const { category, nodes, page, prev, next, pages, total, limit } = pathContext
   const { edges, totalCount } = data.allMarkdownRemark
   const categoryHeader = `${totalCount} post${
@@ -19,24 +16,7 @@ const Categories = ({ pathContext, data }) => {
     <div>
       <Helmet title={`${category} | ${config.title}`} />
       <h1>{categoryHeader}</h1>
-      {nodes.map(({ node }) => {
-        const title = get(node, 'frontmatter.title') || node.fields.slug
-        return (
-          <div key={node.id}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                {node.frontmatter.title}
-              </Link>
-            </h3>
-            <small>{node.fields.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
-        )
-      })}
+      <PostListing postEdges={nodes} />
       <Pagination page={page} pages={pages} prev={prev} next={next} />
     </div>
   )
