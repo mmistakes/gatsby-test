@@ -26,8 +26,12 @@ const Comment = props => {
             marginBottom: rhythm(1/2),
           }}
         >
-          <a className="h-card" href={url}>{name}</a>
-          <time dateTime={iso8601Date}> on {friendlyDate}</time>
+          {url !== '' ? (
+            <a className="h-card" href={url}>{name}</a>
+          ) : (
+            <span className="h-card">{name}</span>
+          )}
+          &nbsp;on <time dateTime={iso8601Date}>{friendlyDate}</time>
         </header>
         {children}
       </div>
