@@ -1,6 +1,4 @@
-// @format
 import React from 'react'
-import { rhythm } from '../utils/typography'
 import Comment from './Comment.js'
 
 const Comments = data => {

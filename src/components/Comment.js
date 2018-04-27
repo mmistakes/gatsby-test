@@ -1,6 +1,4 @@
-// @format
 import React from 'react'
-import { rhythm } from '../utils/typography'
 import Gravatar from 'react-gravatar'
 
 const Comment = props => {
@@ -9,20 +7,14 @@ const Comment = props => {
   return (
     <article>
       <div>
-        <Gravatar
-          size={60}
-          md5={email}
-          email={name}
-          default="mm"
-          rating="pg"
-        />
+        <Gravatar size={60} md5={email} email={name} default="mm" rating="pg" />
       </div>
       <div>
         <header>
-          <a className="h-card" href={url}>{name}</a>
-          <time dateTime={iso8601Date}>
-            {friendlyDate}
-          </time>
+          <a className="h-card" href={url}>
+            {name}
+          </a>
+          <time dateTime={iso8601Date}>{friendlyDate}</time>
         </header>
         {children}
       </div>

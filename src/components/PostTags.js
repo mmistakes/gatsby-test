@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import _ from 'lodash'
 import Link from 'gatsby-link'
-import { rhythm, scale } from '../utils/typography'
+import _ from 'lodash'
+import React, { Component } from 'react'
+import { rhythm } from '../utils/typography'
 
 class PostTags extends Component {
   render() {
