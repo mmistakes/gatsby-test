@@ -24,7 +24,6 @@ class Template extends React.Component {
         >
           <Link
             style={{
-              boxShadow: 'none',
               textDecoration: 'none',
               color: 'inherit',
             }}
@@ -45,7 +44,6 @@ class Template extends React.Component {
         >
           <Link
             style={{
-              boxShadow: 'none',
               textDecoration: 'none',
               color: 'inherit',
             }}
