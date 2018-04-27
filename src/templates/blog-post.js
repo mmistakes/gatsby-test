@@ -1,11 +1,11 @@
-import Link from 'gatsby-link';
-import get from 'lodash/get';
-import React from 'react';
-import Helmet from 'react-helmet';
-import Bio from '../components/Bio';
-import Comments from '../components/Comments';
-import PostTags from '../components/PostTags';
-import { rhythm, scale } from '../utils/typography';
+import Link from 'gatsby-link'
+import get from 'lodash/get'
+import React from 'react'
+import Helmet from 'react-helmet'
+import Bio from '../components/Bio'
+import Comments from '../components/Comments'
+import PostTags from '../components/PostTags'
+import { rhythm, scale } from '../utils/typography'
 
 class BlogPostTemplate extends React.Component {
   render() {
