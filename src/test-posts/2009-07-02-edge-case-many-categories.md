@@ -1,5 +1,7 @@
 ---
 title: "Edge Case: Many Categories"
+image:
+  path: ../assets/images/null.png
 categories:
   - aciform mrofic
   - antiquarianism

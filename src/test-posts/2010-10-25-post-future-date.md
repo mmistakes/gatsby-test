@@ -1,5 +1,7 @@
 ---
 title: "Post: Future Date"
+image:
+  path: ../assets/images/null.png
 date: 9999-12-31
 categories:
   - Post

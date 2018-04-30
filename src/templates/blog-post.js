@@ -6,6 +6,7 @@ import Bio from '../components/Bio'
 import Comments from '../components/Comments'
 import PostTags from '../components/PostTags'
 import { rhythm, scale } from '../utils/typography'
+import Img from 'gatsby-image'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -18,12 +19,20 @@ class BlogPostTemplate extends React.Component {
       <div>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
         <h1>{post.frontmatter.title}</h1>
+        {post.frontmatter.image.cover == true ? (
+          <Img
+            sizes={post.frontmatter.image.path.childImageSharp.sizes}
+            style={{ marginBottom: rhythm(1) }}
+          />
+        ) : (
+          <div />
+        )}
         <p
           style={{
             ...scale(-1 / 5),
             display: 'block',
+            marginTop: rhythm(1),
             marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
           }}
         >
           {post.fields.date}
@@ -92,6 +101,16 @@ export const pageQuery = graphql`
       frontmatter {
         title
         tags
+        image {
+          cover
+          path {
+            childImageSharp {
+              sizes(maxWidth: 750) {
+                ...GatsbyImageSharpSizes
+              }
+            }
+          }
+        }
       }
     }
     ...commentsQueryFragment

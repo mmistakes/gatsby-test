@@ -1,4 +1,6 @@
 ---
+image:
+  path: ../assets/images/null.png
 categories:
   - Edge Case
 tags:

@@ -1,5 +1,7 @@
 ---
 title: "Post: Standard"
+image:
+  path: ../assets/images/null.png
 excerpt_separator: "<!--more-->"
 categories:
   - Post Formats

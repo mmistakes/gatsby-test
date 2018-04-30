@@ -1,5 +1,7 @@
 ---
 title: "Post: Notice"
+image:
+  path: ../assets/images/null.png
 categories:
   - Post Formats
 tags:

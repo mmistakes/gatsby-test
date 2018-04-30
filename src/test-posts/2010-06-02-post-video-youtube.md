@@ -1,5 +1,7 @@
 ---
 title: "Post: Video (YouTube)"
+image:
+  path: ../assets/images/null.png
 categories:
   - Post Formats
 tags:

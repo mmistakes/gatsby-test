@@ -1,5 +1,7 @@
 ---
 title: "Markup: Title *with* **Markdown**"
+image:
+  path: ../assets/images/null.png
 categories:
   - Markdown
 tags:

@@ -1,5 +1,7 @@
 ---
 title: "Post: Image (Standard)"
+image:
+  path: ../assets/images/null.png
 categories:
   - Post Formats
 tags:

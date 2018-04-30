@@ -2,15 +2,19 @@ import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
 import { rhythm } from '../utils/typography'
+import Img from 'gatsby-image'
 
 class PostListing extends React.Component {
   getPostList() {
     const postList = []
     this.props.postEdges.forEach(postEdge => {
+      console.log(`cover: ${postEdge.node.frontmatter.cover}`)
       postList.push({
         id: postEdge.node.id,
         path: postEdge.node.fields.slug,
         title: postEdge.node.frontmatter.title,
+        cover: postEdge.node.frontmatter.image.cover,
+        imagePath: postEdge.node.frontmatter.image.path,
         date: postEdge.node.fields.date,
         excerpt: postEdge.node.excerpt,
         categories: postEdge.node.frontmatter.categories,
@@ -55,6 +59,14 @@ class PostListing extends React.Component {
                 ))}
               </small>
             </p>
+            {post.cover == true ? (
+              <Img
+                sizes={post.imagePath.childImageSharp.sizes}
+                style={{ marginBottom: rhythm(1) }}
+              />
+            ) : (
+              <div />
+            )}
             <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
           </div>
         ))}

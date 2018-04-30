@@ -68,6 +68,16 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            image {
+              cover
+              path {
+                childImageSharp {
+                  sizes(maxWidth: 750) {
+                    ...GatsbyImageSharpSizes
+                  }
+                }
+              }
+            }
           }
         }
       }

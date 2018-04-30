@@ -1,5 +1,7 @@
 ---
 title: "Post: Twitter Embed"
+image:
+  path: ../assets/images/null.png
 categories:
   - Media
 tags:

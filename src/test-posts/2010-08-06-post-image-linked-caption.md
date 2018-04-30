@@ -1,5 +1,7 @@
 ---
 title: "Post: Image (Linked with Caption)"
+image:
+  path: ../assets/images/null.png
 categories:
   - Post Formats
 tags:

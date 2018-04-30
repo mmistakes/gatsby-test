@@ -1,5 +1,7 @@
 ---
 title: "Markup: Image Alignment"
+image:
+  path: ../assets/images/null.png
 categories:
   - Markup
 tags:

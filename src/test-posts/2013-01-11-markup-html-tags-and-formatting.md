@@ -1,5 +1,7 @@
 ---
 title: "Markup: HTML Tags and Formatting"
+image:
+  path: ../assets/images/null.png
 header:
   teaser: "assets/images/markup-syntax-highlighting-teaser.jpg"
 categories:

@@ -4,6 +4,7 @@ const path = require('path')
 const slugify = require('slug')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { createPaginationPages } = require('gatsby-pagination')
+const Img = require('gatsby-image')
 
 // Calculate post defaults.
 const calculateDefaults = (node, getNode) => {
@@ -27,8 +28,8 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     try {
-      if (node.frontmatter.template === `comment`) {
-        createNodeField({ node, name: `template`, value: `comment` })
+      if (node.frontmatter.type === `comment`) {
+        createNodeField({ node, name: `type`, value: `comment` })
         createNodeField({ node, name: `slug`, value: node.frontmatter.slug })
       } else {
         const [defaultSlug, defaultTitle, defaultDate] = calculateDefaults(
@@ -39,7 +40,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
         const slug = node.frontmatter.slug || defaultSlug
         const date = node.frontmatter.date || defaultDate
         const title = defaultTitle
-        const template = node.frontmatter.template || 'post'
+        const type = node.frontmatter.type || 'post'
         const { categories } = node.frontmatter
 
         if (categories) {
@@ -56,7 +57,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
         createNodeField({ node, name: `slug`, value: value })
         createNodeField({ node, name: `date`, value: date })
         createNodeField({ node, name: `title`, value: title })
-        createNodeField({ node, name: `template`, value: template })
+        createNodeField({ node, name: `type`, value: type })
       }
     } catch (ex) {
       console.log('Error onCreateNode():', node.fileAbsolutePath, '\n', ex)
@@ -80,7 +81,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           {
             allMarkdownRemark(
               sort: { fields: [fields___date], order: DESC }
-              filter: { fields: { template: { eq: "post" } } }
+              filter: {
+                fields: {
+                  type: { eq: "post" }
+                }
+              }
             ) {
               edges {
                 node {
@@ -94,6 +99,20 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     title
                     categories
                     tags
+                    image {
+                      path {
+                        childImageSharp {
+                          sizes(maxWidth: 750) {
+                            base64
+                            aspectRatio
+                            src
+                            srcSet
+                            sizes
+                          }
+                        }
+                      }
+                      cover
+                    }
                   }
                 }
               }

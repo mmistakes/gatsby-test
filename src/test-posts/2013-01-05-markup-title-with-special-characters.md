@@ -1,5 +1,7 @@
 ---
 title: "Markup: Title with Special&nbsp;---&nbsp;Characters"
+image:
+  path: ../assets/images/null.png
 categories:
   - Markup
 tags:

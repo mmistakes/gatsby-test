@@ -1,5 +1,7 @@
 ---
 title: "Post: Quote"
+image:
+  path: ../assets/images/null.png
 categories:
   - Post Formats
 tags:

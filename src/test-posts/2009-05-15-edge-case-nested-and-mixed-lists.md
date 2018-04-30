@@ -1,5 +1,7 @@
 ---
 title: "Edge Case: Nested and Mixed Lists"
+image:
+  path: ../assets/images/null.png
 categories:
   - edge-case
 tags:

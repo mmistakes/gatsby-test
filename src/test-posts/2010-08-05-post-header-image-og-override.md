@@ -1,5 +1,7 @@
 ---
 title: "Post: Header Image with OpenGraph Override"
+image:
+  path: ../assets/images/null.png
 header:
   image: /assets/images/page-header-image.png
   og_image: /assets/images/page-header-og-image.png

@@ -1,5 +1,7 @@
 ---
 title: "Markup: Text Readability Test"
+image:
+  path: ../assets/images/null.png
 excerpt: "A bunch of text to test readability."
 categories:
   - Markup

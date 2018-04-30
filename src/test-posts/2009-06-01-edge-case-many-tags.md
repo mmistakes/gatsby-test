@@ -1,5 +1,7 @@
 ---
 title: "Edge Case: Many Tags"
+image:
+  path: ../assets/images/null.png
 categories:
   - Edge Case
 tags:
