@@ -37,6 +37,17 @@ class BlogPostTemplate extends React.Component {
         >
           {post.fields.date}
         </p>
+        {post.tableOfContents !== '' ? (
+          <div>
+            <h2>Contents</h2>
+            <div
+              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+              className="toc"
+            />
+          </div>
+        ) : (
+          <div />
+        )}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <PostTags tags={post.frontmatter.tags} />
         <hr
@@ -95,6 +106,8 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      timeToRead
+      tableOfContents
       fields {
         date(formatString: "MMMM DD, YYYY")
       }
