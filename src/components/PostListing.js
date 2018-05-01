@@ -13,12 +13,13 @@ class PostListing extends React.Component {
         id: postEdge.node.id,
         path: postEdge.node.fields.slug,
         title: postEdge.node.frontmatter.title,
-        cover: postEdge.node.frontmatter.image.cover,
-        imagePath: postEdge.node.frontmatter.image.path,
+        excerpt: postEdge.node.frontmatter.excerpt,
+        generatedExcerpt: postEdge.node.excerpt,
         date: postEdge.node.fields.date,
-        excerpt: postEdge.node.excerpt,
         categories: postEdge.node.frontmatter.categories,
         mainCategory: postEdge.node.frontmatter.categories[0],
+        cover: postEdge.node.frontmatter.image.cover,
+        imagePath: postEdge.node.frontmatter.image.path,
       })
     })
     return postList
@@ -67,7 +68,11 @@ class PostListing extends React.Component {
             ) : (
               <div />
             )}
-            <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+            {post.excerpt !== null ? (
+              <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+            ) : (
+              <p dangerouslySetInnerHTML={{ __html: post.generatedExcerpt }} />
+            )}
           </div>
         ))}
       </div>

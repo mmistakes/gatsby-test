@@ -97,6 +97,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   }
                   frontmatter {
                     title
+                    excerpt
                     categories
                     tags
                     image {
