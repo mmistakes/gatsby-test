@@ -60,6 +60,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt(pruneLength: 280)
+          timeToRead
           fields {
             slug
             date

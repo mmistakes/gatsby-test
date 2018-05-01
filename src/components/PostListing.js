@@ -15,6 +15,7 @@ class PostListing extends React.Component {
         title: postEdge.node.frontmatter.title,
         excerpt: postEdge.node.frontmatter.excerpt,
         generatedExcerpt: postEdge.node.excerpt,
+        timeToRead: postEdge.node.timeToRead,
         date: postEdge.node.fields.date,
         categories: postEdge.node.frontmatter.categories,
         mainCategory: postEdge.node.frontmatter.categories[0],
@@ -57,7 +58,7 @@ class PostListing extends React.Component {
                     {!!i && ', '}
                     <Link to={`/${kebabCase(category)}/`}>{category}</Link>
                   </span>
-                ))}
+                ))} &middot; {post.timeToRead} min read
               </small>
             </p>
             {post.cover == true ? (

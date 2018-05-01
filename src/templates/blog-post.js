@@ -35,7 +35,7 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         >
-          {post.fields.date}
+          {post.fields.date} &middot; {post.timeToRead} min read
         </p>
         {post.tableOfContents !== '' ? (
           <div>
