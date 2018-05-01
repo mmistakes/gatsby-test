@@ -90,7 +90,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               edges {
                 node {
                   id
-                  excerpt
+                  excerpt(pruneLength: 280)
                   fields {
                     slug
                     date(formatString: "MMMM DD, YYYY")
