@@ -8,7 +8,6 @@ class PostListing extends React.Component {
   getPostList() {
     const postList = []
     this.props.postEdges.forEach(postEdge => {
-      console.log(`cover: ${postEdge.node.frontmatter.cover}`)
       postList.push({
         id: postEdge.node.id,
         path: postEdge.node.fields.slug,
