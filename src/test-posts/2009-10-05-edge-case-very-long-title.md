@@ -13,4 +13,4 @@ tags:
   - title
 ---
 
-Check for long titles and how they might break a template.
+Check for long titles and how they might break a layout.
