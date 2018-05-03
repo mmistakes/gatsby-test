@@ -1,17 +1,22 @@
-import Link from 'gatsby-link';
-import kebabCase from 'lodash/kebabCase';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Helmet from 'react-helmet';
-import config from '../../config/SiteConfig';
+import Link from 'gatsby-link'
+import kebabCase from 'lodash/kebabCase'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Helmet from 'react-helmet'
+import config from '../../config/SiteConfig'
 
 const TagsPage = ({
-  data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } },
+  data: {
+    allMarkdownRemark: { group },
+    site: {
+      siteMetadata: { title },
+    },
+  },
 }) => (
   <div>
-    <Helmet title={`Tags | ${config.title}`} />
+    <Helmet title={`All Tags | ${config.title}`} />
     <div>
-      <h1>Tags</h1>
+      <h1>All Tags</h1>
       <ul>
         {group.map(tag => (
           <li key={tag.fieldValue}>
