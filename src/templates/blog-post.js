@@ -118,7 +118,7 @@ export const pageQuery = graphql`
           cover
           path {
             childImageSharp {
-              sizes(maxWidth: 750) {
+              sizes(maxWidth: 750, quality: 80) {
                 ...GatsbyImageSharpSizes
               }
             }
