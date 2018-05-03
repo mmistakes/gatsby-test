@@ -15,27 +15,38 @@ class GridExample extends React.Component {
         <div>
           <h1>Grid Example</h1>
           <p>Post index in grid format using <strong>gatsby-image</strong> to generate square thumbnail images from the same "cover image" source.</p>
-          {posts.map(post => (
-            <Link
-              key={post.node.id}
-              to={post.node.fields.slug}
-              style={{
-                display: `inline-block`,
-                width: `100%`,
-                maxWidth: 250,
-                position: `relative`,
-              }}
-            >
-              <Img
-                resolutions={
-                  post.node.frontmatter.image.path.childImageSharp.resolutions
-                }
+          <div
+            style={{
+              display: `grid`,
+              gridTemplateColumns: `repeat(auto-fill, minmax(200px, 1fr))`,
+              gridGap: `0.5em`,
+              alignItems: `stretch`,
+            }}
+          >
+            {posts.map(post => (
+              <Link
+                key={post.node.id}
+                to={post.node.fields.slug}
                 style={{
-                  width: `100%`
+                  display: `block`,
+                  width: `200px`,
+                  height: `200px`,
                 }}
-              />
-            </Link>
-          ))}
+              >
+                <Img
+                  resolutions={
+                    post.node.frontmatter.image.path.childImageSharp.resolutions
+                  }
+                  style={{
+                    maxWidth: `100%`
+                  }}
+                  imgStyle={{
+                    marginBottom: `0`
+                  }}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     )
@@ -63,7 +74,7 @@ export const pageQuery = graphql`
               cover
               path {
                 childImageSharp {
-                  resolutions(width: 250, height: 250, quality: 90) {
+                  resolutions(width: 200, height: 200, quality: 90) {
                     ...GatsbyImageSharpResolutions
                   }
                 }
