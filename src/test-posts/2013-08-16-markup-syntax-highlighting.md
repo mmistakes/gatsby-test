@@ -1,7 +1,8 @@
 ---
 title: "Markup: Syntax Highlighting"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-2.jpg
+  cover: true
 excerpt: "Post displaying the various ways of highlighting code in Markdown."
 last_modified_at: 2018-01-03T09:45:06-05:00
 header:

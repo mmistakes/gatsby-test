@@ -1,7 +1,8 @@
 ---
 title: "Markup: Title with Special&nbsp;---&nbsp;Characters"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-7.jpg
+  cover: true
 categories:
   - Markup
 tags:

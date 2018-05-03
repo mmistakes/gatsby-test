@@ -1,7 +1,8 @@
 ---
 title: "Markup: Another Post with Images"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-3.jpg
+  cover: true
 excerpt: "Examples and code for displaying images in posts."
 header:
   teaser: "http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_c.jpg"

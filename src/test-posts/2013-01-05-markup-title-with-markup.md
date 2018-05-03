@@ -1,7 +1,8 @@
 ---
 title: "Markup: Title *with* **Markdown**"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-8.jpg
+  cover: true
 categories:
   - Markdown
 tags:

@@ -1,7 +1,8 @@
 ---
 title: "Markup: Image Alignment"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-5.jpg
+  cover: true
 categories:
   - Markup
 tags:

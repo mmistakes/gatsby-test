@@ -1,7 +1,8 @@
 ---
 title: "Post: Standard"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-10.jpg
+  cover: true
 excerpt_separator: "<!--more-->"
 categories:
   - Post Formats

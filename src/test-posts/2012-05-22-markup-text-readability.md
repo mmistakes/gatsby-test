@@ -1,7 +1,8 @@
 ---
 title: "Markup: Text Readability Test"
 image:
-  path: ../assets/images/null.png
+  path: ../assets/images/unsplash-image-9.jpg
+  cover: true
 excerpt: "A bunch of text to test readability."
 categories:
   - Markup
