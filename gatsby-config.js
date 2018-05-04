@@ -1,6 +1,6 @@
-const config = require('./config/SiteConfig');
+const config = require('./config/SiteConfig')
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
 module.exports = {
   siteMetadata: {
@@ -130,7 +130,7 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
+            output: '/rss.xml',
           },
         ],
       },
@@ -158,8 +158,8 @@ module.exports = {
                 }
               }
             }
-        }`
-      }
+        }`,
+      },
     },
     `gatsby-plugin-react-helmet`,
     {
