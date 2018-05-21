@@ -16,6 +16,11 @@ class PostPagination extends React.Component {
             margin: 0,
             padding: 0,
             listStyle: 'none',
+            '@media(max-width: 1023px)': {
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+            },
           }}
         >
           {previous && (
