@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Bio from '../components/Bio'
 import Comments from '../components/Comments'
 import PostTags from '../components/PostTags'
+import PostPagination from '../components/PostPagination'
 import Img from 'gatsby-image'
 
 class BlogPostTemplate extends React.Component {
@@ -150,42 +151,7 @@ class BlogPostTemplate extends React.Component {
           }}
         >
           <PostTags tags={post.frontmatter.tags} />
-          <nav
-            className="page__pagination"
-            css={{
-              marginTop: '10%',
-            }}
-          >
-            <ul
-              css={{
-                margin: 0,
-                padding: 0,
-                listStyle: 'none',
-                display: 'flex',
-                '@media(max-width: 1023px)': {
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-between',
-                },
-              }}
-            >
-              {previous && (
-                <li>
-                  <Link to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                </li>
-              )}
-
-              {next && (
-                <li>
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </nav>
+          <PostPagination previous={previous} next={next} />
         </div>
         <Footer />
       </div>
