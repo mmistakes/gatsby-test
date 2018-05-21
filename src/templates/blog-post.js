@@ -103,9 +103,11 @@ class BlogPostTemplate extends React.Component {
           className="page__cover"
           css={{
             position: 'relative',
+            marginTop: '10px',
             '@media(min-width: 768px)': {
               gridColumn: '4 / 11',
               gridRow: '1 / 4',
+              marginTop: 0,
             },
           }}
         >

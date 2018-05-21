@@ -32,7 +32,7 @@ class PostPagination extends React.Component {
                   textDecoration: 'none'
                 }}
               >
-                ← {previous.frontmatter.title}
+                ←&nbsp;{previous.frontmatter.title}
               </Link>
             </li>
           )}
@@ -46,7 +46,7 @@ class PostPagination extends React.Component {
                   textDecoration: 'none'
                 }}
               >
-                {next.frontmatter.title} →
+                {next.frontmatter.title}&nbsp;→
               </Link>
             </li>
           )}
