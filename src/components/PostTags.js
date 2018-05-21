@@ -1,23 +1,44 @@
 import Link from 'gatsby-link'
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { rhythm } from '../utils/typography'
 
 class PostTags extends Component {
   render() {
     const { tags } = this.props
     return (
-      <div style={{ marginBottom: rhythm(1) }}>
+      <div
+        className="page__taxonomy"
+        css={{
+          paddingTop: '5%',
+          fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+        }}>
+        <h3
+          className="title"
+          css={{
+            marginBottom: 0,
+            padding: 0,
+            textTransform: 'uppercase',
+          }}
+        >
+          Tagged
+        </h3>
         {tags &&
           tags.map(tag => (
-            <Link
-              key={tag}
-              style={{ textDecoration: 'none' }}
-              to={`/tag/${_.kebabCase(tag)}/`}
+            <span
+              css={{
+                display: 'inline-block',
+                marginRight: '10px',
+              }}
             >
-              <button>{tag}</button>
-            </Link>
-          ))}
+              <Link
+                key={tag}
+                to={`/tag/${_.kebabCase(tag)}/`}
+              >
+                {tag}
+              </Link>
+            </span>
+          ))
+        }
       </div>
     )
   }

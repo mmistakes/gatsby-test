@@ -82,6 +82,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-glamor`,
     `gatsby-plugin-twitter`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -177,11 +178,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
   ],
 }

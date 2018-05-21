@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
-import { rhythm } from '../utils/typography'
 
 class GridExample extends React.Component {
   render() {

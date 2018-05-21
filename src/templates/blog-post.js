@@ -2,10 +2,11 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import React from 'react'
 import Helmet from 'react-helmet'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Bio from '../components/Bio'
 import Comments from '../components/Comments'
 import PostTags from '../components/PostTags'
-import { rhythm, scale } from '../utils/typography'
 import Img from 'gatsby-image'
 
 class BlogPostTemplate extends React.Component {
@@ -16,78 +17,177 @@ class BlogPostTemplate extends React.Component {
     const { previous, next, tags } = this.props.pathContext
 
     return (
-      <div>
+      <div
+        className="page"
+        css={{
+          '@media(max-width: 767px)': {
+            marginLeft: '5%',
+            marginRight: '5%',
+          },
+          '@media(min-width: 768px)': {
+            display: 'grid',
+            gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
+            gridTemplateRows: '80px 20% 35%',
+            alignItems: 'end',
+          },
+        }}
+      >
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
-        {post.frontmatter.image.cover == true ? (
-          <Img
-            sizes={post.frontmatter.image.path.childImageSharp.sizes}
-            style={{ marginBottom: rhythm(1) }}
-          />
-        ) : (
-          <div />
-        )}
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginTop: rhythm(1),
-            marginBottom: rhythm(1),
+        <Header />
+        <div
+          className="page__title"
+          css={{
+            '@media(min-width: 768px)': {
+              display: 'flex',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              gridColumn: '2 / span 3',
+              gridRow: '3 / span 1',
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              zIndex: 10,
+            },
           }}
         >
-          {post.fields.date} &middot; {post.timeToRead} min read
-        </p>
-        {post.tableOfContents !== '' ? (
-          <div>
-            <h2>Contents</h2>
-            <div
-              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-              className="toc"
+          <h1
+            className="headline"
+            css={{
+              fontFamily: '"Playfair Display", Times, serif',
+              fontWeight: 700,
+              fontSize: '2.441em',
+              lineHeight: 1.25,
+              '@media(min-width: 768px)': {
+                paddingRight: '5%',
+              },
+            }}
+          >
+            {post.frontmatter.title}
+          </h1>
+        </div>
+        <div
+          className="page__meta"
+          css={{
+            fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+            textTransform: 'uppercase',
+            '@media(min-width: 768px)': {
+              gridColumn: '3 / span 1',
+              gridRow: '2 / span 1',
+              '& span': {
+                display: 'block',
+              }
+            },
+          }}
+        >
+          <span className="page__read-time">{post.timeToRead} min read </span>
+          <span
+            className="page__date"
+            css={{
+              '@media(max-width: 767px)': {
+                '&::before': {
+                  content: `' · '`,
+                }
+              }
+            }}
+          >{post.fields.date}</span>
+        </div>
+        <div
+          className="page__cover"
+          css={{
+            position: 'relative',
+            '@media(min-width: 768px)': {
+              gridColumn: '4 / 11',
+              gridRow: '1 / 4',
+            },
+          }}
+        >
+          {post.frontmatter.image.cover == true ? (
+            <Img
+              sizes={post.frontmatter.image.path.childImageSharp.sizes}
             />
-          </div>
-        ) : (
-          <div />
-        )}
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <PostTags tags={post.frontmatter.tags} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Comments comments={comments} />
-
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
+          ) : (
+            <div />
+          )}
+        </div>
+        <div
+          className="page__main"
+          css={{
+            marginTop: '5%',
+            '@media(min-width: 768px)': {
+              gridColumn: '3 / 7',
+              gridRow: '4 / span 1',
+            },
+            '@media(min-width: 1024px)': {
+              gridColumn: '3 / 7',
+            },
           }}
         >
-          {previous && (
-            <li>
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            </li>
+          {post.tableOfContents !== '' ? (
+            <div>
+              <h2>Contents</h2>
+              <div
+                dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+                className="toc"
+              />
+            </div>
+          ) : (
+            <div />
           )}
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Bio />
+          <Comments comments={comments} />
+        </div>
+        <div
+          className="page__aside"
+          css={{
+            '@media(min-width: 768px)': {
+              gridColumn: '3 / 8',
+              gridRow: 5,
+              alignSelf: 'start',
+            },
+            '@media(min-width: 1024px)': {
+              gridColumn: 8,
+              gridRow: 4,
+            }
+          }}
+        >
+          <PostTags tags={post.frontmatter.tags} />
+          <nav
+            className="page__pagination"
+            css={{
+              marginTop: '10%',
+            }}
+          >
+            <ul
+              css={{
+                margin: 0,
+                padding: 0,
+                listStyle: 'none',
+                display: 'flex',
+                '@media(max-width: 1023px)': {
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'space-between',
+                },
+              }}
+            >
+              {previous && (
+                <li>
+                  <Link to={previous.fields.slug} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                </li>
+              )}
 
-          {next && (
-            <li>
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            </li>
-          )}
-        </ul>
+              {next && (
+                <li>
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </nav>
+        </div>
+        <Footer />
       </div>
     )
   }
@@ -118,7 +218,7 @@ export const pageQuery = graphql`
           cover
           path {
             childImageSharp {
-              sizes(maxWidth: 750, quality: 90) {
+              sizes(maxWidth: 1280, quality: 90) {
                 ...GatsbyImageSharpSizes
               }
             }

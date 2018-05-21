@@ -1,7 +1,6 @@
 import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
-import { rhythm } from '../utils/typography'
 import Img from 'gatsby-image'
 
 class PostListing extends React.Component {
@@ -34,7 +33,7 @@ class PostListing extends React.Component {
           <div key={post.id}>
             <h3
               style={{
-                marginBottom: rhythm(1 / 2),
+                marginBottom: '10px',
               }}
             >
               <Link
@@ -47,7 +46,7 @@ class PostListing extends React.Component {
             </h3>
             <p
               style={{
-                marginBottom: rhythm(1 / 2),
+                marginBottom: '10px',
               }}
             >
               <small>
@@ -63,7 +62,7 @@ class PostListing extends React.Component {
             {post.cover == true ? (
               <Img
                 sizes={post.imagePath.childImageSharp.sizes}
-                style={{ marginBottom: rhythm(1) }}
+                style={{ marginBottom: '20px' }}
               />
             ) : (
               <div />
