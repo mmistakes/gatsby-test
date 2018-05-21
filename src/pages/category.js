@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const CategoriesPage = ({
   data: {
@@ -16,6 +18,7 @@ const CategoriesPage = ({
   <div>
     <Helmet title={`All Categories | ${config.title}`} />
     <div>
+      <Header />
       <h1>All Categories</h1>
       <ul>
         {group.map(category => (
@@ -27,6 +30,7 @@ const CategoriesPage = ({
         ))}
       </ul>
     </div>
+    <Footer />
   </div>
 )
 

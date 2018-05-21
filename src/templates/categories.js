@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
 
@@ -15,9 +17,11 @@ const Categories = ({ pathContext, data }) => {
   return (
     <div>
       <Helmet title={`${category} | ${config.title}`} />
+      <Header />
       <h1>{categoryHeader}</h1>
       <PostListing postEdges={nodes} />
       <Pagination page={page} pages={pages} prev={prev} next={next} />
+      <Footer />
     </div>
   )
 }

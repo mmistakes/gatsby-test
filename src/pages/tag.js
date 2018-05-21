@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const TagsPage = ({
   data: {
@@ -15,6 +17,7 @@ const TagsPage = ({
 }) => (
   <div>
     <Helmet title={`All Tags | ${config.title}`} />
+    <Header />
     <div>
       <h1>All Tags</h1>
       <ul>
@@ -27,6 +30,7 @@ const TagsPage = ({
         ))}
       </ul>
     </div>
+    <Footer />
   </div>
 )
 

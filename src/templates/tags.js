@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
 
@@ -16,10 +18,12 @@ const Tags = ({ pathContext, data }) => {
   return (
     <div>
       <Helmet title={`${tag} | ${config.title}`} />
+      <Header />
       <h1>{tagHeader}</h1>
       <PostListing postEdges={nodes} />
       <Pagination page={page} pages={pages} prev={prev} next={next} />
       <Link to="/tag/">All tags</Link>
+      <Footer />
     </div>
   )
 }

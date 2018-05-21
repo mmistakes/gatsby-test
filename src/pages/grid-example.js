@@ -3,6 +3,8 @@ import Link from 'gatsby-link'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 class GridExample extends React.Component {
   render() {
@@ -11,6 +13,7 @@ class GridExample extends React.Component {
     return (
       <div>
         <Helmet title={`Grid Example | ${config.title}`} />
+        <Header />
         <div>
           <h1>Grid Example</h1>
           <p>Post index in grid format using <strong>gatsby-image</strong> to generate square thumbnail images from the same "cover image" source.</p>
@@ -47,6 +50,7 @@ class GridExample extends React.Component {
             ))}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

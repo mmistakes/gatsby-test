@@ -1,14 +1,13 @@
-import Link from 'gatsby-link'
+import Img from 'gatsby-image'
 import get from 'lodash/get'
 import React from 'react'
 import Helmet from 'react-helmet'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Bio from '../components/Bio'
 import Comments from '../components/Comments'
-import PostTags from '../components/PostTags'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 import PostPagination from '../components/PostPagination'
-import Img from 'gatsby-image'
+import PostTags from '../components/PostTags'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -82,7 +81,7 @@ class BlogPostTemplate extends React.Component {
               },
               '& span': {
                 display: 'block',
-              }
+              },
             },
           }}
         >
@@ -93,10 +92,12 @@ class BlogPostTemplate extends React.Component {
               '@media(max-width: 767px)': {
                 '&::before': {
                   content: `' · '`,
-                }
-              }
+                },
+              },
             }}
-          >{post.fields.date}</span>
+          >
+            {post.fields.date}
+          </span>
         </div>
         <div
           className="page__cover"
@@ -109,9 +110,7 @@ class BlogPostTemplate extends React.Component {
           }}
         >
           {post.frontmatter.image.cover == true ? (
-            <Img
-              sizes={post.frontmatter.image.path.childImageSharp.sizes}
-            />
+            <Img sizes={post.frontmatter.image.path.childImageSharp.sizes} />
           ) : (
             <div />
           )}
@@ -144,7 +143,7 @@ class BlogPostTemplate extends React.Component {
             '@media(min-width: 1024px)': {
               gridColumn: 8,
               gridRow: 4,
-            }
+            },
           }}
         >
           <PostTags tags={post.frontmatter.tags} />
