@@ -20,7 +20,13 @@ class Header extends React.Component {
             fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
           }}
         >
-          <Link className="site__name" to={'/'}>
+          <Link
+            className="site__name"
+            css={{
+              textDecoration: 'none',
+            }}
+            to={'/'}
+          >
             {config.title}
           </Link>
         </div>
