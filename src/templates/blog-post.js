@@ -72,6 +72,14 @@ class BlogPostTemplate extends React.Component {
             '@media(min-width: 768px)': {
               gridColumn: '3 / span 1',
               gridRow: '2 / span 1',
+              '&::after': {
+                content: '""',
+                display: 'block',
+                width: '80px',
+                height: '3px',
+                marginTop: '10px',
+                backgroundColor: '#000',
+              },
               '& span': {
                 display: 'block',
               }
@@ -121,17 +129,6 @@ class BlogPostTemplate extends React.Component {
             },
           }}
         >
-          {post.tableOfContents !== '' ? (
-            <div>
-              <h2>Contents</h2>
-              <div
-                dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-                className="toc"
-              />
-            </div>
-          ) : (
-            <div />
-          )}
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
           <Bio />
           <Comments comments={comments} />
