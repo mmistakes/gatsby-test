@@ -13,7 +13,7 @@ const Categories = ({ pathContext, data }) => {
   const { edges, totalCount } = data.allMarkdownRemark
   const categoryHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } filed in "${category}"`
+  } filed in &ldquo;${category}&rdquo;`
 
   return (
     <div
@@ -69,9 +69,8 @@ const Categories = ({ pathContext, data }) => {
               fontSize: '2.441em',
             }
           }}
-        >
-          {categoryHeader}
-        </h1>
+          dangerouslySetInnerHTML={{ __html: categoryHeader }}
+        />
       </div>
       <div
         className="page__cover"

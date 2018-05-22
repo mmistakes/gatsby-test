@@ -71,9 +71,8 @@ class BlogPostTemplate extends React.Component {
                 fontSize: '2.441em',
               }
             }}
-          >
-            {post.frontmatter.title}
-          </h1>
+            dangerouslySetInnerHTML={{ __html: post.frontmatter.title }}
+          />
           <div
             className="byline"
             css={{

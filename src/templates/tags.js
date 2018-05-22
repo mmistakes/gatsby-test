@@ -14,7 +14,7 @@ const Tags = ({ pathContext, data }) => {
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } tagged with "${tag}"`
+  } tagged with &ldquo;${tag}&rdquo;`
 
   return (
     <div
@@ -70,9 +70,8 @@ const Tags = ({ pathContext, data }) => {
               fontSize: '2.441em',
             }
           }}
-        >
-          {tagHeader}
-        </h1>
+          dangerouslySetInnerHTML={{ __html: tagHeader }}
+        />
       </div>
       <div
         className="page__cover"
