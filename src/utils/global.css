@@ -32,6 +32,29 @@ h1, h2, h3, h4, h5, h6 {
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 }
 
+blockquote {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0 1rem;
+  border-left: 0.25rem solid;
+}
+
+blockquote, q {
+  color: #7a7e83;
+  font-style: italic;
+}
+
+blockquote cite, q cite {
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-size: 80%;
+  font-style: normal;
+  font-weight: 700;
+}
+
+blockquote :last-child {
+  margin-bottom: 0;
+}
+
 hr {
   box-sizing: content-box;
   display: block;
