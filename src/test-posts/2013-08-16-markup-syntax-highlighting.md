@@ -108,3 +108,16 @@ plugins: [
   }
 ]
 ```
+
+### Code Titles
+
+Add a title to snippets:
+
+```
+javascript:title=example-file.js
+alert('how cool is this!');
+```
+
+```javascript:title=example-file.js
+alert('how cool is this!');
+```

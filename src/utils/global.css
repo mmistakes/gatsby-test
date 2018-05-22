@@ -19,7 +19,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: "Spectral", Georgia, Times, serif;
+  font-family: Georgia, serif;
   font-kerning: normal;
   word-wrap: break-word;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";

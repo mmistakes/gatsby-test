@@ -21,6 +21,7 @@
     "gatsby-plugin-twitter": "^1.0.20",
     "gatsby-remark-abbr": "^1.0.0",
     "gatsby-remark-autolink-headers": "^1.4.13",
+    "gatsby-remark-code-titles": "^1.0.2",
     "gatsby-remark-copy-linked-files": "^1.5.30",
     "gatsby-remark-emoji": "^0.0.1",
     "gatsby-remark-images": "^1.5.56",
