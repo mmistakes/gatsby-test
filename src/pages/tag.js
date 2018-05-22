@@ -78,6 +78,7 @@ const TagsPage = ({
         '@media(min-width: 768px)': {
           gridColumn: '3 / 8',
           gridRow: '4 / span 1',
+          alignSelf: 'flex-start',
         },
         '@media(min-width: 1024px)': {
           gridColumn: '3 / 7',
