@@ -8,7 +8,7 @@ class PostPagination extends React.Component {
       <nav
         className="page__pagination"
         css={{
-          marginTop: '10%',
+          marginTop: '2em',
         }}
       >
         <ul

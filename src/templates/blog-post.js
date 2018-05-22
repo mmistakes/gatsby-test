@@ -39,6 +39,9 @@ class BlogPostTemplate extends React.Component {
           css={{
             '@media(min-width: 768px)': {
               display: 'flex',
+              minHeight: '300px',
+              flexDirection: 'column',
+              justifyContent: 'center',
               alignItems: 'center',
               alignSelf: 'stretch',
               gridColumn: '2 / span 3',
@@ -51,17 +54,35 @@ class BlogPostTemplate extends React.Component {
           <h1
             className="headline"
             css={{
+              alignSelf: 'flex-start',
               fontFamily: '"Playfair Display", Times, serif',
               fontWeight: 700,
-              fontSize: '2.441em',
+              fontSize: '1.953em',
               lineHeight: 1.25,
+              textDecoration: 'underline',
               '@media(min-width: 768px)': {
                 paddingRight: '5%',
               },
+              '@media(min-width: 1024px)': {
+                fontSize: '2.441em',
+              }
             }}
           >
             {post.frontmatter.title}
           </h1>
+          <div
+            className="byline"
+            css={{
+              alignSelf: 'flex-start',
+              fontFamily: 'Times, serif',
+              fontSize: '1.25em',
+              '&::before': {
+                content: '"__"',
+              },
+            }}
+          >
+            First Lastname
+          </div>
         </div>
         <div
           className="page__meta"
@@ -74,7 +95,7 @@ class BlogPostTemplate extends React.Component {
               '&::after': {
                 content: '""',
                 display: 'block',
-                width: '80px',
+                width: '40px',
                 height: '3px',
                 marginTop: '10px',
                 backgroundColor: '#000',
@@ -108,11 +129,25 @@ class BlogPostTemplate extends React.Component {
               gridColumn: '4 / 11',
               gridRow: '1 / 4',
               marginTop: 0,
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              width: '100%',
+              height: '100%',
             },
+            '& .gatsby-image-outer-wrapper': {
+              width: '100%',
+              height: '100%',
+            }
           }}
         >
           {post.frontmatter.image.cover == true ? (
-            <Img sizes={post.frontmatter.image.path.childImageSharp.sizes} />
+            <Img
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+              sizes={post.frontmatter.image.path.childImageSharp.sizes}
+            />
           ) : (
             <div />
           )}
@@ -120,7 +155,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="page__main"
           css={{
-            marginTop: '5%',
+            marginTop: '1em',
             '@media(min-width: 768px)': {
               gridColumn: '3 / 7',
               gridRow: '4 / span 1',
@@ -130,21 +165,29 @@ class BlogPostTemplate extends React.Component {
             },
           }}
         >
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <Bio />
+          <div
+            css={{
+              '& > p:first-child': {
+                fontStyle: 'italic',
+              },
+              '& > p:first-child::first-letter': {
+                float: 'left',
+                fontSize: '3.052em',
+                lineHeight: '1em',
+                padding: '0.05em 0.125em 0 0.05em',
+              }
+            }}
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
           <Comments comments={comments} />
         </div>
         <div
           className="page__aside"
           css={{
             '@media(min-width: 768px)': {
-              gridColumn: '3 / 8',
-              gridRow: 5,
-              alignSelf: 'start',
-            },
-            '@media(min-width: 1024px)': {
               gridColumn: 8,
               gridRow: 4,
+              alignSelf: 'start',
             },
           }}
         >

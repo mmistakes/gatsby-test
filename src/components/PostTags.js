@@ -9,25 +9,36 @@ class PostTags extends Component {
       <div
         className="page__taxonomy"
         css={{
-          paddingTop: '5%',
-          fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+          paddingTop: '2em',
         }}>
-        <h3
+        <div
           className="title"
           css={{
+            display: 'inline-block',
             marginBottom: 0,
+            marginRight: '20px',
             padding: 0,
-            textTransform: 'uppercase',
+            fontStyle: 'italic',
+            '@media(min-width: 768px)': {
+              display: 'block',
+            }
           }}
         >
-          Tagged
-        </h3>
+          Explore More:
+        </div>
         {tags &&
           tags.map(tag => (
             <span
               css={{
                 display: 'inline-block',
-                marginRight: '10px',
+                marginRight: '30px',
+                fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+                '@media(min-width: 768px)': {
+                  display: 'block',
+                  '&::before': {
+                    content: '"_"',
+                  },
+                }
               }}
             >
               <Link

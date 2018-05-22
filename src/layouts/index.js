@@ -1,11 +1,11 @@
 import Link from 'gatsby-link'
 import React from 'react'
 
-// Load Playfair Display typeface
+// Load typefaces
 require('typeface-playfair-display')
 
 require('../utils/global.css')
-require('prismjs/themes/prism.css')
+require('../utils/prism.css')
 require('../utils/gatsby-highlight-code-line.css')
 
 class Template extends React.Component {
