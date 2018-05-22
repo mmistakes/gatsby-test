@@ -30,10 +30,19 @@ class PostListing extends React.Component {
       <div>
         {/* Your post list here. */
         postList.map(post => (
-          <div key={post.id}>
+          <div
+            key={post.id}
+            css={{
+              marginBottom: '3em',
+            }}
+          >
             <h3
-              style={{
-                marginBottom: '10px',
+              css={{
+                marginBottom: 0,
+                fontFamily: '"Playfair Display", Times, serif',
+                fontWeight: 700,
+                fontSize: '1.563em',
+                lineHeight: 1.25,
               }}
             >
               <Link
@@ -44,9 +53,9 @@ class PostListing extends React.Component {
                 {post.title}
               </Link>
             </h3>
-            <p
-              style={{
-                marginBottom: '10px',
+            <div
+              css={{
+                marginBottom: '1em',
               }}
             >
               <small>
@@ -58,11 +67,11 @@ class PostListing extends React.Component {
                   </span>
                 ))} &middot; {post.timeToRead} min read
               </small>
-            </p>
+            </div>
             {post.cover == true ? (
               <Img
                 sizes={post.imagePath.childImageSharp.sizes}
-                style={{ marginBottom: '20px' }}
+                css={{ marginBottom: '1em' }}
               />
             ) : (
               <div />

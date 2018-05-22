@@ -7,6 +7,7 @@ import Comments from '../components/Comments'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import PostPagination from '../components/PostPagination'
+import PostCategories from '../components/PostCategories'
 import PostTags from '../components/PostTags'
 
 class BlogPostTemplate extends React.Component {
@@ -14,11 +15,11 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const comments = this.props.data.comments
-    const { previous, next, tags } = this.props.pathContext
+    const { previous, next, tags, categories } = this.props.pathContext
 
     return (
       <div
-        className="page"
+        className="post"
         css={{
           '@media(max-width: 767px)': {
             marginLeft: '5%',
@@ -27,7 +28,7 @@ class BlogPostTemplate extends React.Component {
           '@media(min-width: 768px)': {
             display: 'grid',
             gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
-            gridTemplateRows: '80px 20% 35%',
+            gridTemplateRows: '80px 100px 35%',
             alignItems: 'end',
           },
         }}
@@ -44,11 +45,14 @@ class BlogPostTemplate extends React.Component {
               justifyContent: 'center',
               alignItems: 'center',
               alignSelf: 'stretch',
-              gridColumn: '2 / span 3',
+              gridColumn: '2 / span 4',
               gridRow: '3 / span 1',
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               zIndex: 10,
             },
+            '@media(min-width: 1024px)': {
+              gridColumn: '2 / span 3',
+            }
           }}
         >
           <h1
@@ -75,10 +79,13 @@ class BlogPostTemplate extends React.Component {
             css={{
               alignSelf: 'flex-start',
               fontFamily: 'Times, serif',
-              fontSize: '1.25em',
+              fontSize: '0.8em',
               '&::before': {
                 content: '"__"',
               },
+              '@media(min-width: 768px)': {
+                fontSize: '1.25em',
+              }
             }}
           >
             First Lastname
@@ -88,10 +95,11 @@ class BlogPostTemplate extends React.Component {
           className="page__meta"
           css={{
             fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+            fontSize: '0.8em',
             textTransform: 'uppercase',
             '@media(min-width: 768px)': {
-              gridColumn: '3 / span 1',
-              gridRow: '2 / span 1',
+              gridColumn: '3 / span 2',
+              gridRow: '2 / 3',
               '&::after': {
                 content: '""',
                 display: 'block',
@@ -104,6 +112,9 @@ class BlogPostTemplate extends React.Component {
                 display: 'block',
               },
             },
+            '@media(min-width: 1024px)': {
+              gridColumn: '3 / 4',
+            }
           }}
         >
           <span className="page__read-time">{post.timeToRead} min read </span>
@@ -126,13 +137,16 @@ class BlogPostTemplate extends React.Component {
             position: 'relative',
             marginTop: '10px',
             '@media(min-width: 768px)': {
-              gridColumn: '4 / 11',
+              gridColumn: '5 / 11',
               gridRow: '1 / 4',
               marginTop: 0,
               objectFit: 'cover',
               objectPosition: 'center center',
               width: '100%',
               height: '100%',
+            },
+            '@media(min-width: 1024px)': {
+              gridColumn: '4 / 11',
             },
             '& .gatsby-image-outer-wrapper': {
               width: '100%',
@@ -191,6 +205,7 @@ class BlogPostTemplate extends React.Component {
             },
           }}
         >
+          <PostCategories categories={post.frontmatter.categories} />
           <PostTags tags={post.frontmatter.tags} />
           <PostPagination previous={previous} next={next} />
         </div>
@@ -221,6 +236,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         tags
+        categories
         image {
           cover
           path {

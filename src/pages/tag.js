@@ -15,16 +15,102 @@ const TagsPage = ({
     },
   },
 }) => (
-  <div>
+  <div
+    className="page"
+    css={{
+      '@media(max-width: 767px)': {
+        marginLeft: '5%',
+        marginRight: '5%',
+      },
+      '@media(min-width: 768px)': {
+        display: 'grid',
+        gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
+        gridTemplateRows: '80px 35%',
+        alignItems: 'end',
+      },
+    }}
+  >
     <Helmet title={`All Tags | ${config.title}`} />
     <Header />
-    <div>
-      <h1>All Tags</h1>
-      <ul>
+    <div
+      className="page__title"
+      css={{
+        '@media(min-width: 768px)': {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: 'stretch',
+          gridColumn: '2 / span 4',
+          gridRow: '2 / span 2',
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          zIndex: 10,
+        },
+        '@media(min-width: 1024px)': {
+          gridColumn: '2 / span 3',
+        }
+      }}
+    >
+      <h1
+        className="headline"
+        css={{
+          alignSelf: 'flex-start',
+          fontFamily: '"Playfair Display", Times, serif',
+          fontWeight: 700,
+          fontSize: '1.953em',
+          lineHeight: 1.25,
+          textDecoration: 'underline',
+          '@media(min-width: 768px)': {
+            paddingRight: '5%',
+          },
+          '@media(min-width: 1024px)': {
+            fontSize: '2.441em',
+          }
+        }}
+      >
+        All Tags
+      </h1>
+    </div>
+    <div
+      className="page__main"
+      css={{
+        marginTop: '1em',
+        '@media(min-width: 768px)': {
+          gridColumn: '3 / 8',
+          gridRow: '4 / span 1',
+        },
+        '@media(min-width: 1024px)': {
+          gridColumn: '3 / 7',
+        },
+      }}
+    >
+      <ul
+        css={{
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+          '@media(min-width: 768px)': {
+            display: 'grid',
+            gridColumnGap: '2em',
+          },
+          '@media(min-width: 1024px)': {
+            gridTemplateColumns: 'repeat(3, 1fr)',
+          }
+        }}
+      >
         {group.map(tag => (
           <li key={tag.fieldValue}>
-            <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
+            <Link
+              css={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '0.25em 0',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+              to={`/tag/${kebabCase(tag.fieldValue)}/`}
+            >
+              <span>{tag.fieldValue}</span> <span className="count">{tag.totalCount}</span>
             </Link>
           </li>
         ))}

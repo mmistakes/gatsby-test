@@ -2,14 +2,14 @@ import Link from 'gatsby-link'
 import _ from 'lodash'
 import React, { Component } from 'react'
 
-class PostTags extends Component {
+class PostCategories extends Component {
   render() {
-    const { tags } = this.props
+    const { categories } = this.props
     return (
       <div
         className="page__taxonomy"
         css={{
-          paddingTop: '1em',
+          paddingTop: '2em',
         }}>
         <h3
           className="title"
@@ -25,10 +25,10 @@ class PostTags extends Component {
             }
           }}
         >
-          Explore more:
+          Filed in:
         </h3>
-        {tags &&
-          tags.map(tag => (
+        {categories &&
+          categories.map(category => (
             <span
               css={{
                 display: 'inline-block',
@@ -44,13 +44,13 @@ class PostTags extends Component {
               }}
             >
               <Link
-                key={tag}
-                to={`/tag/${_.kebabCase(tag)}/`}
+                key={category}
+                to={`/${_.kebabCase(category)}/`}
                 css={{
                   textDecoration: 'none'
                 }}
               >
-                {tag}
+                {category}
               </Link>
             </span>
           ))
@@ -60,4 +60,4 @@ class PostTags extends Component {
   }
 }
 
-export default PostTags
+export default PostCategories
