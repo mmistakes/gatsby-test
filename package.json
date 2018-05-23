@@ -36,10 +36,7 @@
     "lodash": "^4.17.5",
     "react-gravatar": "^2.6.3",
     "slug": "^0.9.1",
-    "typeface-alegreya": "^0.0.54",
-    "typeface-alegreya-sans": "^0.0.54",
-    "typeface-inconsolata": "^0.0.54",
-    "typeface-playfair-display": "^0.0.54"
+    "typeface-alegreya": "^0.0.54"
   },
   "devDependencies": {
     "eslint": "^4.19.0",

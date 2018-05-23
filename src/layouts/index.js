@@ -3,8 +3,6 @@ import React from 'react'
 
 // Load typefaces
 require('typeface-alegreya')
-require('typeface-alegreya-sans')
-require('typeface-inconsolata')
 
 require('../utils/global.css')
 require('../utils/prism.css')

@@ -8,7 +8,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: #f8f8f2;
   background: none;
-  font-family: "Inconsolata", monospace;
+  font-family: Menlo, Consolas, Monaco, "Courier New", Courier, monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -208,7 +208,7 @@ pre[class*='language-'] {
 .gatsby-remark-code-title {
   margin-bottom: -0.6rem;
   padding: 0.5em 1em;
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: sans-serif;
   font-size: 0.9em;
   font-weight: 700;
   background-color: #181a1d;

@@ -15,17 +15,11 @@ html {
   }
 }
 
-@media (min-width: 1280px) {
-  html {
-    font-size: 125%;
-  }
-}
-
 body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: 'Alegreya', serif;
+  font-family: Georgia, serif;
   font-kerning: normal;
   word-wrap: break-word;
   -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
@@ -40,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: sans-serif;
 }
 
 blockquote {
@@ -58,7 +52,7 @@ q {
 
 blockquote cite,
 q cite {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: sans-serif;
   font-size: 80%;
   font-style: normal;
   font-weight: 700;
@@ -120,7 +114,7 @@ hr::before {
 }
 
 .notice .header {
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: sans-serif;
   font-weight: 700;
 }
 

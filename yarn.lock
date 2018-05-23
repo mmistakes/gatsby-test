@@ -10146,21 +10146,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typeface-alegreya-sans@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-alegreya-sans/-/typeface-alegreya-sans-0.0.54.tgz#0d7410bc3b4795e404a82b34abd55226bc4e77ba"
-
 typeface-alegreya@^0.0.54:
   version "0.0.54"
   resolved "https://registry.yarnpkg.com/typeface-alegreya/-/typeface-alegreya-0.0.54.tgz#10f829d7659ae4d0fc601dfb5f582f597b43a848"
-
-typeface-inconsolata@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-inconsolata/-/typeface-inconsolata-0.0.54.tgz#9a7f7726eb615a3ab53dc19732f6c77adc65d5b5"
-
-typeface-playfair-display@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-playfair-display/-/typeface-playfair-display-0.0.54.tgz#32a210d27e8dcbfbd6eebd63108af26d115838a0"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"

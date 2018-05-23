@@ -33,7 +33,7 @@ class PostTags extends Component {
               css={{
                 display: 'inline-block',
                 marginRight: '30px',
-                fontFamily: '"Inconsolata", monospace',
+                fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
                 fontSize: '0.8em',
                 '@media(min-width: 768px)': {
                   display: 'block',

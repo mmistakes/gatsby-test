@@ -94,7 +94,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="page__meta"
           css={{
-            fontFamily: '"Inconsolata", monospace',
+            fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
             fontSize: '0.8em',
             textTransform: 'uppercase',
             '@media(min-width: 768px)': {
