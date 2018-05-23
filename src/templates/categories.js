@@ -161,7 +161,7 @@ export const pageQuery = graphql`
       }
     }
     pageImage: imageSharp(id: { regex: "/unsplash-image-11/" }) {
-      sizes(maxWidth: 750) {
+      sizes(maxWidth: 1280, quality: 90) {
         ...GatsbyImageSharpSizes
       }
     }
