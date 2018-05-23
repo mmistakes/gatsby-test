@@ -15,6 +15,12 @@ html {
   }
 }
 
+@media(min-width: 1280px) {
+  html {
+    font-size: 125%;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
