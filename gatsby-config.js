@@ -72,6 +72,18 @@ module.exports = {
               aliases: {},
             },
           },
+          {
+            resolve: `gatsby-remark-custom-blocks`,
+            options: {
+              blocks: {
+                notice: `notice`,
+                info: `notice info`,
+                warning: `notice warning`,
+                danger: `notice danger`,
+                success: `notice success`,
+              },
+            },
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-emoji`,
