@@ -49,8 +49,9 @@ class PostListing extends React.Component {
                 style={{ textDecoration: 'none' }}
                 to={post.path}
                 key={post.title}
-                dangerouslySetInnerHTML={{ __html: post.title }}
-              />
+              >
+                {post.title}
+              </Link>
             </h3>
             <div
               css={{

@@ -31,8 +31,9 @@ class PostPagination extends React.Component {
                 css={{
                   textDecoration: 'none'
                 }}
-                dangerouslySetInnerHTML={{ __html: `←&nbsp;${previous.frontmatter.title}` }}
-              />
+              >
+                ←&nbsp;{previous.frontmatter.title}
+              </Link>
             </li>
           )}
 
@@ -44,8 +45,9 @@ class PostPagination extends React.Component {
                 css={{
                   textDecoration: 'none'
                 }}
-                dangerouslySetInnerHTML={{ __html: `${next.frontmatter.title}&nbsp;→` }}
-              />
+              >
+                {next.frontmatter.title}&nbsp;→
+              </Link>
             </li>
           )}
         </ul>
