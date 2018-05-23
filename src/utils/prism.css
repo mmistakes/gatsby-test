@@ -8,7 +8,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: #f8f8f2;
   background: none;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: "Inconsolata", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -208,7 +208,7 @@ pre[class*='language-'] {
 .gatsby-remark-code-title {
   margin-bottom: -0.6rem;
   padding: 0.5em 1em;
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
   font-size: 0.9em;
   font-weight: 700;
   background-color: #181a1d;

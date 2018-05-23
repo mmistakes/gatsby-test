@@ -51,7 +51,7 @@ const IndexPage = ({ data, pathContext }) => {
           className="headline"
           css={{
             alignSelf: 'flex-start',
-            fontFamily: '"Playfair Display", Times, serif',
+            fontFamily: '"Alegreya", serif',
             fontWeight: 700,
             fontSize: '1.953em',
             lineHeight: 1.25,

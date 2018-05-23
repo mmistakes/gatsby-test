@@ -22,7 +22,7 @@ class Header extends React.Component {
       >
         <div
           css={{
-            fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+            fontFamily: '"Inconsolata", monospace',
           }}
         >
           <Link

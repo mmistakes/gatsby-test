@@ -9,7 +9,7 @@ class Footer extends React.Component {
         css={{
           marginTop: '3em',
           marginBottom: '2em',
-          fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+          fontFamily: '"Inconsolata", monospace',
           '@media(min-width: 768px)': {
             gridColumn: '3 / 8',
             gridRow: '7 / span 1',

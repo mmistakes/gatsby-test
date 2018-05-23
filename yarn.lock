@@ -4001,6 +4001,13 @@ gatsby-remark-copy-linked-files@^1.5.30:
     probe-image-size "^4.0.0"
     unist-util-visit "^1.1.1"
 
+gatsby-remark-custom-blocks@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-custom-blocks/-/gatsby-remark-custom-blocks-1.0.4.tgz#8b71594a410d7a6dbd563e5ba416f54b8ec6db45"
+  dependencies:
+    babel-runtime "^6.26.0"
+    remark-custom-blocks "^1.0.6"
+
 gatsby-remark-emoji@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-remark-emoji/-/gatsby-remark-emoji-0.0.1.tgz#847b56139838535a986da717d625eef76e130175"
@@ -8552,6 +8559,12 @@ remark-abbr@^1.0.7:
   dependencies:
     unist-util-visit "^1.1.3"
 
+remark-custom-blocks@^1.0.6:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/remark-custom-blocks/-/remark-custom-blocks-1.0.9.tgz#40f9511097104d074e814f3487e24411425a03e6"
+  dependencies:
+    space-separated-tokens "^1.1.1"
+
 remark-numbered-footnotes@^1.0.1:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/remark-numbered-footnotes/-/remark-numbered-footnotes-1.0.5.tgz#3b0f7436ebe9280502f4d543f34ef56b68d65dbc"
@@ -9455,7 +9468,7 @@ sourcemapped-stacktrace@^1.1.6:
   dependencies:
     source-map "0.5.6"
 
-space-separated-tokens@^1.0.0:
+space-separated-tokens@^1.0.0, space-separated-tokens@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-1.1.2.tgz#e95ab9d19ae841e200808cd96bc7bd0adbbb3412"
   dependencies:
@@ -10132,6 +10145,18 @@ type-of@^2.0.1:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-alegreya-sans@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-alegreya-sans/-/typeface-alegreya-sans-0.0.54.tgz#0d7410bc3b4795e404a82b34abd55226bc4e77ba"
+
+typeface-alegreya@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-alegreya/-/typeface-alegreya-0.0.54.tgz#10f829d7659ae4d0fc601dfb5f582f597b43a848"
+
+typeface-inconsolata@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-inconsolata/-/typeface-inconsolata-0.0.54.tgz#9a7f7726eb615a3ab53dc19732f6c77adc65d5b5"
 
 typeface-playfair-display@^0.0.54:
   version "0.0.54"

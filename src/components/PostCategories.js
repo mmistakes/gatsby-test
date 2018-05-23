@@ -33,7 +33,7 @@ class PostCategories extends Component {
               css={{
                 display: 'inline-block',
                 marginRight: '30px',
-                fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+                fontFamily: '"Inconsolata", monospace',
                 fontSize: '0.8em',
                 '@media(min-width: 768px)': {
                   display: 'block',

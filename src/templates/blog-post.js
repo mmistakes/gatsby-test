@@ -59,7 +59,7 @@ class BlogPostTemplate extends React.Component {
             className="headline"
             css={{
               alignSelf: 'flex-start',
-              fontFamily: '"Playfair Display", Times, serif',
+              fontFamily: '"Alegreya", serif',
               fontWeight: 700,
               fontSize: '1.953em',
               lineHeight: 1.25,
@@ -78,7 +78,7 @@ class BlogPostTemplate extends React.Component {
             className="byline"
             css={{
               alignSelf: 'flex-start',
-              fontFamily: 'Times, serif',
+              fontFamily: '"Alegreya", serif',
               fontSize: '0.8em',
               '&::before': {
                 content: '"__"',
@@ -94,7 +94,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="page__meta"
           css={{
-            fontFamily: 'Monaco, Consolas, "Lucida Console", monospace',
+            fontFamily: '"Inconsolata", monospace',
             fontSize: '0.8em',
             textTransform: 'uppercase',
             '@media(min-width: 768px)': {
@@ -182,14 +182,11 @@ class BlogPostTemplate extends React.Component {
         >
           <div
             css={{
-              '& > p:first-child': {
-                fontStyle: 'italic',
-              },
               '& > p:first-child::first-letter': {
                 float: 'left',
-                fontSize: '3.052em',
+                fontSize: '3.5em',
                 lineHeight: '1em',
-                padding: '0.05em 0.125em 0 0.05em',
+                paddingRight: '0.125em',
               }
             }}
             dangerouslySetInnerHTML={{ __html: post.html }}

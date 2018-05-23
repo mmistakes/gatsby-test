@@ -39,7 +39,6 @@ class PostListing extends React.Component {
             <h3
               css={{
                 marginBottom: 0,
-                fontFamily: '"Playfair Display", Times, serif',
                 fontWeight: 700,
                 fontSize: '1.563em',
                 lineHeight: 1.25,
