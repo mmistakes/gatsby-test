@@ -59,9 +59,9 @@ module.exports = {
           },
           {
             // IMPORTANT: this must be ahead of other plugins that use code blocks
-            resolve: 'gatsby-remark-code-titles',
+            resolve: `gatsby-remark-code-titles`,
             options: {
-              className: 'gatsby-remark-code-title'
+              className: `gatsby-remark-code-title`
             }
           },
           {
