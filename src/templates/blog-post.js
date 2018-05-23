@@ -182,12 +182,9 @@ class BlogPostTemplate extends React.Component {
         >
           <div
             css={{
-              '& > p:first-child::first-letter': {
-                float: 'left',
-                fontSize: '3.5em',
-                lineHeight: '1em',
-                paddingRight: '0.125em',
-              }
+              '& > p:first-child': {
+                fontSize: '1.25em',
+              },
             }}
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
