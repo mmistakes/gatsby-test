@@ -9,8 +9,7 @@ const Comments = data => {
 
   const commentList = comments.map(({ node }, index) => {
     const {
-      fields: { slug: slug },
-      frontmatter: { name, url, email, uuid, friendlyDate, iso8601Date },
+      frontmatter: { slug, name, url, email, uuid, friendlyDate, iso8601Date },
       html,
     } = node
 
@@ -42,8 +41,10 @@ export const CommentsBySlug = graphql`
     comments: allMarkdownRemark(
       filter: {
         fields: {
-          slug: { eq: $slug },
           type: { eq: "comment" }
+        }
+        frontmatter: {
+          slug: { eq: $slug }
         }
       }
       sort: {
