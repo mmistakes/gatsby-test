@@ -11,9 +11,8 @@ tags:
   - images
 ---
 
-**_Note how all headlines below show an anchor link when you hover them?_**\
-That's [gatsby-remark-autolink-headers][5] hooking up all `MarkdownRemark` headers
-with anchor links for us.
+[[info]]
+| **_Note how all headlines below show an anchor link when you hover them?_** That's [gatsby-remark-autolink-headers][5] hooking up all `MarkdownRemark` headers with anchor links for us.
 
 ## Markdown in Gatsby
 
@@ -43,7 +42,7 @@ the
 
 ## Headers
 
-```no-highlight
+```markdown
 # H1
 ## H2
 ### H3
@@ -82,7 +81,7 @@ Alternatively, for H1 and H2, an underline-ish style:
 
 ## Emphasis
 
-```no-highlight
+```markdown
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
 Strong emphasis, aka bold, with **asterisks** or __underscores__.
@@ -106,7 +105,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 In this example, leading and trailing spaces are shown with with dots: ⋅
 
-```no-highlight
+```markdown
 1. First ordered list item
 2. Another item
 ⋅⋅⋅* Unordered sub-list.
@@ -151,7 +150,7 @@ spaces.\
 
 There are two ways to create links.
 
-```no-highlight
+```markdown
 [I'm an inline-style link](https://www.google.com)
 
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
@@ -201,7 +200,7 @@ Some text to show that the reference links can follow later.
 
 ## Images
 
-```no-highlight
+```markdown
 Here's our logo (hover to see the title text):
 
 Inline-style:
@@ -230,7 +229,7 @@ Tables aren't part of the core Markdown spec, but they are part of our
 implementation. They are an easy way of adding tables to your email -- a task
 that would otherwise require copy-pasting from another application.
 
-```no-highlight
+```markdown
 Colons can be used to align columns.
 
 | Tables        | Are           | Cool  |
@@ -285,7 +284,7 @@ This line has a footnote [^1]. Scroll down or click the link to see it.
 
 ## Blockquotes
 
-```no-highlight
+```markdown
 > Blockquotes are very handy in email to emulate reply text.
 > This line is part of the same quote.
 
