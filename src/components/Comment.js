@@ -6,13 +6,13 @@ const Comment = props => {
 
   return (
     <article
-      style={{
+      css={{
         display: 'flex',
         marginBottom: '10px',
       }}
     >
       <div
-        style={{
+        css={{
           flexShrink: '0',
           marginRight: '20px',
         }}
@@ -21,7 +21,7 @@ const Comment = props => {
       </div>
       <div>
         <header
-          style={{
+          css={{
             marginBottom: '10px',
           }}
         >
@@ -42,9 +42,6 @@ export default Comment
 
 export const commentQuery = graphql`
   fragment commentAttributesFragment on MarkdownRemark {
-    fields {
-      slug
-    }
     frontmatter {
       name
       url

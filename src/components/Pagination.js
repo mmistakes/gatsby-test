@@ -7,7 +7,7 @@ class Pagination extends React.Component {
     return (
       <nav className="pagination">
         <ul
-          style={{
+          css={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'space-between',

@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import config from '../../config/SiteConfig'
+import presets, { colors } from '../utils/presets'
 
 class Header extends React.Component {
   render() {
@@ -10,12 +11,12 @@ class Header extends React.Component {
         css={{
           marginTop: '1em',
           marginBottom: '1em',
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             gridColumn: '3 / 5',
             gridRow: 1,
             alignSelf: 'center',
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             gridColumn: 3,
           }
         }}

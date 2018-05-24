@@ -9,6 +9,7 @@ import Header from '../components/Header'
 import PostPagination from '../components/PostPagination'
 import PostCategories from '../components/PostCategories'
 import PostTags from '../components/PostTags'
+import presets, { colors } from '../utils/presets'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -21,11 +22,11 @@ class BlogPostTemplate extends React.Component {
       <div
         className="post"
         css={{
-          '@media(max-width: 767px)': {
+          [presets.mdDown]: {
             marginLeft: '5%',
             marginRight: '5%',
           },
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             display: 'grid',
             gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
             gridTemplateRows: '80px 100px 35%',
@@ -38,7 +39,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="page__title"
           css={{
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               display: 'flex',
               minHeight: '300px',
               flexDirection: 'column',
@@ -50,7 +51,7 @@ class BlogPostTemplate extends React.Component {
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               zIndex: 10,
             },
-            '@media(min-width: 1024px)': {
+            [presets.lgUp]: {
               gridColumn: '2 / span 3',
             }
           }}
@@ -64,10 +65,10 @@ class BlogPostTemplate extends React.Component {
               fontSize: '1.953em',
               lineHeight: 1.25,
               textDecoration: 'underline',
-              '@media(min-width: 768px)': {
+              [presets.mdUp]: {
                 paddingRight: '5%',
               },
-              '@media(min-width: 1024px)': {
+              [presets.lgUp]: {
                 fontSize: '2.441em',
               }
             }}
@@ -83,7 +84,7 @@ class BlogPostTemplate extends React.Component {
               '&::before': {
                 content: '"__"',
               },
-              '@media(min-width: 768px)': {
+              [presets.mdUp]: {
                 fontSize: '1.25em',
               }
             }}
@@ -97,7 +98,7 @@ class BlogPostTemplate extends React.Component {
             fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
             fontSize: '0.8em',
             textTransform: 'uppercase',
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               gridColumn: '3 / span 2',
               gridRow: '2 / 3',
               '&::after': {
@@ -112,7 +113,7 @@ class BlogPostTemplate extends React.Component {
                 display: 'block',
               },
             },
-            '@media(min-width: 1024px)': {
+            [presets.lgUp]: {
               gridColumn: '3 / 4',
             }
           }}
@@ -121,7 +122,7 @@ class BlogPostTemplate extends React.Component {
           <span
             className="page__date"
             css={{
-              '@media(max-width: 767px)': {
+              [presets.mdDown]: {
                 '&::before': {
                   content: `' · '`,
                 },
@@ -136,7 +137,7 @@ class BlogPostTemplate extends React.Component {
           css={{
             position: 'relative',
             marginTop: '10px',
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               gridColumn: '5 / 11',
               gridRow: '1 / 4',
               marginTop: 0,
@@ -145,7 +146,7 @@ class BlogPostTemplate extends React.Component {
               width: '100%',
               height: '100%',
             },
-            '@media(min-width: 1024px)': {
+            [presets.lgUp]: {
               gridColumn: '4 / 11',
             },
             '& .gatsby-image-outer-wrapper': {
@@ -170,12 +171,12 @@ class BlogPostTemplate extends React.Component {
           className="page__main"
           css={{
             marginTop: '1em',
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               gridColumn: '3 / 7',
               gridRow: '4 / span 1',
               alignSelf: 'flex-start',
             },
-            '@media(min-width: 1024px)': {
+            [presets.lgUp]: {
               gridColumn: '3 / 7',
             },
           }}
@@ -193,7 +194,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="page__aside"
           css={{
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               gridColumn: 8,
               gridRow: 4,
               alignSelf: 'start',

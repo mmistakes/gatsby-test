@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
+import presets, { colors } from '../utils/presets'
 
 const Tags = ({ pathContext, data }) => {
   const { tag, nodes, page, prev, next, pages, total, limit } = pathContext
@@ -20,11 +21,11 @@ const Tags = ({ pathContext, data }) => {
     <div
       className="archive"
       css={{
-        '@media(max-width: 767px)': {
+        [presets.mdDown]: {
           marginLeft: '5%',
           marginRight: '5%',
         },
-        '@media(min-width: 768px)': {
+        [presets.mdUp]: {
           display: 'grid',
           gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
           gridTemplateRows: '80px 35%',
@@ -37,7 +38,7 @@ const Tags = ({ pathContext, data }) => {
       <div
         className="page__title"
         css={{
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             display: 'flex',
             minHeight: '300px',
             flexDirection: 'column',
@@ -49,7 +50,7 @@ const Tags = ({ pathContext, data }) => {
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
             zIndex: 10,
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             gridColumn: '2 / span 3',
           }
         }}
@@ -63,10 +64,10 @@ const Tags = ({ pathContext, data }) => {
             fontSize: '1.953em',
             lineHeight: 1.25,
             textDecoration: 'underline',
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               paddingRight: '5%',
             },
-            '@media(min-width: 1024px)': {
+            [presets.lgUp]: {
               fontSize: '2.441em',
             }
           }}
@@ -79,7 +80,7 @@ const Tags = ({ pathContext, data }) => {
         css={{
           position: 'relative',
           marginTop: '10px',
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             gridColumn: '5 / 11',
             gridRow: '1 / 4',
             marginTop: 0,
@@ -88,7 +89,7 @@ const Tags = ({ pathContext, data }) => {
             width: '100%',
             height: '100%',
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             gridColumn: '4 / 11',
           },
           '& .gatsby-image-outer-wrapper': {
@@ -113,12 +114,12 @@ const Tags = ({ pathContext, data }) => {
         className="page__main"
         css={{
           marginTop: '1em',
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             gridColumn: '3 / 7',
             gridRow: '4 / span 1',
             alignSelf: 'flex-start',
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             gridColumn: '3 / 7',
           },
         }}

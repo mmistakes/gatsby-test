@@ -45,7 +45,7 @@ class PostListing extends React.Component {
               }}
             >
               <Link
-                style={{ textDecoration: 'none' }}
+                css={{ textDecoration: 'none' }}
                 to={post.path}
                 key={post.title}
               >

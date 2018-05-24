@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import presets, { colors } from '../utils/presets'
 
 class PostPagination extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class PostPagination extends React.Component {
             margin: 0,
             padding: 0,
             listStyle: 'none',
-            '@media(max-width: 1023px)': {
+            [presets.lgDown]: {
               display: 'flex',
               flexWrap: 'wrap',
               justifyContent: 'space-between',

@@ -1,5 +1,6 @@
 import React from 'react'
 import config from '../../config/SiteConfig'
+import presets, { colors } from '../utils/presets'
 
 class Footer extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class Footer extends React.Component {
           marginTop: '3em',
           marginBottom: '2em',
           fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             gridColumn: '3 / 8',
             gridRow: '7 / span 1',
             alignSelf: 'center',

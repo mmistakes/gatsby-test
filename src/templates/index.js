@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
+import presets, { colors } from '../utils/presets'
 
 const IndexPage = ({ data, pathContext }) => {
   const { nodes, page, prev, next, pages, total, limit } = pathContext
@@ -14,11 +15,11 @@ const IndexPage = ({ data, pathContext }) => {
     <div
       className="archive"
       css={{
-        '@media(max-width: 767px)': {
+        [presets.mdDown]: {
           marginLeft: '5%',
           marginRight: '5%',
         },
-        '@media(min-width: 768px)': {
+        [presets.mdUp]: {
           display: 'grid',
           gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
           gridTemplateRows: '80px 35%',
@@ -31,7 +32,7 @@ const IndexPage = ({ data, pathContext }) => {
       <div
         className="page__title"
         css={{
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -42,7 +43,7 @@ const IndexPage = ({ data, pathContext }) => {
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
             zIndex: 10,
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             gridColumn: '2 / span 3',
           }
         }}
@@ -56,10 +57,10 @@ const IndexPage = ({ data, pathContext }) => {
             fontSize: '1.953em',
             lineHeight: 1.25,
             textDecoration: 'underline',
-            '@media(min-width: 768px)': {
+            [presets.mdUp]: {
               paddingRight: '5%',
             },
-            '@media(min-width: 1024px)': {
+            [presets.lgUp]: {
               fontSize: '2.441em',
             }
           }}
@@ -71,12 +72,12 @@ const IndexPage = ({ data, pathContext }) => {
         className="page__main"
         css={{
           marginTop: '1em',
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             gridColumn: '3 / 7',
             gridRow: '4 / span 1',
             alignSelf: 'flex-start',
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             gridColumn: '3 / 7',
           },
         }}
