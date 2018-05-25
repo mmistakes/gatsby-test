@@ -31,6 +31,7 @@ class PostCategories extends Component {
         {categories &&
           categories.map(category => (
             <span
+              key={category}
               css={{
                 display: 'inline-block',
                 marginRight: '30px',
@@ -45,7 +46,6 @@ class PostCategories extends Component {
               }}
             >
               <Link
-                key={category}
                 to={`/${_.kebabCase(category)}/`}
                 css={{
                   textDecoration: 'none'

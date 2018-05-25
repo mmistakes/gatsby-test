@@ -31,6 +31,7 @@ class PostTags extends Component {
         {tags &&
           tags.map(tag => (
             <span
+              key={tag}
               css={{
                 display: 'inline-block',
                 marginRight: '30px',
@@ -45,7 +46,6 @@ class PostTags extends Component {
               }}
             >
               <Link
-                key={tag}
                 to={`/tag/${_.kebabCase(tag)}/`}
                 css={{
                   textDecoration: 'none'
