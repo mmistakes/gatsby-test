@@ -115,11 +115,14 @@ const Tags = ({ pathContext, data }) => {
         css={{
           marginTop: '1em',
           [presets.mdUp]: {
-            gridColumn: '3 / 7',
+            gridColumn: '3 / 9',
             gridRow: '4 / span 1',
             alignSelf: 'flex-start',
           },
           [presets.lgUp]: {
+            gridColumn: '3 / 8',
+          },
+          [presets.xlUp]: {
             gridColumn: '3 / 7',
           },
         }}

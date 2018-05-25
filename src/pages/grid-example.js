@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import presets, { colors } from '../utils/presets'
 
 class GridExample extends React.Component {
   render() {

@@ -6,6 +6,7 @@ import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import presets, { colors } from '../utils/presets'
 
 const TagsPage = ({
   data: {
@@ -18,11 +19,11 @@ const TagsPage = ({
   <div
     className="page"
     css={{
-      '@media(max-width: 767px)': {
+      [presets.mdDown]: {
         marginLeft: '5%',
         marginRight: '5%',
       },
-      '@media(min-width: 768px)': {
+      [presets.mdUp]: {
         display: 'grid',
         gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
         gridTemplateRows: '80px 35%',
@@ -35,7 +36,7 @@ const TagsPage = ({
     <div
       className="page__title"
       css={{
-        '@media(min-width: 768px)': {
+        [presets.mdUp]: {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -46,7 +47,7 @@ const TagsPage = ({
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
           zIndex: 10,
         },
-        '@media(min-width: 1024px)': {
+        [presets.lgUp]: {
           gridColumn: '2 / span 3',
         }
       }}
@@ -60,10 +61,10 @@ const TagsPage = ({
           fontSize: '1.953em',
           lineHeight: 1.25,
           textDecoration: 'underline',
-          '@media(min-width: 768px)': {
+          [presets.mdUp]: {
             paddingRight: '5%',
           },
-          '@media(min-width: 1024px)': {
+          [presets.lgUp]: {
             fontSize: '2.441em',
           }
         }}
@@ -75,12 +76,15 @@ const TagsPage = ({
       className="page__main"
       css={{
         marginTop: '1em',
-        '@media(min-width: 768px)': {
-          gridColumn: '3 / 8',
+        [presets.mdUp]: {
+          gridColumn: '3 / 9',
           gridRow: '4 / span 1',
           alignSelf: 'flex-start',
         },
-        '@media(min-width: 1024px)': {
+        [presets.lgUp]: {
+          gridColumn: '3 / 8',
+        },
+        [presets.xlUp]: {
           gridColumn: '3 / 7',
         },
       }}
@@ -90,11 +94,11 @@ const TagsPage = ({
           listStyle: 'none',
           margin: 0,
           padding: 0,
-          '@media(min-width: 768px)': {
+          [presets.smUp]: {
             display: 'grid',
             gridColumnGap: '2em',
           },
-          '@media(min-width: 1024px)': {
+          [presets.mdUp]: {
             gridTemplateColumns: 'repeat(3, 1fr)',
           }
         }}
