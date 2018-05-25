@@ -42,12 +42,17 @@ comments:
   # with a `type` property, which configures the generated field, or any value
   # to be used directly (e.g. a string, number or array)
   generatedFields:
-    type: "comment"
-    slug: ""
     date:
       type: "date"
       options:
         format: "iso8601"
+    type: "comment"
+
+  # List of transformations to apply to any of the fields supplied. Keys are
+  # the name of the field and values are possible transformation types.
+  transforms:
+    message: "frontmatterContent"
+    email: "md5"
 
   # Whether entries need to be approved before they are published to the main
   # branch. If set to `true`, a pull request will be created for your approval.
@@ -56,11 +61,5 @@ comments:
 
   # Name of the site. Used in notification emails.
   name: "Gatsby Test"
-
-  # List of transformations to apply to any of the fields supplied. Keys are
-  # the name of the field and values are possible transformation types.
-  transforms:
-    email: "md5"
-    message: "frontmatterContent"
 
 # EOF
