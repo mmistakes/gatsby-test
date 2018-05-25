@@ -34,7 +34,6 @@ comments:
   #
   # Destination path (directory) for the data files. Accepts placeholders.
   path: "src/comments/{options.slugDir}"
-
   filename: "comment-{@timestamp}"
   extension: "md"
 
