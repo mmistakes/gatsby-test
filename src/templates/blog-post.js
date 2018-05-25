@@ -4,6 +4,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Bio from '../components/Bio'
 import Comments from '../components/Comments'
+import CommentsForm from '../components/CommentsForm'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import PostPagination from '../components/PostPagination'
@@ -16,7 +17,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const comments = this.props.data.comments
-    const { previous, next, tags, categories } = this.props.pathContext
+    const { slug, previous, next, tags, categories } = this.props.pathContext
 
     return (
       <div
@@ -181,15 +182,10 @@ class BlogPostTemplate extends React.Component {
             },
           }}
         >
-          <div
-            css={{
-              '& > p:first-child': {
-                fontSize: '1.25em',
-              },
-            }}
-            dangerouslySetInnerHTML={{ __html: post.html }}
+          <div dangerouslySetInnerHTML={{ __html: post.html }}
           />
           <Comments comments={comments} />
+          <CommentsForm slug={slug} />
         </div>
         <div
           className="page__aside"
@@ -227,6 +223,7 @@ export const pageQuery = graphql`
       timeToRead
       tableOfContents
       fields {
+        slug
         date(formatString: "MMMM DD, YYYY")
       }
       frontmatter {
