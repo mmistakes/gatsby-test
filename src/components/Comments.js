@@ -9,7 +9,7 @@ const Comments = data => {
 
   const commentList = comments.map(({ node }, index) => {
     const {
-      frontmatter: { slug, name, url, email, uuid, friendlyDate, iso8601Date },
+      frontmatter: { _parent, name, url, email, uuid, friendlyDate, iso8601Date },
       html,
     } = node
 
@@ -44,7 +44,7 @@ export const CommentsBySlug = graphql`
           type: { eq: "comment" }
         }
         frontmatter: {
-          slug: { eq: $slug }
+          _parent: { eq: $slug }
         }
       }
       sort: {
