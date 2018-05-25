@@ -1,11 +1,11 @@
 import Link from 'gatsby-link'
 import React from 'react'
 
+require('../css/global.css')
+require('../css/prism.css')
+
 // Load typefaces
 require('typeface-alegreya')
-
-require('../utils/global.css')
-require('../utils/prism.css')
 
 class Template extends React.Component {
   render() {

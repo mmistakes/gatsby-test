@@ -9,6 +9,7 @@ pre[class*='language-'] {
   color: #f8f8f2;
   background: none;
   font-family: Menlo, Consolas, Monaco, "Courier New", Courier, monospace;
+  font-size: 0.9rem;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -198,7 +199,7 @@ pre[class*='language-'] {
   overflow: initial;
   float: left; /* 1 */
   min-width: 100%; /* 2 */
-  font-size: 0.9em;
+  font-size: 0.9rem;
 }
 
 /**
@@ -209,11 +210,9 @@ pre[class*='language-'] {
   margin-bottom: -0.6rem;
   padding: 0.5em 1em;
   font-family: sans-serif;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   font-weight: 700;
   background-color: #181a1d;
   color: #fff;
   z-index: 0;
-  border-top-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
 }
