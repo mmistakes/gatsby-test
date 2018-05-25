@@ -10,7 +10,6 @@ const CommentForm = ({ slug }) => {
     <form method="POST" action="https://api.staticman.net/v2/entry/mmistakes/gatsby-test/master/comments">
       <input name="options[redirect]" type="hidden" value={successPage} />
       <input name="options[slug]" type="hidden" value={slugDir} />
-      <input name="options[type]" type="hidden" value="comment" />
 
       <label
         css={{
