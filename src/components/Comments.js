@@ -3,7 +3,7 @@ import Comment from './Comment.js'
 
 const Comments = data => {
   if (data.comments === null) {
-    return ``
+    return null
   }
   const { comments: { edges: comments } } = data
 
