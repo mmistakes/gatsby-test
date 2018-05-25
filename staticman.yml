@@ -43,6 +43,7 @@ comments:
   # to be used directly (e.g. a string, number or array)
   generatedFields:
     type: "comment"
+    slug: ""
     date:
       type: "date"
       options:
