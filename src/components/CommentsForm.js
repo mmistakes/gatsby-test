@@ -1,11 +1,15 @@
 import React from 'react'
+import config from '../../config/SiteConfig'
 
 // Use the `path` (frontmatter) as the identifier for the post.
 const CommentForm = ({ slug }) => {
+  const slugDir = slug.replace(/^\/+|/g, ``)
+  const successPage = `${config.siteUrl}/comment-success`
+
   return (
     <form method="POST" action="https://api.staticman.net/v2/entry/mmistakes/gatsby-test/master/comments">
-      <input name="options[redirect]" type="hidden" value="/comments/success" />
-      <input name="options[slug]" type="hidden" value={slug} />
+      <input name="options[redirect]" type="hidden" value={successPage} />
+      <input name="options[slug]" type="hidden" value={slugDir} />
       <input name="options[type]" type="hidden" value="comment" />
 
       <label
