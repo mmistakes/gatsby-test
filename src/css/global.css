@@ -1,11 +1,11 @@
 html {
-  font-size: 90%;
+  font-size: 100%;
   line-height: 1.625;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 100%;
+    font-size: 105%;
   }
 }
 
