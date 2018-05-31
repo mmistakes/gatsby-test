@@ -22,7 +22,6 @@ body {
   font-family: Georgia, serif;
   font-kerning: normal;
   word-wrap: break-word;
-  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 }
 
 h1,
