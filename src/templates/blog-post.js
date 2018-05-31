@@ -10,7 +10,9 @@ import Header from '../components/Header'
 import PostPagination from '../components/PostPagination'
 import PostCategories from '../components/PostCategories'
 import PostTags from '../components/PostTags'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -61,7 +63,7 @@ class BlogPostTemplate extends React.Component {
             className="headline"
             css={{
               alignSelf: 'flex-start',
-              fontFamily: '"Alegreya", serif',
+              fontFamily: fonts.alternate,
               fontWeight: 700,
               fontSize: '1.953em',
               lineHeight: 1.25,
@@ -80,7 +82,7 @@ class BlogPostTemplate extends React.Component {
             className="byline"
             css={{
               alignSelf: 'flex-start',
-              fontFamily: '"Alegreya", serif',
+              fontFamily: fonts.alternate,
               fontSize: '0.8em',
               '&::before': {
                 content: '"__"',
@@ -96,7 +98,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="page__meta"
           css={{
-            fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
+            fontFamily: fonts.monospace,
             fontSize: '0.8em',
             textTransform: 'uppercase',
             [presets.mdUp]: {

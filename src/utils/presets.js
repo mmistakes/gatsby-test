@@ -1,5 +1,3 @@
-import colors from './colors'
-
 module.exports = {
   smUp: `@media (min-width: 576px)`,
   mdUp: `@media (min-width: 768px)`,

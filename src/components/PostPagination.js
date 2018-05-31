@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 class PostPagination extends React.Component {
   render() {

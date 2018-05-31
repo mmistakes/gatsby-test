@@ -1,7 +1,9 @@
 import Link from 'gatsby-link'
 import _ from 'lodash'
 import React, { Component } from 'react'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 class PostCategories extends Component {
   render() {
@@ -35,7 +37,7 @@ class PostCategories extends Component {
               css={{
                 display: 'inline-block',
                 marginRight: '30px',
-                fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
+                fontFamily: fonts.monospace,
                 fontSize: '0.8em',
                 [presets.mdUp]: {
                   display: 'block',

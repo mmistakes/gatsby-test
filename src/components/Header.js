@@ -1,7 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import config from '../../config/SiteConfig'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 class Header extends React.Component {
   render() {
@@ -23,7 +25,7 @@ class Header extends React.Component {
       >
         <div
           css={{
-            fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
+            fontFamily: fonts.monospace,
           }}
         >
           <Link

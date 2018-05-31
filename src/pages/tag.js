@@ -6,7 +6,9 @@ import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 const TagsPage = ({
   data: {
@@ -56,7 +58,7 @@ const TagsPage = ({
         className="headline"
         css={{
           alignSelf: 'flex-start',
-          fontFamily: '"Alegreya", serif',
+          fontFamily: fonts.alternate,
           fontWeight: 700,
           fontSize: '1.953em',
           lineHeight: 1.25,

@@ -1,6 +1,8 @@
 import React from 'react'
 import config from '../../config/SiteConfig'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 class Footer extends React.Component {
   render() {
@@ -10,7 +12,7 @@ class Footer extends React.Component {
         css={{
           marginTop: '3em',
           marginBottom: '2em',
-          fontFamily: 'Menlo, Consolas, Monaco, "Courier New", Courier, monospace',
+          fontFamily: fonts.monospace,
           [presets.mdUp]: {
             gridColumn: '3 / 8',
             gridRow: '7 / span 1',

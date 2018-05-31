@@ -7,7 +7,9 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
-import presets, { colors } from '../utils/presets'
+import colors from '../utils/colors'
+import fonts from '../utils/fonts'
+import presets from '../utils/presets'
 
 const Categories = ({ pathContext, data }) => {
   const { category, nodes, page, prev, next, pages, total, limit } = pathContext
@@ -58,7 +60,7 @@ const Categories = ({ pathContext, data }) => {
           className="headline"
           css={{
             alignSelf: 'flex-start',
-            fontFamily: '"Alegreya", serif',
+            fontFamily: fonts.alternate,
             fontWeight: 700,
             fontSize: '1.953em',
             lineHeight: 1.25,
