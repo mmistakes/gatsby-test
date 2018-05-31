@@ -21,7 +21,7 @@ module.exports = class HTML extends React.Component {
       )
     }
     return (
-      <html {...this.props.htmlAttributes}>
+      <html {...this.props.htmlAttributes} lang="en-US">
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
