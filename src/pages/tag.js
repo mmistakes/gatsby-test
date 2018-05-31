@@ -61,6 +61,8 @@ const TagsPage = ({
           fontFamily: fonts.alternate,
           fontWeight: 700,
           fontSize: '1.953em',
+          fontVariantLigatures: 'common-ligatures',
+          fontFeatureSettings: '"kern" on, "liga" on, "clig" on, "calt" on, "frac" on',
           lineHeight: 1.25,
           textDecoration: 'underline',
           [presets.mdUp]: {
