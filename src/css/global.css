@@ -200,3 +200,19 @@ hr::before {
 .notice.success .header{
   color:#1a531b;
 }
+
+/* Images */
+
+.gatsby-resp-image-link + .gatsby-resp-image-link {
+  margin-top: 1em;
+}
+
+.gatsby-resp-image-link + em {
+  margin-top: 0.5em;
+  font-size: 0.8em;
+  font-style: normal;
+}
+
+.page__main p {
+  position: relative;
+}
