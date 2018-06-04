@@ -57,13 +57,13 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          {
-            // IMPORTANT: this must be ahead of other plugins that use code blocks
-            resolve: `gatsby-remark-code-titles`,
-            options: {
-              className: `gatsby-remark-code-title`
-            }
-          },
+          // {
+          //   // IMPORTANT: this must be ahead of other plugins that use code blocks
+          //   resolve: `gatsby-remark-code-titles`,
+          //   options: {
+          //     className: `gatsby-remark-code-title`
+          //   }
+          // },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
