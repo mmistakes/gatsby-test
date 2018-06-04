@@ -2,6 +2,7 @@ import Link from 'gatsby-link'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Pagination from '../components/Pagination'
@@ -31,47 +32,7 @@ const IndexPage = ({ data, pathContext }) => {
     >
       <Helmet title={config.title} />
       <Header />
-      <div
-        className="page__title"
-        css={{
-          [presets.mdUp]: {
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignSelf: 'stretch',
-            gridColumn: '2 / span 4',
-            gridRow: '2 / 3',
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            zIndex: 10,
-          },
-          [presets.lgUp]: {
-            gridColumn: '2 / span 3',
-          }
-        }}
-      >
-        <h1
-          className="headline"
-          css={{
-            alignSelf: 'flex-start',
-            fontFamily: fonts.alternate,
-            fontWeight: 700,
-            fontSize: '1.953em',
-            fontVariantLigatures: 'common-ligatures',
-            fontFeatureSettings: '"kern" on, "liga" on, "clig" on, "calt" on, "frac" on',
-            lineHeight: 1.25,
-            textDecoration: 'underline',
-            [presets.mdUp]: {
-              paddingRight: '5%',
-            },
-            [presets.lgUp]: {
-              fontSize: '2.441em',
-            }
-          }}
-        >
-          Recent Posts
-        </h1>
-      </div>
+      <PageTitle title="Recent Posts" />
       <div
         className="page__main"
         css={{
