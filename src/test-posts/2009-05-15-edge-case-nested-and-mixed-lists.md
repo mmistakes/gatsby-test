@@ -3,7 +3,7 @@ title: "Edge Case: Nested and Mixed Lists"
 image:
   path: ../assets/images/null.png
 categories:
-  - edge-case
+  - Edge Case
 tags:
   - content
   - css
