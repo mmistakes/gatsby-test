@@ -12,8 +12,8 @@ import fonts from '../utils/fonts'
 import presets from '../utils/presets'
 
 const Categories = ({ pathContext, data }) => {
-  const { category, nodes, page, prev, next, pages, total, limit } = pathContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { category, nodes, page, prev, next, pages } = pathContext
+  const { totalCount } = data.allMarkdownRemark
   const categoryHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
   } filed in "${category}"`

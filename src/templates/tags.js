@@ -13,8 +13,8 @@ import fonts from '../utils/fonts'
 import presets from '../utils/presets'
 
 const Tags = ({ pathContext, data }) => {
-  const { tag, nodes, page, prev, next, pages, total, limit } = pathContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { tag, nodes, page, prev, next, pages } = pathContext
+  const { totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
   } tagged with "${tag}"`
