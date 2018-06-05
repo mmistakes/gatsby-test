@@ -6,7 +6,7 @@ module.exports = {
   "root": true,
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "settings": {
-    "import/core-modules": ["gatsby"]
+    "import/core-modules": ["gatsby", "react", "config"]
   },
   "plugins": [
     "react",
