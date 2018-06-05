@@ -62,13 +62,13 @@ const Tags = ({ pathContext, data }) => {
           }
         }}
       >
-        {data.pageImage.sizes ? (
+        {data.pageImage.childImageSharp.sizes ? (
           <Img
             style={{
               width: '100%',
               height: '100%',
             }}
-            sizes={data.pageImage.sizes}
+            sizes={data.pageImage.childImageSharp.sizes}
           />
         ) : (
           <div />
@@ -130,9 +130,11 @@ export const pageQuery = graphql`
         author
       }
     }
-    pageImage: imageSharp(id: { regex: "/unsplash-image-10/" }) {
-      sizes(maxWidth: 1280, quality: 90)  {
-        ...GatsbyImageSharpSizes
+    pageImage: file(relativePath: { eq: "unsplash-image-10.jpg" }) {
+      childImageSharp {
+        sizes(maxWidth: 1280, quality: 90) {
+          ...GatsbyImageSharpSizes
+        }
       }
     }
     allMarkdownRemark(
