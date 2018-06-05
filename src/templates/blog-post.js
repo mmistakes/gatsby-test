@@ -62,10 +62,10 @@ class BlogPostTemplate extends React.Component {
             '& .gatsby-image-outer-wrapper': {
               width: '100%',
               height: '100%',
-            }
+            },
           }}
         >
-          {post.frontmatter.image.cover == true ? (
+          {post.frontmatter.image.cover === true ? (
             <Img
               style={{
                 width: '100%',
@@ -91,8 +91,7 @@ class BlogPostTemplate extends React.Component {
             },
           }}
         >
-          <div dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
           <Comments comments={comments} />
           <CommentsForm slug={slug} />
         </div>

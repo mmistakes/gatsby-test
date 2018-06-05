@@ -23,6 +23,8 @@ module.exports = {
   },
   "rules": {
     "linebreak-style": 0,
+    "react/prefer-stateless-function": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

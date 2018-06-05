@@ -1,10 +1,8 @@
 const _ = require('lodash')
 const Promise = require('bluebird')
 const path = require('path')
-const slugify = require('slug')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { createPaginationPages } = require('gatsby-pagination')
-const Img = require('gatsby-image')
 
 // Calculate post defaults.
 const calculateDefaults = (node, getNode) => {
@@ -48,14 +46,13 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
             .replace(/([a-z])([A-Z])/g, '$1-$2')
             .replace(/\s+/g, '-')
             .toLowerCase()
-          value = `/${categoriesPath}/${title}/`
+          shapedSlug = `/${categoriesPath}/${title}/`
         } else {
-          const value = `/${title}/`
+          const shapedSlug = `/${title}/`
         }
 
-        createNodeField({ node, name: `slug`, value: value })
+        createNodeField({ node, name: `slug`, value: shapedSlug })
         createNodeField({ node, name: `date`, value: date })
-        createNodeField({ node, name: `title`, value: title })
         createNodeField({ node, name: `type`, value: type })
       }
     } catch (ex) {
@@ -80,11 +77,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           {
             allMarkdownRemark(
               sort: { fields: [fields___date], order: DESC }
-              filter: {
-                fields: {
-                  type: { eq: "post" }
-                }
-              }
+              filter: { fields: { type: { eq: "post" } } }
             ) {
               edges {
                 node {
@@ -133,12 +126,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           createPage: createPage,
           edges: posts,
           component: indexPage,
-          limit: 5
-        });
+          limit: 5,
+        })
 
         // Create post pages
         _.each(posts, (post, index) => {
-          const previous = index === posts.length - 1 ? false : posts[index + 1].node
+          const previous =
+            index === posts.length - 1 ? false : posts[index + 1].node
           const next = index === 0 ? false : posts[index - 1].node
 
           createPage({
@@ -161,9 +155,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             edge.node.frontmatter.tags.forEach(tag => {
               tagSet.add(tag)
 
-              const array = tagMap.has(tag) ? tagMap.get(tag) : [];
-              array.push(edge);
-              tagMap.set(tag, array);
+              const array = tagMap.has(tag) ? tagMap.get(tag) : []
+              array.push(edge)
+              tagMap.set(tag, array)
             })
           }
 
@@ -171,16 +165,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             edge.node.frontmatter.categories.forEach(category => {
               categorySet.add(category)
 
-              const array = categoryMap.has(category) ? categoryMap.get(category) : [];
-              array.push(edge);
-              categoryMap.set(category, array);
+              const array = categoryMap.has(category)
+                ? categoryMap.get(category)
+                : []
+              array.push(edge)
+              categoryMap.set(category, array)
             })
           }
 
           const tagList = Array.from(tagSet)
           tagList.forEach(tag => {
             // Create paginated tag pages
-            const tagFormatter = tag => route => `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ""}`
+            const tagFormatter = tag => route =>
+              `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ''}`
             createPaginationPages({
               createPage,
               edges: tagMap.get(tag),
@@ -188,15 +185,16 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               pathFormatter: tagFormatter(tag),
               limit: 5,
               context: {
-                tag
-              }
+                tag,
+              },
             })
           })
 
           const categoryList = Array.from(categorySet)
           categoryList.forEach(category => {
             // Create paginated category pages
-            const categoryFormatter = category => route => `/${_.kebabCase(category)}/${route !== 1 ? route : ""}`
+            const categoryFormatter = category => route =>
+              `/${_.kebabCase(category)}/${route !== 1 ? route : ''}`
             createPaginationPages({
               createPage,
               edges: categoryMap.get(category),
@@ -204,8 +202,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               pathFormatter: categoryFormatter(category),
               limit: 5,
               context: {
-                category
-              }
+                category,
+              },
             })
           })
         })
