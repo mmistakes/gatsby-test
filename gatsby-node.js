@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const moment = require('moment')
 const Promise = require('bluebird')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
@@ -14,11 +15,11 @@ const calculateDefaults = (node, getNode) => {
   if (isPostShaped) {
     const [, defaultDate, defaultTitle] = isPostShaped
     return [defaultSlug, defaultTitle, defaultDate]
-  } else {
-    const [, defaultTitle] = defaultSlug.match(/^\/(.*)\/$/)
-    const defaultDate = '1980-01-01'
-    return [defaultSlug, defaultTitle, defaultDate]
   }
+
+  const [, defaultTitle] = defaultSlug.match(/^\/(.*)\/$/)
+  const defaultDate = moment().format('YYYY-MM-DD')
+  return [defaultSlug, defaultTitle, defaultDate]
 }
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -34,24 +35,18 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
           getNode
         )
 
-        const slug = node.frontmatter.slug || defaultSlug
         const date = node.frontmatter.date || defaultDate
         const title = defaultTitle
         const type = node.frontmatter.type || 'post'
         const { categories } = node.frontmatter
+        const categoriesPath = categories
+          .join('/')
+          .replace(/([a-z])([A-Z])/g, '$1-$2')
+          .replace(/\s+/g, '-')
+          .toLowerCase()
+        const slug = `/${categoriesPath}/${title}/`
 
-        if (categories) {
-          categoriesPath = categories
-            .join('/')
-            .replace(/([a-z])([A-Z])/g, '$1-$2')
-            .replace(/\s+/g, '-')
-            .toLowerCase()
-          shapedSlug = `/${categoriesPath}/${title}/`
-        } else {
-          const shapedSlug = `/${title}/`
-        }
-
-        createNodeField({ node, name: `slug`, value: shapedSlug })
+        createNodeField({ node, name: `slug`, value: slug })
         createNodeField({ node, name: `date`, value: date })
         createNodeField({ node, name: `type`, value: type })
       }
