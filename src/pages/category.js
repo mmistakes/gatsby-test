@@ -65,7 +65,7 @@ const CategoriesPage = ({
           },
           [presets.mdUp]: {
             gridTemplateColumns: 'repeat(3, 1fr)',
-          }
+          },
         }}
       >
         {group.map(category => (
@@ -80,7 +80,8 @@ const CategoriesPage = ({
               }}
               to={`/${kebabCase(category.fieldValue)}/`}
             >
-              <span>{category.fieldValue}</span> <span className="count">{category.totalCount}</span>
+              <span>{category.fieldValue}</span>{' '}
+              <span className="count">{category.totalCount}</span>
             </Link>
           </li>
         ))}

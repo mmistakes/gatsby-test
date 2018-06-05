@@ -1,6 +1,6 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import config from '../../config/SiteConfig';
+import React from 'react'
+import Helmet from 'react-helmet'
+import config from '../../config/SiteConfig'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 

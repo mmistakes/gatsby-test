@@ -13,7 +13,8 @@ class PostCategories extends Component {
         className="page__taxonomy"
         css={{
           paddingTop: '2em',
-        }}>
+        }}
+      >
         <h3
           className="title"
           css={{
@@ -25,7 +26,7 @@ class PostCategories extends Component {
             fontSize: '0.8em',
             [presets.mdUp]: {
               display: 'block',
-            }
+            },
           }}
         >
           Filed in:
@@ -44,20 +45,19 @@ class PostCategories extends Component {
                   '&::before': {
                     content: '"_"',
                   },
-                }
+                },
               }}
             >
               <Link
                 to={`/${_.kebabCase(category)}/`}
                 css={{
-                  textDecoration: 'none'
+                  textDecoration: 'none',
                 }}
               >
                 {category}
               </Link>
             </span>
-          ))
-        }
+          ))}
       </div>
     )
   }

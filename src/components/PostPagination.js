@@ -32,7 +32,7 @@ class PostPagination extends React.Component {
                 to={previous.fields.slug}
                 rel="prev"
                 css={{
-                  textDecoration: 'none'
+                  textDecoration: 'none',
                 }}
               >
                 ←&nbsp;{previous.frontmatter.title}
@@ -46,7 +46,7 @@ class PostPagination extends React.Component {
                 to={next.fields.slug}
                 rel="next"
                 css={{
-                  textDecoration: 'none'
+                  textDecoration: 'none',
                 }}
               >
                 {next.frontmatter.title}&nbsp;→

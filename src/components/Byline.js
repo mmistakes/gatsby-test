@@ -14,7 +14,7 @@ class Byline extends React.Component {
           fontSize: '0.8em',
           [presets.mdUp]: {
             fontSize: '1.25em',
-          }
+          },
         }}
       >
         {author ? (

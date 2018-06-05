@@ -19,7 +19,10 @@ class GridExample extends React.Component {
         <Header />
         <div>
           <h1>Grid Example</h1>
-          <p>Post index in grid format using <strong>gatsby-image</strong> to generate square thumbnail images from the same "cover image" source.</p>
+          <p>
+            Post index in grid format using <strong>gatsby-image</strong> to
+            generate square thumbnail images from the same "cover image" source.
+          </p>
           <div
             style={{
               display: `grid`,
@@ -43,10 +46,10 @@ class GridExample extends React.Component {
                     post.node.frontmatter.image.path.childImageSharp.resolutions
                   }
                   style={{
-                    maxWidth: `100%`
+                    maxWidth: `100%`,
                   }}
                   imgStyle={{
-                    marginBottom: `0`
+                    marginBottom: `0`,
                   }}
                 />
               </Link>

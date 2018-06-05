@@ -11,11 +11,7 @@ class Template extends React.Component {
   render() {
     const { location, children } = this.props
 
-    return (
-      <div>
-        {children()}
-      </div>
-    )
+    return <div>{children()}</div>
   }
 }
 

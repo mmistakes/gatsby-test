@@ -64,7 +64,8 @@ class PostListing extends React.Component {
                     {!!i && ', '}
                     <Link to={`/${kebabCase(category)}/`}>{category}</Link>
                   </span>
-                ))} &middot; {post.timeToRead} min read
+                ))}{' '}
+                &middot; {post.timeToRead} min read
               </small>
             </div>
             {post.cover == true ? (

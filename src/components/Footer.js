@@ -17,7 +17,7 @@ class Footer extends React.Component {
             gridColumn: '3 / 8',
             gridRow: '7 / span 1',
             alignSelf: 'center',
-          }
+          },
         }}
       >
         &copy; Copyright {config.title}

@@ -30,7 +30,7 @@ class PageMeta extends React.Component {
           },
           [presets.lgUp]: {
             gridColumn: '3 / 4',
-          }
+          },
         }}
       >
         {timeToRead ? (

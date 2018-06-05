@@ -26,7 +26,9 @@ const Comment = props => {
           }}
         >
           {url !== '' ? (
-            <a className="h-card" href={url}>{name}</a>
+            <a className="h-card" href={url}>
+              {name}
+            </a>
           ) : (
             <span className="h-card">{name}</span>
           )}

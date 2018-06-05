@@ -25,7 +25,7 @@ class PageTitle extends React.Component {
           },
           [presets.lgUp]: {
             gridColumn: '2 / span 3',
-          }
+          },
         }}
       >
         <h1
@@ -44,7 +44,7 @@ class PageTitle extends React.Component {
             },
             [presets.lgUp]: {
               fontSize: '2.441em',
-            }
+            },
           }}
         >
           {title}

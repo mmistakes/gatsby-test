@@ -25,7 +25,9 @@ class Pagination extends React.Component {
             </li>
           )}
 
-          <li>Page {page} of {pages}</li>
+          <li>
+            Page {page} of {pages}
+          </li>
 
           {next && (
             <li>

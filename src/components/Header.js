@@ -20,7 +20,7 @@ class Header extends React.Component {
           },
           [presets.lgUp]: {
             gridColumn: 3,
-          }
+          },
         }}
       >
         <div

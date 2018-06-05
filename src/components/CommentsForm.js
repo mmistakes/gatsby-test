@@ -7,7 +7,10 @@ const CommentForm = ({ slug }) => {
   const successPage = `${config.siteUrl}/comment-success`
 
   return (
-    <form method="POST" action="https://api.staticman.net/v2/entry/mmistakes/gatsby-test/master/comments">
+    <form
+      method="POST"
+      action="https://api.staticman.net/v2/entry/mmistakes/gatsby-test/master/comments"
+    >
       <input name="options[redirect]" type="hidden" value={successPage} />
       <input name="options[parent]" type="hidden" value={slug} />
       <input name="options[slug]" type="hidden" value={slugDir} />
@@ -47,7 +50,7 @@ const CommentForm = ({ slug }) => {
 
       <button type="submit">Comment</button>
     </form>
-  );
-};
+  )
+}
 
-export default CommentForm;
+export default CommentForm

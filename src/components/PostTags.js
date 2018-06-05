@@ -13,7 +13,8 @@ class PostTags extends Component {
         className="page__taxonomy"
         css={{
           paddingTop: '1em',
-        }}>
+        }}
+      >
         <h3
           className="title"
           css={{
@@ -25,7 +26,7 @@ class PostTags extends Component {
             fontSize: '0.8em',
             [presets.mdUp]: {
               display: 'block',
-            }
+            },
           }}
         >
           Explore more:
@@ -44,20 +45,19 @@ class PostTags extends Component {
                   '&::before': {
                     content: '"_"',
                   },
-                }
+                },
               }}
             >
               <Link
                 to={`/tag/${_.kebabCase(tag)}/`}
                 css={{
-                  textDecoration: 'none'
+                  textDecoration: 'none',
                 }}
               >
                 {tag}
               </Link>
             </span>
-          ))
-        }
+          ))}
       </div>
     )
   }

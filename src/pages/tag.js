@@ -65,7 +65,7 @@ const TagsPage = ({
           },
           [presets.mdUp]: {
             gridTemplateColumns: 'repeat(3, 1fr)',
-          }
+          },
         }}
       >
         {group.map(tag => (
@@ -80,7 +80,8 @@ const TagsPage = ({
               }}
               to={`/tag/${kebabCase(tag.fieldValue)}/`}
             >
-              <span>{tag.fieldValue}</span> <span className="count">{tag.totalCount}</span>
+              <span>{tag.fieldValue}</span>{' '}
+              <span className="count">{tag.totalCount}</span>
             </Link>
           </li>
         ))}
