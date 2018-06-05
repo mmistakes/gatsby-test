@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
@@ -96,26 +95,6 @@ const Categories = ({ pathContext, data }) => {
       <Footer />
     </div>
   )
-}
-
-Categories.propTypes = {
-  pathContext: PropTypes.shape({
-    category: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
 }
 
 export default Categories
