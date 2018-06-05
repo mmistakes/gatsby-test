@@ -12,7 +12,7 @@ import fonts from '../utils/fonts'
 import presets from '../utils/presets'
 
 const IndexPage = ({ data, pathContext }) => {
-  const { nodes, page, prev, next, pages, total, limit } = pathContext
+  const { nodes, page, prev, next, pages } = pathContext
 
   return (
     <div

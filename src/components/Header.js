@@ -34,7 +34,7 @@ class Header extends React.Component {
               color: '#000',
               textDecoration: 'none',
             }}
-            to={'/'}
+            to="/"
           >
             {config.title}
           </Link>

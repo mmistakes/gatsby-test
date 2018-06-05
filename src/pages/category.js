@@ -1,9 +1,7 @@
 import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
-import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
-import config from '../../config/SiteConfig'
 import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -34,7 +32,7 @@ const CategoriesPage = ({
       },
     }}
   >
-    <Helmet title={`All Categories | ${config.title}`} />
+    <Helmet title={`All Categories | ${title}`} />
     <Header />
     <PageTitle title="All Categories" />
     <div
@@ -90,24 +88,6 @@ const CategoriesPage = ({
     <Footer />
   </div>
 )
-
-CategoriesPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
-}
 
 export default CategoriesPage
 

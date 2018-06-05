@@ -21,7 +21,8 @@ class GridExample extends React.Component {
           <h1>Grid Example</h1>
           <p>
             Post index in grid format using <strong>gatsby-image</strong> to
-            generate square thumbnail images from the same "cover image" source.
+            generate square thumbnail images from the same &ldquo;cover
+            image&rdquo; source.
           </p>
           <div
             style={{
@@ -66,6 +67,11 @@ export default GridExample
 
 export const pageQuery = graphql`
   query GridExampleQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }

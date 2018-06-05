@@ -1,5 +1,5 @@
 import React from 'react'
-import Comment from './Comment.js'
+import Comment from './Comment'
 
 const Comments = data => {
   if (data.comments === null) {
@@ -9,17 +9,9 @@ const Comments = data => {
     comments: { edges: comments },
   } = data
 
-  const commentList = comments.map(({ node }, index) => {
+  const commentList = comments.map(({ node }) => {
     const {
-      frontmatter: {
-        _parent,
-        name,
-        url,
-        email,
-        uuid,
-        friendlyDate,
-        iso8601Date,
-      },
+      frontmatter: { name, url, email, uuid, friendlyDate, iso8601Date },
       html,
     } = node
 

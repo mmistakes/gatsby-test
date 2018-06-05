@@ -68,7 +68,7 @@ class PostListing extends React.Component {
                 &middot; {post.timeToRead} min read
               </small>
             </div>
-            {post.cover == true ? (
+            {post.cover === true ? (
               <Img
                 sizes={post.imagePath.childImageSharp.sizes}
                 css={{ marginBottom: '1em' }}

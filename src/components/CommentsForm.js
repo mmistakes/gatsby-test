@@ -16,36 +16,40 @@ const CommentForm = ({ slug }) => {
       <input name="options[slug]" type="hidden" value={slugDir} />
 
       <label
+        htmlFor="name"
         css={{
           display: 'block',
         }}
       >
         Name
-        <input name="fields[name]" type="text" required />
+        <input id="name" name="fields[name]" type="text" required />
       </label>
       <label
+        htmlFor="email"
         css={{
           display: 'block',
         }}
       >
         E-mail
-        <input name="fields[email]" type="email" required />
+        <input id="email" name="fields[email]" type="email" required />
       </label>
       <label
+        htmlFor="website"
         css={{
           display: 'block',
         }}
       >
         Website
-        <input name="fields[url]" type="text" />
+        <input id="website" name="fields[url]" type="text" />
       </label>
       <label
+        htmlFor="message"
         css={{
           display: 'block',
         }}
       >
         Message
-        <textarea name="fields[message]" required />
+        <textarea id="message" name="fields[message]" required />
       </label>
 
       <button type="submit">Comment</button>

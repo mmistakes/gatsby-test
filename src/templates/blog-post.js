@@ -20,7 +20,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const comments = this.props.data.comments
-    const { slug, previous, next, tags, categories } = this.props.pathContext
+    const { slug, previous, next } = this.props.pathContext
 
     return (
       <div

@@ -4,10 +4,16 @@ import config from '../../config/SiteConfig'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
-const CommentSuccess = () => (
+const CommentSuccess = ({
+  data: {
+    site: {
+      siteMetadata: { title },
+    },
+  },
+}) => (
   <div>
     <Header />
-    <Helmet title={`Thank You | ${config.title}`} />
+    <Helmet title={`Thank You | ${title}`} />
     <h1>Thanks for the comment</h1>
     <p>Your comment is currently in moderation and will be reviewed soon.</p>
     <Footer />
@@ -15,3 +21,13 @@ const CommentSuccess = () => (
 )
 
 export default CommentSuccess
+
+export const pageQuery = graphql`
+  query CommentSuccessQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
