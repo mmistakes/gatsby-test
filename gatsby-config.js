@@ -131,7 +131,7 @@ module.exports = {
                   sort: { fields: [fields___date], order: DESC },
                   filter: {
                     fields: {
-                      type: { eq: "post" }
+                      sourceName: { ne: "comments" }
                     }
                   }
                 ) {
