@@ -1,6 +1,5 @@
 import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
-import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
@@ -91,24 +90,6 @@ const TagsPage = ({
   </div>
 )
 
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
-}
-
 export default TagsPage
 
 export const pageQuery = graphql`
@@ -118,7 +99,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(filter: { fields: { type: { eq: "post" } } }) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

@@ -98,7 +98,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(filter: { fields: { type: { eq: "post" } } }) {
       group(field: frontmatter___categories) {
         fieldValue
         totalCount

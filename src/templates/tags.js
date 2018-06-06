@@ -118,7 +118,10 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: {
+        fields: { type: { eq: "post" } }
+        frontmatter: { tags: { in: [$tag] } }
+      }
     ) {
       totalCount
       edges {
