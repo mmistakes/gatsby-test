@@ -27,9 +27,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     try {
-      if (node.frontmatter.type === `comment`) {
-        createNodeField({ node, name: `type`, value: `comment` })
-      } else {
+      if (node.fields.sourceName !== `comments`) {
         const [defaultSlug, defaultTitle, defaultDate] = calculateDefaults(
           node,
           getNode
@@ -37,7 +35,6 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
         const date = node.frontmatter.date || defaultDate
         const title = defaultTitle
-        const type = node.frontmatter.type || 'post'
         const { categories } = node.frontmatter
         const categoriesPath = categories
           .join('/')
@@ -48,7 +45,6 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
         createNodeField({ node, name: `slug`, value: slug })
         createNodeField({ node, name: `date`, value: date })
-        createNodeField({ node, name: `type`, value: type })
       }
     } catch (ex) {
       console.log('Error onCreateNode():', node.fileAbsolutePath, '\n', ex)
@@ -72,7 +68,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           {
             allMarkdownRemark(
               sort: { fields: [fields___date], order: DESC }
-              filter: { fields: { type: { eq: "post" } } }
+              filter: { fields: { sourceName: { ne: "comments" } } }
             ) {
               edges {
                 node {

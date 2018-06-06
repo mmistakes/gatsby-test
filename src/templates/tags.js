@@ -119,7 +119,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
       filter: {
-        fields: { type: { eq: "post" } }
+        fields: { sourceName: { ne: "comments" } }
         frontmatter: { tags: { in: [$tag] } }
       }
     ) {

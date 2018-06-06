@@ -42,7 +42,7 @@ export const CommentsBySlug = graphql`
   fragment commentsQueryFragment on RootQueryType {
     comments: allMarkdownRemark(
       filter: {
-        fields: { type: { eq: "comment" } }
+        fields: { sourceName: { eq: "comments" } }
         frontmatter: { _parent: { eq: $slug } }
       }
       sort: { fields: [fields___slug, frontmatter___date], order: ASC }

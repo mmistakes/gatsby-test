@@ -99,7 +99,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(filter: { fields: { type: { eq: "post" } } }) {
+    allMarkdownRemark(filter: { fields: { sourceName: { ne: "comments" } } }) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

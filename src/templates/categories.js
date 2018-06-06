@@ -116,7 +116,10 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { categories: { in: [$category] } } }
+      filter: {
+        fields: { sourceName: { ne: "comments" } }
+        frontmatter: { categories: { in: [$category] } }
+      }
     ) {
       totalCount
       edges {

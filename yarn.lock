@@ -4154,6 +4154,10 @@ gatsby-remark-smartypants@^1.4.12:
     retext-smartypants "^2.0.0"
     unist-util-visit "^1.1.1"
 
+gatsby-remark-source-name@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-source-name/-/gatsby-remark-source-name-1.0.0.tgz#f8200e8ea17b8e242d3d34cd598836aaed3057a8"
+
 gatsby-source-filesystem@^1.5.27:
   version "1.5.38"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.5.38.tgz#9bf74c7bab280f552b074c72aff99f7bca45f927"

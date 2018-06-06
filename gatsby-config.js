@@ -86,6 +86,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-remark-source-name`,
     `gatsby-plugin-glamor`,
     `gatsby-plugin-twitter`,
     `gatsby-transformer-sharp`,
