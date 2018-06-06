@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import React from 'react'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
+import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import colors from '../utils/colors'
@@ -14,12 +15,36 @@ class GridExample extends React.Component {
     const posts = this.props.data.allMarkdownRemark.edges
 
     return (
-      <div>
+      <div
+        className="page"
+        css={{
+          [presets.mdDown]: {
+            marginLeft: '5%',
+            marginRight: '5%',
+          },
+          [presets.mdUp]: {
+            display: 'grid',
+            gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
+            gridTemplateRows: '80px 35%',
+            alignItems: 'end',
+          },
+        }}
+      >
         <Helmet title={`Grid Example | ${config.title}`} />
         <Header />
-        <div>
-          <h1>Grid Example</h1>
-          <p>
+        <PageTitle title="Grid Example" />
+        <div
+          className="page__main"
+          css={{
+            marginTop: '1em',
+            [presets.mdUp]: {
+              gridColumn: '3 / 9',
+              gridRow: '4 / span 1',
+              alignSelf: 'flex-start',
+            },
+          }}
+        >
+          <p css={{ maxWidth: '600px' }}>
             Post index in grid format using <strong>gatsby-image</strong> to
             generate square thumbnail images from the same &ldquo;cover
             image&rdquo; source.
