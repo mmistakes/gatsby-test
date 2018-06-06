@@ -46,7 +46,6 @@ comments:
       type: "date"
       options:
         format: "iso8601"
-    type: "comment"
 
   # List of transformations to apply to any of the fields supplied. Keys are
   # the name of the field and values are possible transformation types.
