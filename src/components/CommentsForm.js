@@ -28,7 +28,7 @@ const CommentForm = ({ slug }) => {
               display: 'flex',
               justifyContent: 'space-between',
               flexDirection: 'row',
-              marginBottom: '1em',
+              margin: '0 -0.5em 1em',
             },
           }}
         >
@@ -37,6 +37,8 @@ const CommentForm = ({ slug }) => {
             css={{
               display: 'block',
               margin: '0 0 0.25em 0',
+              paddingLeft: '0.5em',
+              paddingRight: '0.5em',
               fontFamily: fonts.monospace,
               textTransform: 'uppercase',
             }}
@@ -49,6 +51,8 @@ const CommentForm = ({ slug }) => {
               required
               css={{
                 display: 'block',
+                boxSizing: 'border-box',
+                width: '100%',
                 margin: '0',
                 padding: '0.5em',
                 verticalAlign: 'top',
@@ -66,6 +70,8 @@ const CommentForm = ({ slug }) => {
             css={{
               display: 'block',
               margin: '0 0 0.25em 0',
+              paddingLeft: '0.5em',
+              paddingRight: '0.5em',
               fontFamily: fonts.monospace,
               textTransform: 'uppercase',
             }}
@@ -78,6 +84,8 @@ const CommentForm = ({ slug }) => {
               required
               css={{
                 display: 'block',
+                boxSizing: 'border-box',
+                width: '100%',
                 margin: '0',
                 padding: '0.5em',
                 verticalAlign: 'top',
@@ -95,6 +103,8 @@ const CommentForm = ({ slug }) => {
             css={{
               display: 'block',
               margin: '0 0 0.25em 0',
+              paddingLeft: '0.5em',
+              paddingRight: '0.5em',
               fontFamily: fonts.monospace,
               textTransform: 'uppercase',
             }}
@@ -106,6 +116,8 @@ const CommentForm = ({ slug }) => {
               type="text"
               css={{
                 display: 'block',
+                boxSizing: 'border-box',
+                width: '100%',
                 margin: '0',
                 padding: '0.5em',
                 verticalAlign: 'top',
@@ -137,6 +149,8 @@ const CommentForm = ({ slug }) => {
               required
               css={{
                 display: 'block',
+                boxSizing: 'border-box',
+                width: '100%',
                 margin: '0',
                 padding: '0.5em',
                 verticalAlign: 'top',
