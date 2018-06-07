@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
@@ -53,6 +54,11 @@ class PageTitle extends React.Component {
       </div>
     )
   }
+}
+
+PageTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 }
 
 export default PageTitle

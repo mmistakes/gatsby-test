@@ -1,6 +1,7 @@
 import Link from 'gatsby-link'
 import _ from 'lodash'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
@@ -61,6 +62,10 @@ class PostCategories extends Component {
       </div>
     )
   }
+}
+
+PostCategories.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default PostCategories

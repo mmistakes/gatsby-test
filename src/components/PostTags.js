@@ -1,6 +1,7 @@
 import Link from 'gatsby-link'
 import _ from 'lodash'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
@@ -66,6 +67,14 @@ class PostTags extends Component {
       </div>
     )
   }
+}
+
+PostTags.defaultProps = {
+  tags: null,
+}
+
+PostTags.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default PostTags

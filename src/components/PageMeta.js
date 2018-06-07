@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
@@ -58,6 +59,11 @@ class PageMeta extends React.Component {
       </div>
     )
   }
+}
+
+PageMeta.propTypes = {
+  timeToRead: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
 }
 
 export default PageMeta

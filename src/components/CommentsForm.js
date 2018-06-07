@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import config from '../../config/SiteConfig'
 import presets from '../utils/presets'
 import fonts from '../utils/fonts'
@@ -168,6 +169,10 @@ const CommentForm = ({ slug }) => {
       </form>
     </div>
   )
+}
+
+CommentForm.propTypes = {
+  slug: PropTypes.string.isRequired,
 }
 
 export default CommentForm

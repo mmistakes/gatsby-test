@@ -1,5 +1,6 @@
 import Link from 'gatsby-link'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class PaginationLink extends React.Component {
   render() {
@@ -25,6 +26,12 @@ class PaginationLink extends React.Component {
     }
     return null
   }
+}
+
+PaginationLink.propTypes = {
+  url: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  text: PropTypes.string.isRequired,
 }
 
 export default PaginationLink

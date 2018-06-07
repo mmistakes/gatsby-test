@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Gravatar from 'react-gravatar'
 
 const Comment = props => {
@@ -38,6 +39,18 @@ const Comment = props => {
       </div>
     </article>
   )
+}
+
+Comment.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  friendlyDate: PropTypes.string.isRequired,
+  iso8601Date: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 }
 
 export default Comment

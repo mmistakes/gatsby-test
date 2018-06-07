@@ -1,6 +1,7 @@
 import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
+import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
 class PostListing extends React.Component {
@@ -60,7 +61,7 @@ class PostListing extends React.Component {
               <small>
                 {post.date} in{' '}
                 {post.categories.map((category, i) => (
-                  <span key={i}>
+                  <span key={category}>
                     {!!i && ', '}
                     <Link to={`/${kebabCase(category)}/`}>{category}</Link>
                   </span>
@@ -86,6 +87,10 @@ class PostListing extends React.Component {
       </div>
     )
   }
+}
+
+PostListing.propTypes = {
+  postEdges: PropTypes.node.isRequired,
 }
 
 export default PostListing

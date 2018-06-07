@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import PaginationLink from './PaginationLink'
 
 class Pagination extends React.Component {
@@ -42,6 +43,18 @@ class Pagination extends React.Component {
       </nav>
     )
   }
+}
+
+Pagination.defaultProps = {
+  prev: null,
+  next: null,
+}
+
+Pagination.propTypes = {
+  page: PropTypes.number.isRequired,
+  pages: PropTypes.number.isRequired,
+  prev: PropTypes.string,
+  next: PropTypes.string,
 }
 
 export default Pagination
