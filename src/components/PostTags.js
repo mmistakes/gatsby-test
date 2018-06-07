@@ -15,22 +15,27 @@ class PostTags extends Component {
           paddingTop: '1em',
         }}
       >
-        <h3
-          className="title"
-          css={{
-            display: 'inline-block',
-            marginTop: 0,
-            marginRight: '20px',
-            marginBottom: '10px',
-            padding: 0,
-            fontSize: '0.8em',
-            [presets.mdUp]: {
-              display: 'block',
-            },
-          }}
-        >
-          Explore more:
-        </h3>
+        {tags ? (
+          <h3
+            className="title"
+            css={{
+              display: 'inline-block',
+              marginTop: 0,
+              marginRight: '20px',
+              marginBottom: '10px',
+              padding: 0,
+              fontSize: '0.8em',
+              [presets.mdUp]: {
+                display: 'block',
+              },
+            }}
+          >
+            Explore more:
+          </h3>
+        ) : (
+          <div />
+        )}
+
         {tags &&
           tags.map(tag => (
             <span
