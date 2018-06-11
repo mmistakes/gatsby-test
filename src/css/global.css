@@ -75,6 +75,10 @@ hr::before {
   background-color: #000;
 }
 
+p img {
+  max-width: 100%;
+}
+
 /* Notices */
 
 .notice {
