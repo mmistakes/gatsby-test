@@ -58,7 +58,6 @@ class PageTitle extends React.Component {
 
 PageTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
 }
 
 export default PageTitle

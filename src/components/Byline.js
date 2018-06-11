@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
@@ -34,6 +35,10 @@ class Byline extends React.Component {
       </div>
     )
   }
+}
+
+Byline.propTypes = {
+  author: PropTypes.string.isRequired,
 }
 
 export default Byline
