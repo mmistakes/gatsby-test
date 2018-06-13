@@ -16,21 +16,29 @@ tags:
 
 Welcome to image alignment! The best way to demonstrate the ebb and flow of the various image positioning options is to nestle them snuggly among an ocean of words. Grab a paddle and let's get started.
 
-![image-center](../assets/images/image-alignment-580x300.jpg){: .align-center}
+<div class="align-center" style="width: 580px;">
+  <img src="../assets/images/image-alignment-580x300.jpg" alt>
+</div>
 
 The image above happens to be **centered**.
 
-![image-left](../assets/images/image-alignment-150x150.jpg){: .align-left} The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**.
+<div class="align-left" style="width: 150px;">
+  <img src="../assets/images/image-alignment-150x150.jpg" alt>
+</div>
+
+The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**.
 
 As you can see the should be some space above, below, and to the right of the image. The text should not be creeping on the image. Creeping is just not right. Images need breathing room too. Let them speak like you words. Let them do their jobs without any hassle from the text. In about one more sentence here, we'll see that the text moves from the right of the image down below the image in seamless transition. Again, letting the do it's thing. Mission accomplished!
 
 And now for a **massively large image**. It also has **no alignment**.
 
-![no-alignment](../assets/images/image-alignment-1200x4002.jpg)
+![no alignment](../assets/images/image-alignment-1200x4002.jpg)
 
 The image above, though 1200px wide, should not overflow the content area. It should remain contained with no visible disruption to the flow of content.
 
-![image-right](../assets/images/image-alignment-300x200.jpg){: .align-right}
+<div class="align-right" style="width: 300px;">
+  <img src="../assets/images/image-alignment-300x200.jpg" alt>
+</div>
 
 And now we're going to shift things to the **right align**. Again, there should be plenty of room above, below, and to the left of the image. Just look at him there --- Hey guy! Way to rock that right side. I don't care what the left aligned image says, you look great. Don't let anyone else tell you differently.
 
