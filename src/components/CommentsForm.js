@@ -111,7 +111,7 @@ class CommentForm extends React.Component {
                 textTransform: 'uppercase',
               }}
             >
-              Website
+              Website (optional)
               <input
                 id="website"
                 name="fields[url]"
@@ -143,7 +143,7 @@ class CommentForm extends React.Component {
                 textTransform: 'uppercase',
               }}
             >
-              Message
+              Comment
               <textarea
                 id="message"
                 name="fields[message]"
@@ -166,7 +166,7 @@ class CommentForm extends React.Component {
               />
             </label>
           </div>
-          <button type="submit">Comment</button>
+          <button type="submit">Ready to send?</button>
         </form>
       </div>
     )
