@@ -24,13 +24,13 @@ module.exports = {
         name: `test-posts`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/articles`,
-        name: `articles`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/src/articles`,
+    //     name: `articles`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
