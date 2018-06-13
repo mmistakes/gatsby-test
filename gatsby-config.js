@@ -31,13 +31,13 @@ module.exports = {
     //     name: `articles`,
     //   },
     // },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/paperfaces`,
-        name: `paperfaces`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/src/paperfaces`,
+    //     name: `paperfaces`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
