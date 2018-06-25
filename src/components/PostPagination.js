@@ -19,6 +19,8 @@ class PostPagination extends React.Component {
             margin: 0,
             padding: 0,
             listStyle: 'none',
+            fontFamily: fonts.monospace,
+            fontSize: '0.8em',
             [presets.lgDown]: {
               display: 'flex',
               flexWrap: 'wrap',
@@ -33,9 +35,14 @@ class PostPagination extends React.Component {
                 rel="prev"
                 css={{
                   textDecoration: 'none',
+                  [presets.mdUp]: {
+                    '&::before': {
+                      content: '"_"',
+                    },
+                  },
                 }}
               >
-                ←&nbsp;{previous.frontmatter.title}
+                {previous.frontmatter.title}
               </Link>
             </li>
           )}
@@ -47,9 +54,14 @@ class PostPagination extends React.Component {
                 rel="next"
                 css={{
                   textDecoration: 'none',
+                  [presets.mdUp]: {
+                    '&::before': {
+                      content: '"_"',
+                    },
+                  },
                 }}
               >
-                {next.frontmatter.title}&nbsp;→
+                {next.frontmatter.title}
               </Link>
             </li>
           )}
