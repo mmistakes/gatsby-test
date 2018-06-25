@@ -79,6 +79,13 @@ p img {
   max-width: 100%;
 }
 
+/* Inputs */
+
+input:required,
+textarea:required {
+  box-shadow: none;
+}
+
 /* Notices */
 
 .notice {
