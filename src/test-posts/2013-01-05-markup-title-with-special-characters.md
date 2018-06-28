@@ -1,5 +1,5 @@
 ---
-title: "Markup: Title with Special&nbsp;---&nbsp;Characters"
+title: "Markup: Page Title — with Special Characters"
 image:
   path: ../assets/images/unsplash-image-7.jpg
   cover: true
