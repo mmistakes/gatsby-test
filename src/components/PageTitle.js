@@ -21,7 +21,7 @@ class PageTitle extends React.Component {
             alignSelf: 'stretch',
             gridColumn: '2 / span 4',
             gridRow: '3 / span 1',
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            // backgroundColor: 'rgba(255, 255, 255, 0.95)',
             zIndex: 10,
           },
           [presets.lgUp]: {
@@ -33,13 +33,15 @@ class PageTitle extends React.Component {
           className="headline"
           css={{
             alignSelf: 'flex-start',
+            marginBottom: '0.25em',
+            color: '#fff',
             fontFamily: fonts.alternate,
             fontWeight: 700,
             fontSize: '1.953em',
             fontVariantLigatures: 'common-ligatures',
             fontFeatureSettings: '"kern" on, "liga" on, "clig" on, "calt" on',
             lineHeight: 1.25,
-            textDecoration: 'underline',
+            // textDecoration: 'underline',
             [presets.mdUp]: {
               paddingRight: '5%',
             },
@@ -48,7 +50,16 @@ class PageTitle extends React.Component {
             },
           }}
         >
-          {title}
+          <span
+            css={{
+              padding: '0 0.5em',
+              lineHeight: 1.5,
+              boxDecorationBreak: 'clone',
+              backgroundColor: '#000',
+            }}
+          >
+            {title}
+          </span>
         </h1>
         <Byline author={author} />
       </div>

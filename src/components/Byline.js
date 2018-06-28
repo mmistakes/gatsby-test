@@ -10,12 +10,10 @@ class Byline extends React.Component {
     return (
       <div
         css={{
+          marginBottom: '1em',
           alignSelf: 'flex-start',
-          fontFamily: fonts.alternate,
+          fontFamily: fonts.monospace,
           fontSize: '0.8em',
-          [presets.mdUp]: {
-            fontSize: '1.25em',
-          },
         }}
       >
         {author ? (

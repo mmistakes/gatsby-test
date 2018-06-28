@@ -14,6 +14,21 @@ class PostPagination extends React.Component {
           marginTop: '2em',
         }}
       >
+        <h3
+          css={{
+            display: 'inline-block',
+            marginTop: 0,
+            marginRight: '20px',
+            marginBottom: '10px',
+            padding: 0,
+            fontSize: '0.8em',
+            [presets.mdUp]: {
+              display: 'block',
+            },
+          }}
+        >
+          Related:
+        </h3>
         <ul
           css={{
             margin: 0,
