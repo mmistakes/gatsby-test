@@ -7,6 +7,7 @@
     "url": "https://github.com/gatsbyjs/gatsby-starter-blog/issues"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "gatsby": "^1.9.238",
     "gatsby-image": "^1.0.43",
     "gatsby-link": "^1.6.39",
