@@ -101,12 +101,19 @@ textarea:required {
   position: relative;
   min-height: 1em;
   margin: 1em 0;
-  background: #f8f8f9;
-  padding: 1em 1.5em;
-  line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.25rem;
-  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset, 0 0 0 0 transparent;
+  padding: 1em 1.5em 1.5em;
+  border: 2px solid;
+  font-size: 0.85em;
+}
+
+.notice::before {
+  content: "Note";
+  display: block;
+  margin-bottom: 1.25em;
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: right;
 }
 
 .notice:first-child {
@@ -127,15 +134,6 @@ textarea:required {
 
 .notice p:last-child {
   margin-bottom: 0;
-}
-
-.notice .header {
-  font-family: sans-serif;
-  font-weight: 700;
-}
-
-.notice .header + p {
-  margin-top: 0.25em;
 }
 
 .notice ul {
@@ -179,46 +177,6 @@ textarea:required {
 
 .notice > :last-child {
   margin-bottom: 0;
-}
-
-.notice.info{
-  background-color:#f8ffff;
-  color:#276f86;
-  box-shadow:0 0 0 1px #a9d5de inset,0 0 0 0 transparent;
-}
-
-.notice.info .header{
-  color:#0e566c;
-}
-
-.notice.warning{
-  background-color:#fffaf3;
-  color:#573a08;
-  box-shadow:0 0 0 1px #c9ba9b inset,0 0 0 0 transparent;
-}
-
-.notice.warning .header{
-  color:#794b02;
-}
-
-.notice.danger{
-  background-color:#fff6f6;
-  color:#9f3a38;
-  box-shadow:0 0 0 1px #e0b4b4 inset,0 0 0 0 transparent;
-}
-
-.notice.danger .header{
-  color:#912d2b;
-}
-
-.notice.success{
-  background-color:#fcfff5;
-  color:#2c662d;
-  box-shadow:0 0 0 1px #a3c293 inset,0 0 0 0 transparent;
-}
-
-.notice.success .header{
-  color:#1a531b;
 }
 
 /* Images */

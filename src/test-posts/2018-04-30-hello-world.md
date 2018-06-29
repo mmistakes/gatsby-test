@@ -12,7 +12,7 @@ tags:
 ---
 
 [[info]]
-| **_Note how all headlines below show an anchor link when you hover them?_** That's [gatsby-remark-autolink-headers][5] hooking up all `MarkdownRemark` headers with anchor links for us.
+| **Note how all headlines below show an anchor link when you hover them?** That's [gatsby-remark-autolink-headers][5] hooking up all `MarkdownRemark` headers with anchor links for us.
 
 ## Markdown in Gatsby
 
