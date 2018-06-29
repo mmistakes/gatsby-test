@@ -21,7 +21,7 @@ class PageTitle extends React.Component {
             alignSelf: 'stretch',
             gridColumn: '2 / span 4',
             gridRow: '3 / span 1',
-            // backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            marginTop: 0,
             zIndex: 10,
           },
           [presets.lgUp]: {
