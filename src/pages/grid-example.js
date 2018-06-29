@@ -34,6 +34,7 @@ class GridExample extends React.Component {
         <Header />
         <PageTitle title="Grid Example" />
         <div
+          id="main"
           className="page__main"
           css={{
             marginTop: '1em',

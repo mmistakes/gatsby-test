@@ -79,6 +79,15 @@ p img {
   max-width: 100%;
 }
 
+:focus {
+  outline: none;
+}
+
+:focus:not([tabindex="-1"]) {
+  outline: 4px solid #80b3ff;
+  outline-offset: 2px;
+}
+
 /* Inputs */
 
 input:required,

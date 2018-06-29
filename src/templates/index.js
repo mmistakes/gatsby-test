@@ -34,6 +34,7 @@ const IndexPage = ({ data, pathContext }) => {
       <Header />
       <PageTitle title="Recent Posts" />
       <div
+        id="main"
         className="page__main"
         css={{
           marginTop: '1em',

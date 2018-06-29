@@ -1,4 +1,5 @@
 import React from 'react'
+import SkipLinks from '../components/SkipLinks'
 
 require('../css/global.css')
 require('../css/prism.css')
@@ -9,7 +10,12 @@ require('typeface-alegreya')
 class Template extends React.Component {
   render() {
     const { location, children } = this.props
-    return <div>{children()}</div>
+    return (
+      <div>
+        <SkipLinks />
+        {children()}
+      </div>
+    )
   }
 }
 

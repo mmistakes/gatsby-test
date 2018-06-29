@@ -73,6 +73,7 @@ const Categories = ({ pathContext, data }) => {
         )}
       </div>
       <div
+        id="main"
         className="page__main"
         css={{
           marginTop: '1em',
