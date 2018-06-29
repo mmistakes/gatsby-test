@@ -5,6 +5,7 @@ import config from '../../config/SiteConfig'
 import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Menu from '../components/Menu'
 import Pagination from '../components/Pagination'
 import PostListing from '../components/PostListing'
 import colors from '../utils/colors'
@@ -35,6 +36,7 @@ const Categories = ({ pathContext, data }) => {
       }}
     >
       <Helmet title={`${category} | ${config.title}`} />
+      <Menu />
       <Header />
       <PageTitle title={categoryHeader} />
       <div

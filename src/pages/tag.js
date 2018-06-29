@@ -1,6 +1,7 @@
 import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
+import Menu from '../components/Menu'
 import Helmet from 'react-helmet'
 import config from '../../config/SiteConfig'
 import PageTitle from '../components/PageTitle'
@@ -34,6 +35,7 @@ const TagsPage = ({
     }}
   >
     <Helmet title={`All Tags | ${config.title}`} />
+    <Menu />
     <Header />
     <PageTitle title="All Tags" />
     <div

@@ -2,6 +2,7 @@ import Link from 'gatsby-link'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
 import Helmet from 'react-helmet'
+import Menu from '../components/Menu'
 import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -33,6 +34,7 @@ const CategoriesPage = ({
     }}
   >
     <Helmet title={`All Categories | ${title}`} />
+    <Menu />
     <Header />
     <PageTitle title="All Categories" />
     <div

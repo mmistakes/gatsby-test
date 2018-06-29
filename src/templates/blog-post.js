@@ -8,6 +8,8 @@ import Comments from '../components/Comments'
 import CommentsForm from '../components/CommentsForm'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Menu from '../components/Menu'
+import OverlayMenu from '../components/OverlayMenu'
 import PostPagination from '../components/PostPagination'
 import PostCategories from '../components/PostCategories'
 import PostTags from '../components/PostTags'
@@ -39,6 +41,7 @@ class BlogPostTemplate extends React.Component {
         }}
       >
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+        <Menu />
         <Header />
         <PageTitle title={post.frontmatter.title} author="First Lastname" />
         <PageMeta timeToRead={post.timeToRead} date={post.fields.date} />

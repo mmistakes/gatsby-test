@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Menu from '../components/Menu'
 import config from '../../config/SiteConfig'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -12,6 +13,7 @@ const CommentSuccess = ({
   },
 }) => (
   <div>
+    <Menu />
     <Header />
     <Helmet title={`Thank You | ${title}`} />
     <h1>Thanks for the comment</h1>

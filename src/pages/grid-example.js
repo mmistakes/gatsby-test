@@ -2,6 +2,7 @@ import Img from 'gatsby-image'
 import Link from 'gatsby-link'
 import React from 'react'
 import Helmet from 'react-helmet'
+import Menu from '../components/Menu'
 import config from '../../config/SiteConfig'
 import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
@@ -31,6 +32,7 @@ class GridExample extends React.Component {
         }}
       >
         <Helmet title={`Grid Example | ${config.title}`} />
+        <Menu />
         <Header />
         <PageTitle title="Grid Example" />
         <div

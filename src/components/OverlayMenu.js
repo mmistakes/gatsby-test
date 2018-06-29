@@ -56,11 +56,11 @@ const OverlayMenu = ({ open, right, onClose }) => (
       onClick={e => e.target.tagName.toLowerCase() === 'a' && onClose()}
       role="presentation"
       css={{
-        background: 'rgba(0, 0, 0, 0.85)',
+        padding: '1.5em',
         position: 'fixed',
         height: '100%',
+        background: 'rgba(0, 0, 0, 1)',
         overflow: 'auto',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.5)',
         transform: 'translateX(-100%)',
         willChange: 'transform',
         zIndex: 101,
