@@ -1,5 +1,6 @@
 import Img from 'gatsby-image'
 import get from 'lodash/get'
+import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 import PageTitle from '../components/PageTitle'
@@ -8,6 +9,7 @@ import Comments from '../components/Comments'
 import CommentsForm from '../components/CommentsForm'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Layout from '../components/Layout'
 import Menu from '../components/Menu'
 import OverlayMenu from '../components/OverlayMenu'
 import PostPagination from '../components/PostPagination'
@@ -22,99 +24,101 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const comments = this.props.data.comments
-    const { slug, previous, next } = this.props.pathContext
+    const { slug, previous, next } = this.props.pageContext
 
     return (
-      <div
-        className="post"
-        css={{
-          [presets.mdDown]: {
-            marginLeft: '5%',
-            marginRight: '5%',
-          },
-          [presets.mdUp]: {
-            display: 'grid',
-            gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
-            gridTemplateRows: '80px 100px 35%',
-            alignItems: 'end',
-          },
-        }}
-      >
-        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <Menu />
-        <Header />
-        <PageTitle title={post.frontmatter.title} author="First Lastname" />
-        <PageMeta timeToRead={post.timeToRead} date={post.fields.date} />
+      <Layout>
         <div
-          className="page__cover"
+          className="post"
           css={{
-            position: 'relative',
-            marginTop: '10px',
+            [presets.mdDown]: {
+              marginLeft: '5%',
+              marginRight: '5%',
+            },
             [presets.mdUp]: {
-              gridColumn: '5 / 11',
-              gridRow: '1 / 4',
-              marginTop: 0,
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              width: '100%',
-              height: '100%',
-            },
-            [presets.lgUp]: {
-              gridColumn: '4 / 11',
-            },
-            '& .gatsby-image-outer-wrapper': {
-              width: '100%',
-              height: '100%',
+              display: 'grid',
+              gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
+              gridTemplateRows: '80px 100px 35%',
+              alignItems: 'end',
             },
           }}
         >
-          {post.frontmatter.image.cover === true ? (
-            <Img
-              style={{
+          <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+          <Menu />
+          <Header />
+          <PageTitle title={post.frontmatter.title} author="First Lastname" />
+          <PageMeta timeToRead={post.timeToRead} date={post.fields.date} />
+          <div
+            className="page__cover"
+            css={{
+              position: 'relative',
+              marginTop: '10px',
+              [presets.mdUp]: {
+                gridColumn: '5 / 11',
+                gridRow: '1 / 4',
+                marginTop: 0,
+                objectFit: 'cover',
+                objectPosition: 'center center',
                 width: '100%',
                 height: '100%',
-              }}
-              sizes={post.frontmatter.image.path.childImageSharp.sizes}
-            />
-          ) : (
-            <div />
-          )}
+              },
+              [presets.lgUp]: {
+                gridColumn: '4 / 11',
+              },
+              '& .gatsby-image-outer-wrapper': {
+                width: '100%',
+                height: '100%',
+              },
+            }}
+          >
+            {post.frontmatter.image.cover === true ? (
+              <Img
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+                sizes={post.frontmatter.image.path.childImageSharp.fluid}
+              />
+            ) : (
+              <div />
+            )}
+          </div>
+          <div
+            id="main"
+            className="page__main"
+            css={{
+              marginTop: '1em',
+              [presets.mdUp]: {
+                gridColumn: '3 / 7',
+                gridRow: '4 / span 1',
+                alignSelf: 'flex-start',
+              },
+              [presets.lgUp]: {
+                gridColumn: '3 / 7',
+              },
+            }}
+          >
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            <Comments comments={comments} />
+            <CommentsForm slug={slug} />
+          </div>
+          <div
+            className="page__aside"
+            css={{
+              [presets.mdUp]: {
+                gridColumn: 8,
+                gridRow: 4,
+                alignSelf: 'start',
+              },
+            }}
+          >
+            <PostCategories categories={post.frontmatter.categories} />
+            <PostTags tags={post.frontmatter.tags} />
+            <PostPagination previous={previous} next={next} />
+          </div>
+          <Footer />
         </div>
-        <div
-          id="main"
-          className="page__main"
-          css={{
-            marginTop: '1em',
-            [presets.mdUp]: {
-              gridColumn: '3 / 7',
-              gridRow: '4 / span 1',
-              alignSelf: 'flex-start',
-            },
-            [presets.lgUp]: {
-              gridColumn: '3 / 7',
-            },
-          }}
-        >
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <Comments comments={comments} />
-          <CommentsForm slug={slug} />
-        </div>
-        <div
-          className="page__aside"
-          css={{
-            [presets.mdUp]: {
-              gridColumn: 8,
-              gridRow: 4,
-              alignSelf: 'start',
-            },
-          }}
-        >
-          <PostCategories categories={post.frontmatter.categories} />
-          <PostTags tags={post.frontmatter.tags} />
-          <PostPagination previous={previous} next={next} />
-        </div>
-        <Footer />
-      </div>
+      </Layout>
     )
   }
 }
@@ -146,8 +150,8 @@ export const pageQuery = graphql`
           cover
           path {
             childImageSharp {
-              sizes(maxWidth: 1280, quality: 90) {
-                ...GatsbyImageSharpSizes
+              fluid(maxWidth: 1280, quality: 90) {
+                ...GatsbyImageSharpFluid
               }
             }
           }

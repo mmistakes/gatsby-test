@@ -22,8 +22,8 @@ const calculateDefaults = (node, getNode) => {
   return [defaultSlug, defaultTitle, defaultDate]
 }
 
-exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators
+exports.onCreateNode = ({ node, getNode, actions}) => {
+  const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
     try {
@@ -53,8 +53,8 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   }
 }
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     const indexPage = path.resolve('./src/templates/index.js')
@@ -87,7 +87,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     image {
                       path {
                         childImageSharp {
-                          sizes(maxWidth: 750, quality: 90) {
+                          fluid(maxWidth: 750, quality: 90) {
                             base64
                             aspectRatio
                             src

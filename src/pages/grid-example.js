@@ -1,5 +1,5 @@
 import Img from 'gatsby-image'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 import Menu from '../components/Menu'
@@ -7,6 +7,7 @@ import config from '../../config/SiteConfig'
 import PageTitle from '../components/PageTitle'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Layout from '../components/Layout'
 import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
@@ -16,77 +17,79 @@ class GridExample extends React.Component {
     const posts = this.props.data.allMarkdownRemark.edges
 
     return (
-      <div
-        className="page"
-        css={{
-          [presets.mdDown]: {
-            marginLeft: '5%',
-            marginRight: '5%',
-          },
-          [presets.mdUp]: {
-            display: 'grid',
-            gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
-            gridTemplateRows: '80px 35%',
-            alignItems: 'end',
-          },
-        }}
-      >
-        <Helmet title={`Grid Example | ${config.title}`} />
-        <Menu />
-        <Header />
-        <PageTitle title="Grid Example" />
+      <Layout>
         <div
-          id="main"
-          className="page__main"
+          className="page"
           css={{
-            marginTop: '1em',
+            [presets.mdDown]: {
+              marginLeft: '5%',
+              marginRight: '5%',
+            },
             [presets.mdUp]: {
-              gridColumn: '3 / 9',
-              gridRow: '4 / span 1',
-              alignSelf: 'flex-start',
+              display: 'grid',
+              gridTemplateColumns: '5% 5% 20% 10% 10% 10% 10% 20% 5% 5%',
+              gridTemplateRows: '80px 35%',
+              alignItems: 'end',
             },
           }}
         >
-          <p css={{ maxWidth: '600px' }}>
-            Post index in grid format using <strong>gatsby-image</strong> to
-            generate square thumbnail images from the same &ldquo;cover
-            image&rdquo; source.
-          </p>
+          <Helmet title={`Grid Example | ${config.title}`} />
+          <Menu />
+          <Header />
+          <PageTitle title="Grid Example" />
           <div
-            style={{
-              display: `grid`,
-              gridTemplateColumns: `repeat(auto-fill, minmax(200px, 1fr))`,
-              gridGap: `0.5em`,
-              alignItems: `stretch`,
+            id="main"
+            className="page__main"
+            css={{
+              marginTop: '1em',
+              [presets.mdUp]: {
+                gridColumn: '3 / 9',
+                gridRow: '4 / span 1',
+                alignSelf: 'flex-start',
+              },
             }}
           >
-            {posts.map(post => (
-              <Link
-                key={post.node.id}
-                to={post.node.fields.slug}
-                style={{
-                  display: `block`,
-                  width: `200px`,
-                  height: `200px`,
-                }}
-              >
-                <Img
-                  resolutions={
-                    post.node.frontmatter.image.path.childImageSharp.resolutions
-                  }
+            <p css={{ maxWidth: '600px' }}>
+              Post index in grid format using <strong>gatsby-image</strong> to
+              generate square thumbnail images from the same &ldquo;cover
+              image&rdquo; source.
+            </p>
+            <div
+              style={{
+                display: `grid`,
+                gridTemplateColumns: `repeat(auto-fill, minmax(200px, 1fr))`,
+                gridGap: `0.5em`,
+                alignItems: `stretch`,
+              }}
+            >
+              {posts.map(post => (
+                <Link
+                  key={post.node.id}
+                  to={post.node.fields.slug}
                   style={{
-                    maxWidth: `100%`,
+                    display: `block`,
+                    width: `200px`,
+                    height: `200px`,
                   }}
-                  imgStyle={{
-                    marginBottom: `0`,
-                  }}
-                />
-              </Link>
-            ))}
+                >
+                  <Img
+                    fixed={
+                      post.node.frontmatter.image.path.childImageSharp.fixed
+                    }
+                    style={{
+                      maxWidth: `100%`,
+                    }}
+                    imgStyle={{
+                      marginBottom: `0`,
+                    }}
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </Layout>
     )
   }
 }
@@ -117,8 +120,8 @@ export const pageQuery = graphql`
               cover
               path {
                 childImageSharp {
-                  resolutions(width: 200, height: 200, quality: 90) {
-                    ...GatsbyImageSharpResolutions
+                  fixed(width: 200, height: 200, quality: 90) {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }
