@@ -22,7 +22,7 @@ const calculateDefaults = (node, getNode) => {
   return [defaultSlug, defaultTitle, defaultDate]
 }
 
-exports.onCreateNode = ({ node, getNode, actions}) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
@@ -114,7 +114,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create paginated index page
         createPaginationPages({
-          createPage: createPage,
+          createPage,
           edges: posts,
           component: indexPage,
           limit: 5,
@@ -122,7 +122,8 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create post pages
         _.each(posts, (post, index) => {
-          const previous = index === posts.length - 1 ? null : posts[index + 1].node
+          const previous =
+            index === posts.length - 1 ? null : posts[index + 1].node
           const next = index === 0 ? null : posts[index - 1].node
 
           createPage({

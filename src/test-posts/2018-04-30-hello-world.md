@@ -11,7 +11,7 @@ tags:
   - images
 ---
 
-[[info]]
+[[info | This is a title]]
 | **Note how all headlines below show an anchor link when you hover them?** That's [gatsby-remark-autolink-headers][5] hooking up all `MarkdownRemark` headers with anchor links for us.
 
 ## Markdown in Gatsby

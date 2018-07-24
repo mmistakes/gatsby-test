@@ -82,11 +82,26 @@ module.exports = {
             resolve: `gatsby-remark-custom-blocks`,
             options: {
               blocks: {
-                notice: `notice`,
-                info: `notice info`,
-                warning: `notice warning`,
-                danger: `notice danger`,
-                success: `notice success`,
+                notice: {
+                  classes: `notice`,
+                  title: `optional`,
+                },
+                info: {
+                  classes: `notice info`,
+                  title: `optional`,
+                },
+                warning: {
+                  classes: `notice warning`,
+                  title: `optional`,
+                },
+                danger: {
+                  classes: `notice danger`,
+                  title: `optional`,
+                },
+                success: {
+                  classes: `notice success`,
+                  title: `optional`,
+                },
               },
             },
           },
