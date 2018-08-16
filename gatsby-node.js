@@ -141,7 +141,7 @@ exports.createPages = ({ graphql, actions }) => {
         const tagMap = new Map()
         const categorySet = new Set()
         const categoryMap = new Map()
-        result.data.allMarkdownRemark.edges.forEach(edge => {
+        posts.forEach(edge => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach(tag => {
               tagSet.add(tag)
@@ -163,39 +163,40 @@ exports.createPages = ({ graphql, actions }) => {
               categoryMap.set(category, array)
             })
           }
+        })
 
-          const tagList = Array.from(tagSet)
-          tagList.forEach(tag => {
-            // Create paginated tag pages
-            const tagFormatter = tag => route =>
-              `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ''}`
-            createPaginationPages({
-              createPage,
-              edges: tagMap.get(tag),
-              component: tagPageTemplate,
-              pathFormatter: tagFormatter(tag),
-              limit: 5,
-              context: {
-                tag,
-              },
-            })
+        const tagList = Array.from(tagSet)
+        const categoryList = Array.from(categorySet)
+
+        tagList.forEach(tag => {
+          // Create paginated tag pages
+          const tagFormatter = tag => route =>
+            `/tag/${_.kebabCase(tag)}/${route !== 1 ? route : ''}`
+          createPaginationPages({
+            createPage,
+            edges: tagMap.get(tag),
+            component: tagPageTemplate,
+            pathFormatter: tagFormatter(tag),
+            limit: 5,
+            context: {
+              tag,
+            },
           })
+        })
 
-          const categoryList = Array.from(categorySet)
-          categoryList.forEach(category => {
-            // Create paginated category pages
-            const categoryFormatter = category => route =>
-              `/${_.kebabCase(category)}/${route !== 1 ? route : ''}`
-            createPaginationPages({
-              createPage,
-              edges: categoryMap.get(category),
-              component: categoryPageTemplate,
-              pathFormatter: categoryFormatter(category),
-              limit: 5,
-              context: {
-                category,
-              },
-            })
+        categoryList.forEach(category => {
+          // Create paginated category pages
+          const categoryFormatter = category => route =>
+            `/${_.kebabCase(category)}/${route !== 1 ? route : ''}`
+          createPaginationPages({
+            createPage,
+            edges: categoryMap.get(category),
+            component: categoryPageTemplate,
+            pathFormatter: categoryFormatter(category),
+            limit: 5,
+            context: {
+              category,
+            },
           })
         })
       })
