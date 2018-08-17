@@ -65,17 +65,7 @@ const Tags = ({ pageContext, data }) => {
             },
           }}
         >
-          {data.pageImage.childImageSharp.fluid ? (
-            <Img
-              style={{
-                width: '100%',
-                height: '100%',
-              }}
-              fluid={data.pageImage.childImageSharp.fluid}
-            />
-          ) : (
-            <div />
-          )}
+          <div />
         </div>
         <div
           id="main"
@@ -115,13 +105,6 @@ export const pageQuery = graphql`
         author
       }
     }
-    pageImage: file(relativePath: { eq: "unsplash-image-10.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1280, quality: 90) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
       filter: {
@@ -140,16 +123,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            image {
-              cover
-              path {
-                childImageSharp {
-                  fluid(maxWidth: 750) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
           }
         }
       }
