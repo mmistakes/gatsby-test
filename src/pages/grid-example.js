@@ -1,3 +1,5 @@
+import * as PropTypes from 'prop-types'
+import chunk from 'lodash/chunk'
 import Img from 'gatsby-image'
 import { graphql, Link } from 'gatsby'
 import React from 'react'
@@ -12,9 +14,50 @@ import colors from '../utils/colors'
 import fonts from '../utils/fonts'
 import presets from '../utils/presets'
 
+// This would normally be in a Redux store or some other global data store.
+if (typeof window !== `undefined`) {
+  window.postsToShow = 20
+}
+
 class GridExample extends React.Component {
+  constructor() {
+    super()
+    let postsToShow = 20
+
+    this.state = {
+      showingMore: postsToShow > 20,
+      postsToShow,
+    }
+  }
+
+  update() {
+    const distanceToBottom =
+      document.documentElement.offsetHeight -
+      (window.scrollY + window.innerHeight)
+    if (this.state.showingMore && distanceToBottom < 100) {
+      this.setState({ postsToShow: this.state.postsToShow + 20 })
+    }
+    this.ticking = false
+  }
+
+  handleScroll = () => {
+    if (!this.ticking) {
+      this.ticking = true
+      requestAnimationFrame(() => this.update())
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener(`scroll`, this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(`scroll`, this.handleScroll)
+    window.postsToShow = this.state.postsToShow
+  }
+
   render() {
-    const posts = this.props.data.allMarkdownRemark.edges
+    const posts = this.props.data.allMarkdownRemark.edges.map(e => e.node)
 
     return (
       <Layout>
@@ -54,38 +97,61 @@ class GridExample extends React.Component {
               generate square thumbnail images from the same &ldquo;cover
               image&rdquo; source.
             </p>
-            <div
-              style={{
-                display: `grid`,
-                gridTemplateColumns: `repeat(auto-fill, minmax(200px, 1fr))`,
-                gridGap: `0.5em`,
-                alignItems: `stretch`,
-              }}
-            >
-              {posts.map(post => (
-                <Link
-                  key={post.node.id}
-                  to={post.node.fields.slug}
-                  style={{
-                    display: `block`,
-                    width: `200px`,
-                    height: `200px`,
-                  }}
-                >
-                  <Img
-                    fixed={
-                      post.node.frontmatter.image.path.childImageSharp.fixed
-                    }
+            {chunk(posts.slice(0, this.state.postsToShow), 4).map((chunk, i) => (
+              <div
+                key={`chunk-${i}`}
+                style={{
+                  display: `grid`,
+                  gridTemplateColumns: `repeat(auto-fill, minmax(200px, 1fr))`,
+                  gridGap: `0.5em`,
+                  alignItems: `stretch`,
+                }}
+              >
+                {chunk.map(post => (
+                  <Link
                     style={{
-                      maxWidth: `100%`,
+                      display: `block`,
+                      width: `200px`,
+                      height: `200px`,
                     }}
-                    imgStyle={{
-                      marginBottom: `0`,
-                    }}
-                  />
-                </Link>
-              ))}
-            </div>
+                    to={post.fields.slug}
+                  >
+                    <Img
+                      fixed={
+                        post.frontmatter.image.path.childImageSharp.fixed
+                      }
+                      style={{
+                        maxWidth: `100%`,
+                      }}
+                      imgStyle={{
+                        marginBottom: `0`,
+                      }}
+                    />
+                  </Link>
+                ))}
+              </div>
+            ))}
+            {!this.state.showingMore && (
+              <a
+                data-testid="load-more"
+                style={{
+                  margin: `0 auto`,
+                  padding: `0.5em`,
+                  color: `#fff`,
+                  backgroundColor: `#000`,
+                  border: `1px solid #000`,
+                  cursor: `pointer`,
+                }}
+                onClick={() => {
+                  this.setState({
+                    postsToShow: this.state.postsToShow + 20,
+                    showingMore: true,
+                  })
+                }}
+              >
+                Load more
+              </a>
+            )}
           </div>
           <Footer />
         </div>
@@ -104,9 +170,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      limit: 2000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { image: { cover: { eq: true } } } }
+      filter: { frontmatter: { categories: { in: "paperfaces" } } }
     ) {
       edges {
         node {
