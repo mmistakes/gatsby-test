@@ -4,14 +4,13 @@ image:
   path: ../assets/images/unsplash-image-3.jpg
   cover: true
 excerpt: "Examples and code for displaying images in posts."
-header:
-  teaser: "http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_c.jpg"
 categories:
   - Markup
 tags: 
   - sample post
   - images
   - test
+  - gallery
 ---
 
 Here are some examples of what a post with images might look like.

@@ -1,4 +1,4 @@
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -71,7 +71,7 @@ class PostListing extends React.Component {
             </div>
             {post.cover === true ? (
               <Img
-                sizes={post.imagePath.childImageSharp.sizes}
+                fluid={post.imagePath.childImageSharp.fluid}
                 css={{ marginBottom: '1em' }}
               />
             ) : (

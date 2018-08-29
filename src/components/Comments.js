@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Comment from './Comment'
 
 const Comments = data => {
@@ -39,7 +40,7 @@ const Comments = data => {
 export default Comments
 
 export const CommentsBySlug = graphql`
-  fragment commentsQueryFragment on RootQueryType {
+  fragment commentsQueryFragment on Query {
     comments: allMarkdownRemark(
       filter: {
         fields: { sourceName: { eq: "comments" } }

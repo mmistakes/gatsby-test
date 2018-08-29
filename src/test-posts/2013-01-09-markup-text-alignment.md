@@ -10,6 +10,7 @@ tags:
   - content
   - css
   - markup
+  - gallery
 ---
 
 ### Default

@@ -10,6 +10,7 @@ tags:
   - markup
   - post
   - title
+  - gallery
 ---
 
 Putting special characters in the title should have no adverse effect on the layout or functionality.
