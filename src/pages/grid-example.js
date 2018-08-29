@@ -109,6 +109,7 @@ class GridExample extends React.Component {
               >
                 {chunk.map(post => (
                   <Link
+                    key={post.id}
                     style={{
                       display: `block`,
                       width: `200px`,
