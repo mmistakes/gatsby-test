@@ -9,6 +9,7 @@ categories:
   - Post
 tags: 
   - images
+  - gallery
 ---
 
 [[info | This is a title]]

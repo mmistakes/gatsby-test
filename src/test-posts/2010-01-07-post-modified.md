@@ -10,6 +10,7 @@ tags:
   - Post Formats
   - readability
   - standard
+  - gallery
 ---
 
 This post has been updated and should show a modified date in the UI if `last_modified_at` front matter is populated.

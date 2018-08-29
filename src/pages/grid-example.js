@@ -16,16 +16,16 @@ import presets from '../utils/presets'
 
 // This would normally be in a Redux store or some other global data store.
 if (typeof window !== `undefined`) {
-  window.postsToShow = 20
+  window.postsToShow = 8
 }
 
 class GridExample extends React.Component {
   constructor() {
     super()
-    let postsToShow = 20
+    let postsToShow = 8
 
     this.state = {
-      showingMore: postsToShow > 20,
+      showingMore: postsToShow > 8,
       postsToShow,
     }
   }
@@ -35,7 +35,7 @@ class GridExample extends React.Component {
       document.documentElement.offsetHeight -
       (window.scrollY + window.innerHeight)
     if (this.state.showingMore && distanceToBottom < 100) {
-      this.setState({ postsToShow: this.state.postsToShow + 20 })
+      this.setState({ postsToShow: this.state.postsToShow + 8 })
     }
     this.ticking = false
   }
@@ -171,7 +171,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { categories: { in: "paperfaces" } } }
+      filter: { frontmatter: { tags: { in: "gallery" } } }
     ) {
       edges {
         node {

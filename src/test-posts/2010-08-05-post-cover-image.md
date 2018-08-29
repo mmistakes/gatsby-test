@@ -11,6 +11,7 @@ tags:
   - edge case
   - image
   - layout
+  - gallery
 last_modified_at: 2018-04-30T15:48:05-04:00
 ---
 

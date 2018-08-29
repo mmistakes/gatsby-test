@@ -9,6 +9,7 @@ tags:
   - css
   - html
   - title
+  - gallery
 ---
 
 Verify that:

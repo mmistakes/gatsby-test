@@ -3,8 +3,6 @@ title: "Markup: HTML Tags and Formatting"
 image:
   path: ../assets/images/unsplash-image-4.jpg
   cover: true
-header:
-  teaser: "assets/images/markup-syntax-highlighting-teaser.jpg"
 categories:
   - Markup
 tags:
@@ -13,6 +11,7 @@ tags:
   - formatting
   - html
   - markup
+  - gallery
 toc: true
 ---
 
