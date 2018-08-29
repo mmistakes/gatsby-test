@@ -112,14 +112,6 @@ exports.createPages = ({ graphql, actions }) => {
 
         const posts = result.data.allMarkdownRemark.edges
 
-        // Create paginated index page
-        createPaginationPages({
-          createPage,
-          edges: posts,
-          component: indexPage,
-          limit: 5,
-        })
-
         // Create post pages
         _.each(posts, (post, index) => {
           const previous =
@@ -135,6 +127,14 @@ exports.createPages = ({ graphql, actions }) => {
               next,
             },
           })
+        })
+
+        // Create paginated index page
+        createPaginationPages({
+          createPage,
+          edges: posts,
+          component: indexPage,
+          limit: 5,
         })
 
         const tagSet = new Set()
