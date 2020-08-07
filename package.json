@@ -38,7 +38,7 @@
     "glamor": "^2.20.40",
     "lodash": "^4.17.19",
     "moment": "^2.22.2",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.21.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
